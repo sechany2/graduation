@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="730dp"
+            android:layout_width="428dp"
+            android:layout_height="704dp"
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <FrameLayout
