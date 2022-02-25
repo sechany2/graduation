@@ -3,6 +3,7 @@
     import androidx.annotation.NonNull;
     import androidx.appcompat.app.AppCompatActivity;
 
+    import android.content.Intent;
     import android.os.Bundle;
     import android.view.View;
     import android.widget.Button;
@@ -48,16 +49,15 @@
                     String strEmail = mEtEmail.getText().toString();  //문자열 변수선언 및 입력받은 문자 저장
                     String strPwd = mEtPwd.getText().toString();
 
-                    //Firebase Auth(파이어베이스를 이용한 회원가입처리)
+                    //Firebase Auth(파이어베이스를 이용한 회원가입처   리)
                     mAuth.createUserWithEmailAndPassword(strEmail,strPwd).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                        //회원가입 완료시
                             if (task.isSuccessful()) {
-
                                 FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                                UserAccount account = new UserAccount();        //유저어카운트객체 생성
 
+                                UserAccount account = new UserAccount();        //유저어카운트객체 생성
                                 account.setName(strName);
                                 account.setPhone(strPhone);
                                 account.setUserToken(firebaseUser.getUid());    //생성된 객체에 정보 받기
@@ -68,6 +68,9 @@
                                 mRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                                 Toast.makeText(RegisterActivity.this, "회원가입에 성공했습니다",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegisterActivity.this, LogInActivity.class);
+                                startActivity(intent);
+                                finish(); //회원가입 완료 후 현재 액티비티 파괴
                             } else{
                                 Toast.makeText(RegisterActivity.this, "회원가입에 실패했습니다",Toast.LENGTH_SHORT).show();
                             }
