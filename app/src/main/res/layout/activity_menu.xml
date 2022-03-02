@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="#AE6B7BD1"
+    android:id="@+id/drawer"
     android:orientation="vertical">
 
     <Button
