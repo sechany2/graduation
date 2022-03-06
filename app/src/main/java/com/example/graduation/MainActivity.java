@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
 
+        //메뉴
         Button btn_menu = (Button)findViewById(R.id.btn_menu);      //메뉴버튼
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //리사이클러뷰
 
     }
 

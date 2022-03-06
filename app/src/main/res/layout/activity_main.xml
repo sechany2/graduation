@@ -74,6 +74,7 @@
             android:text="실시간 뷰가 많은 제품" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/realtimeview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
