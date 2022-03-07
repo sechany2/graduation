@@ -1,11 +1,11 @@
 package com.example.graduation;
 
-public class product {
+public class Product {
     private String profile; //제품 이미지
     private String productName; //제품 이름
     private String brandName;   //브랜드이름
 
-    public product(){}
+    public Product(){}
 
     public String getProfile() {
         return profile;

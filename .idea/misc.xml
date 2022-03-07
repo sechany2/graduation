@@ -3,19 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_category.xml" value="0.3338541666666667" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_login.xml" value="0.21467391304347827" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.14739583333333334" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_menu.xml" value="0.14739583333333334" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_product.xml" value="0.21467391304347827" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_register.xml" value="0.3338541666666667" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_reviwe.xml" value="0.5" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_survey.xml" value="0.21467391304347827" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment1.xml" value="0.21467391304347827" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment2.xml" value="0.3338541666666667" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment3.xml" value="0.33" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.15885416666666666" />
-        <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/recommend.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_category.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_log_in.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -26,10 +14,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_reviwe.xml" value="0.3170289855072464" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_survey.xml" value="0.3170289855072464" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment1.xml" value="0.3170289855072464" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.16574074074074074" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/recommend.xml" value="0.25885416666666666" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -16,11 +16,11 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHoder> {
 
-    private ArrayList<product> arrayList;     //arraylist생성
+    private ArrayList<Product> arrayList;     //arraylist생성
     private Context context;
 
     //컨스트럭쳐
-    public CustomAdapter(ArrayList<product> arrayList, Context context) {
+    public CustomAdapter(ArrayList<Product> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
