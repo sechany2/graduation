@@ -31,8 +31,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     //뷰홀더 실행했을때
     public CustomViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false); //list_item 연결
-        CustomViewHoder hoder = new CustomViewHoder(view);  //hoder 생성
-        return null;
+        CustomViewHoder holder = new CustomViewHoder(view);  //holder 생성
+        return holder;
     }
     @Override
     //뷰홀더바인드할떄

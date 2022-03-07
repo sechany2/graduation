@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //리사이클러뷰
-        recyclerView = findViewById(R.id.recyclerView); //아디 연결
+        recyclerView = findViewById(R.id.realtimeview); //아디 연결
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
