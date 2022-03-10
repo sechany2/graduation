@@ -3,14 +3,18 @@ package com.example.graduation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private View drawerView;
+    Button btn_menu, btn_survey, btn_home, btn_my; //하단바 버튼들
     //리사이클러뷰
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -38,6 +43,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //하단바 마이버튼
+        Button btn_my = (Button)findViewById(R.id.btn_my);
+        FrameLayout frame =(FrameLayout)findViewById(R.id.frame);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        btn_my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragmentmy fragmentmy = new Fragmentmy();
+                frame.removeAllViews();
+                transaction.replace(R.id.frame, fragmentmy);
+                transaction.commit();
+            }
+        });
+        //하단바 홈버튼
+        Button btn_home = (Button)findViewById(R.id.btn_home);
+        LinearLayout homelayout = (LinearLayout)findViewById(R.id.homelayout);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                frame.removeAllViews();
+                frame.addView(homelayout);
+            }
+        });
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
 
