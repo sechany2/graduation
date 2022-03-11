@@ -87,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //브랜치 및 머지 연습
+
         drawerLayout.setDrawerListener(listener);
 
         drawerView.setOnTouchListener(new View.OnTouchListener() {
