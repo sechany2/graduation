@@ -39,11 +39,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public void onBindViewHolder(@NonNull CustomViewHoder holder, int position) {
         //glide 로 이미지 받아온것 출력
         Glide.with(holder.itemView)
-                .load(arrayList.get(position).getProfile())
-                .into(holder.iv_profile);
+                .load(arrayList.get(position).getPd_profile())
+                .into(holder.list_iv_profile);
         //settext로 텍스트 받아온것 출력
-        holder.tv_productName.setText(arrayList.get(position).getProductName());
-        holder.tv_brandName.setText(arrayList.get(position).getBrandName());
+        holder.list_tv_productName.setText(arrayList.get(position).getPd_brandname());
+        holder.list_tv_brandName.setText(arrayList.get(position).getPd_name());
 
     }
     @Override
@@ -53,15 +53,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     //커스텀뷰홀더 클래스
     public class CustomViewHoder extends RecyclerView.ViewHolder {
-        ImageView iv_profile;
-        TextView tv_productName;
-        TextView tv_brandName;
+        ImageView list_iv_profile;
+        TextView list_tv_productName;
+        TextView list_tv_brandName;
 
         public CustomViewHoder(@NonNull View itemView) {
             super(itemView);
-            this.iv_profile = itemView.findViewById(R.id.iv_profile);
-            this.tv_productName = itemView.findViewById(R.id.tv_productName);
-            this.tv_brandName = itemView.findViewById(R.id.tv_brandName);
+            this.list_iv_profile = itemView.findViewById(R.id.list_iv_pd_profile);
+            this.list_tv_productName = itemView.findViewById(R.id.list_tv_pd_name);
+            this.list_tv_brandName = itemView.findViewById(R.id.list_tv_pd_brandname);
 
 
         }
