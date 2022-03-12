@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
-
+        //Query a = databaseReference.child("product_01").toString();
         //메뉴
         Button btn_menu = (Button)findViewById(R.id.btn_menu);      //메뉴버튼
         btn_menu.setOnClickListener(new View.OnClickListener() {
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         //메인화면 리사이클러뷰
         recyclerView = findViewById(R.id.realtimeview); //아디 연결
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         arrayList = new ArrayList<>(); // 객체를 담을 어레이 리스트(어댑터쪽으로)
 
