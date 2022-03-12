@@ -3,11 +3,14 @@ package com.example.graduation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Fragment;
+
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -32,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     Button btn_diet, btn_bulkup, btn_health; //분류 버튼
     //메인화면 리사이클러뷰
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private CustomAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+
 
 
     @Override
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout frame =(FrameLayout)findViewById(R.id.frame);
+
 
         //분류 버튼 다이어트
         Button btn_diet = (Button)findViewById(R.id.btn_diet);
@@ -104,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //브랜치 및 머지 연습
 
         drawerLayout.setDrawerListener(listener);
 
@@ -112,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) { return true;}
         });
+
+
+
+
 
         //메인화면 리사이클러뷰
         recyclerView = findViewById(R.id.realtimeview); //아디 연결
@@ -143,10 +151,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
         adapter = new CustomAdapter(arrayList, this);
+        adapter.setOnItemClickListener(
+                new DietAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int pos) {
+                        frame.removeAllViews();
+                        replaceFragment(FragmentProduct.newInstance());
+
+
+                    }
+                }
+        );
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
 
 
     }
+
+    //프래그먼트 이동 메소드
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment).commit();
+    }
+    public void replaceframeProduct(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameProduct, fragment).commit();
+    }
+
+
         DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) { }

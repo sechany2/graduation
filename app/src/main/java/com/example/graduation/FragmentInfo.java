@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class FragmentInfo extends Fragment {
+    public static FragmentInfo newInstance() {
+        return new FragmentInfo();
+    }
     public FragmentInfo(){
 
     }

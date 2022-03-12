@@ -9,6 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Fragmentreview extends Fragment {
+    public static Fragmentreview newInstance() {
+        return new Fragmentreview();
+    }
     public Fragmentreview(){
 
     }

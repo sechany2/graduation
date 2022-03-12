@@ -4,10 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -16,8 +19,19 @@ import java.util.ArrayList;
 
 public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHolder> {
 
+
     private ArrayList<Product> arrayList;
     private Context context;
+
+    //엑티비티나 프래그먼트에서 클릭 이벤트를 위한 리스너
+    public interface  OnItemClickListener{
+        void  onItemClick(View v,int pos);
+    }
+    private  OnItemClickListener mListener = null; //리스너 초기화
+
+    public  void setOnItemClickListener(OnItemClickListener listener){  //리스너 setter
+        this.mListener = listener;
+    }
 
     public DietAdapter(ArrayList<Product> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -29,6 +43,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false);
         CustomViewHolder holder = new CustomViewHolder(view);
+        FrameLayout frame =(FrameLayout)parent.findViewById(R.id.frame);
         return holder;
     }
 
@@ -54,6 +69,18 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
+                    int pos = getAdapterPosition() ;   //아이템 위치 변수
+                    if (pos != RecyclerView.NO_POSITION) {
+                       if(mListener != null){
+                           mListener.onItemClick(v,pos);
+                       }
+                    }
+                }
+            });
             this.category_iv_pd_profile = itemView.findViewById(R.id.category_iv_pd_profile);
             this.category_tv_pd_brandname = itemView.findViewById(R.id.category_tv_pd_brandname);
             this.category_tv_pd_name = itemView.findViewById(R.id.category_tv_pd_name);
