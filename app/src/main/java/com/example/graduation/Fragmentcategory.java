@@ -92,9 +92,6 @@ public class Fragmentcategory extends Fragment {
                 recyclerView.setAdapter(adapter);
             }
         }
-            }
-        });
-
         adapter = new DietAdapter(arrayList, getContext());
         recyclerView.setAdapter(adapter);
 
