@@ -24,6 +24,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         this.arrayList = arrayList;
         this.context = context;
     }
+    //엑티비티나 프래그먼트에서 클릭 이벤트를 위한 리스너
+    public interface  OnItemClickListener{
+        void  onItemClick(View v,int pos);
+    }
+    private DietAdapter.OnItemClickListener mListener = null; //리스너 초기화
+
+    public  void setOnItemClickListener(DietAdapter.OnItemClickListener listener){  //리스너 setter
+        this.mListener = listener;
+    }
 
     //커스텀뷰홀더 메소드
     @NonNull
@@ -53,12 +62,24 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     //커스텀뷰홀더 클래스
     public class CustomViewHoder extends RecyclerView.ViewHolder {
+
         ImageView list_iv_profile;
         TextView list_tv_productName;
         TextView list_tv_brandName;
 
         public CustomViewHoder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
+                    int pos = getAdapterPosition() ;   //아이템 위치 변수
+                    if (pos != RecyclerView.NO_POSITION) {
+                        if(mListener != null){
+                            mListener.onItemClick(v,pos);
+                        }
+                    }
+                }
+            });
             this.list_iv_profile = itemView.findViewById(R.id.list_iv_pd_profile);
             this.list_tv_productName = itemView.findViewById(R.id.list_tv_pd_name);
             this.list_tv_brandName = itemView.findViewById(R.id.list_tv_pd_brandname);
