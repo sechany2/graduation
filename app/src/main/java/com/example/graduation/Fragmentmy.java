@@ -9,8 +9,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Fragmentmy extends Fragment {
-    public Fragmentmy(){
+    public Fragmentmy(){ }
 
+    public static Fragmentmy newInstance() {
+        return new Fragmentmy();
     }
 
     @Nullable

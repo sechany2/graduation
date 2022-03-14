@@ -59,16 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 // 번들 프레그먼트카테고리에 데이터 전달
                 Bundle bundle = new Bundle();
                 bundle.putString("category","다이어트");
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                // 위 코드가 만약 Listener 밖에 있어서 화면이 사용자에게 보여진 후 1회만 실행 된다면,
-                // 한번의 Fragment의 변화를 Commit()한 후 다시 다른 화면으로 Commit하려할 때 아래와 같은 에러가 발생한다.
-                // 이미 화면을 그리면서 Commit()한 transaction에 다른 Fragment를 할당하고 Commit()하려 했기 때문에 이미 commit되었다고 에러가 발생하면서 앱이 꺼지는 것이다.
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
+                replaceFragment(fragmentcategory);
                 frame.removeAllViews();
-                transaction.replace(R.id.frame, fragmentcategory);
-                transaction.commit();
             }
         });
         //분류 버튼 벌크업
@@ -79,13 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 // 번들 프레그먼트카텍고리에 데이터 전달
                 Bundle bundle = new Bundle();
                 bundle.putString("category","벌크업");
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
                 frame.removeAllViews();
-                transaction.replace(R.id.frame, fragmentcategory);
-                transaction.commit();
+                replaceFragment(fragmentcategory);
             }
         });
         //분류 버튼 건강
@@ -96,13 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 // 번들 프레그먼트카텍고리에 데이터 전달
                 Bundle bundle = new Bundle();
                 bundle.putString("category","건강");
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
                 frame.removeAllViews();
-                transaction.replace(R.id.frame, fragmentcategory);
-                transaction.commit();
+                replaceFragment(fragmentcategory);
             }
         });
         //하단바 마이버튼
@@ -110,11 +101,8 @@ public class MainActivity extends AppCompatActivity {
         btn_my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                Fragmentmy fragmentmy = new Fragmentmy();
                 frame.removeAllViews();
-                transaction.replace(R.id.frame, fragmentmy);
-                transaction.commit();
+                replaceFragment(Fragmentmy.newInstance());
             }
         });
         //하단바 홈버튼
@@ -240,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             //메뉴오픈시
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {  }
-            //닫았을때
+            //메뉴닫았을때
             @Override
             public void onDrawerClosed(@NonNull View drawerView) {  }
             @Override

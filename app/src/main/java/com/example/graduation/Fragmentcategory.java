@@ -36,13 +36,11 @@ public class Fragmentcategory extends Fragment {
     private DatabaseReference databaseReference;
     private String result, category;
     private TextView tv_category, tv_semicategory;
-    private Context context;
 
 
 
-    public static Fragmentcategory newInstance() {
-        return new Fragmentcategory();
-    }
+
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,6 +70,8 @@ public class Fragmentcategory extends Fragment {
                     tv_semicategory.setText("건강 세부 메뉴");
                     break;
         }
+
+        //카테고리 리사이클러뷰
             recyclerView = view.findViewById(R.id.rv_category);
             recyclerView.setHasFixedSize(true);
             layoutManager = new LinearLayoutManager(getActivity());
@@ -106,7 +106,7 @@ public class Fragmentcategory extends Fragment {
         }
 
 
-
+        //아이템 클릭 이벤트
         adapter.setOnItemClickListener(
                 new DietAdapter.OnItemClickListener() {
                     @Override
