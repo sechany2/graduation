@@ -36,7 +36,6 @@ public class Fragmentcategory extends Fragment {
     private DatabaseReference databaseReference;
     private String result, category;
     private TextView tv_category, tv_semicategory;
-
     private Context context;
 
 
@@ -107,21 +106,24 @@ public class Fragmentcategory extends Fragment {
         }
 
 
+
         adapter.setOnItemClickListener(
                 new DietAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
 
+
+                        //제품정보 저장
+                        ArrayList<String> pdinfo= new ArrayList<>();
                         Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
-                        ArrayList<String> product= new ArrayList<>();
-                        Log.e(arrayList.get(pos).getPd_name(),arrayList.get(pos).getPd_brandname());
-                        product.add(arrayList.get(pos).getPd_name());
-                        product.add(arrayList.get(pos).getPd_brandname());
-                        product.add(arrayList.get(pos).getPd_profile());
-                        info.putStringArrayList("product",product);
+                        pdinfo.add(arrayList.get(pos).getPd_name());
+                        pdinfo.add(arrayList.get(pos).getPd_brandname());
+                        pdinfo.add(arrayList.get(pos).getPd_profile());
+                        info.putStringArrayList("product",pdinfo);
                         FragmentProduct fragmentProduct = new FragmentProduct();
                         fragmentProduct.setArguments(info);
-                        ((MainActivity)getActivity()).replaceFragment(FragmentProduct.newInstance());//제품 페이지로 이동
+                        Log.e(info.getStringArrayList("product").get(0),info.getStringArrayList("product").get(1));
+                        ((MainActivity)getActivity()).replaceFragment(fragmentProduct);//제품 페이지로 이동
 
 
                     }

@@ -202,7 +202,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View v, int pos) {
                         frame.removeAllViews();
-                        replaceFragment(FragmentProduct.newInstance());
+                        ArrayList<String> pdinfo= new ArrayList<>();
+                        Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
+                        pdinfo.add(arrayList.get(pos).getPd_name());
+                        pdinfo.add(arrayList.get(pos).getPd_brandname());
+                        pdinfo.add(arrayList.get(pos).getPd_profile());
+                        info.putStringArrayList("product",pdinfo);
+                        FragmentProduct fragmentProduct = new FragmentProduct();
+                        fragmentProduct.setArguments(info);
+                        replaceFragment(fragmentProduct);
 
 
                     }
