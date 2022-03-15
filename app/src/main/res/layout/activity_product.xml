@@ -35,6 +35,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
+            android:id="@+id/product_iv_pd_profile"
             android:layout_margin="20dp"></ImageView>
 
         <TextView
@@ -42,14 +43,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:text="제품 브랜드명 : 마이프로틴"></TextView>
+            android:id="@+id/product_tv_pd_brandname"
+
+            android:text="텍스트 오류"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:text="제품명 : 프로틴"></TextView>
+            android:id="@+id/product_tv_pd_name"
+            android:text="제품명 : 텍스트 오류"></TextView>
 
 
     </LinearLayout>

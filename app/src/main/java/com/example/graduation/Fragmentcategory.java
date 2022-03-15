@@ -37,13 +37,10 @@ public class Fragmentcategory extends Fragment {
     private String result, category;
     private TextView tv_category, tv_semicategory;
 
-    private Context context;
 
 
 
-    public static Fragmentcategory newInstance() {
-        return new Fragmentcategory();
-    }
+
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,53 +50,80 @@ public class Fragmentcategory extends Fragment {
         {
             result = getArguments().getString("category");
 
-            if(result == "다이어트"){
-                tv_category = view.findViewById(R.id.tv_category);
-                tv_category.setText("다이어트");
-                tv_semicategory = view.findViewById(R.id.tv_semicategory);
-                tv_semicategory.setText("다이어트 세부 메뉴");
-
-                recyclerView = view.findViewById(R.id.rv_category);
-                recyclerView.setHasFixedSize(true);
-                layoutManager = new LinearLayoutManager(getActivity());
-                recyclerView.setLayoutManager(layoutManager);
-                arrayList = new ArrayList<>();
-
-                database = FirebaseDatabase.getInstance();
-
-                databaseReference = database.getReference("Product");
-
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                        // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
-                        arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
-                        for (DataSnapshot snapshot : datasnapshot.getChildren()){
-                            Product product = snapshot.getValue(Product.class);
-                            category = product.getPd_classification();
-                            if(category.equals("다이어트")){
-                                arrayList.add(product);
-                            }
-                        }
-                        adapter.notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                adapter = new DietAdapter(arrayList, getContext());
-                recyclerView.setAdapter(adapter);
-            }
+            switch( result ){
+                case"다이어트":
+                    tv_category = view.findViewById(R.id.tv_category);
+                    tv_category.setText("다이어트");
+                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    tv_semicategory.setText("다이어트 세부 메뉴");
+                    break;
+                case"벌크업":
+                    tv_category = view.findViewById(R.id.tv_category);
+                    tv_category.setText("벌크업");
+                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    tv_semicategory.setText("벌크업 세부 메뉴");
+                    break;
+                case"건강":
+                    tv_category = view.findViewById(R.id.tv_category);
+                    tv_category.setText("건강");
+                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    tv_semicategory.setText("건강 세부 메뉴");
+                    break;
         }
-        adapter = new DietAdapter(arrayList, getContext());
-        recyclerView.setAdapter(adapter);
 
+        //카테고리 리사이클러뷰
+            recyclerView = view.findViewById(R.id.rv_category);
+            recyclerView.setHasFixedSize(true);
+            layoutManager = new LinearLayoutManager(getActivity());
+            recyclerView.setLayoutManager(layoutManager);
+            arrayList = new ArrayList<>();
+
+            database = FirebaseDatabase.getInstance();
+
+            databaseReference = database.getReference("Product");
+
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
+                    arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
+                    for (DataSnapshot snapshot : datasnapshot.getChildren()){
+                        Product product = snapshot.getValue(Product.class);
+                        category = product.getPd_classification();
+                        if(category.equals(result)){
+                            arrayList.add(product);
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            adapter = new DietAdapter(arrayList, getContext());
+            recyclerView.setAdapter(adapter);
+        }
+
+
+        //아이템 클릭 이벤트
         adapter.setOnItemClickListener(
                 new DietAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
-                        ((MainActivity)getActivity()).replaceFragment(FragmentProduct.newInstance());
+
+
+                        //제품정보 저장
+                        ArrayList<String> pdinfo= new ArrayList<>();
+                        Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
+                        pdinfo.add(arrayList.get(pos).getPd_name());
+                        pdinfo.add(arrayList.get(pos).getPd_brandname());
+                        pdinfo.add(arrayList.get(pos).getPd_profile());
+                        info.putStringArrayList("product",pdinfo);
+                        FragmentProduct fragmentProduct = new FragmentProduct();
+                        fragmentProduct.setArguments(info);
+                        Log.e(info.getStringArrayList("product").get(0),info.getStringArrayList("product").get(1));
+                        ((MainActivity)getActivity()).replaceFragment(fragmentProduct);//제품 페이지로 이동
 
 
                     }
