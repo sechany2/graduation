@@ -14,7 +14,6 @@ public class Product {
     private String pd_classification; //분류코드
 
 
-
     public Product(){}
 
     public String getPd_profile() {

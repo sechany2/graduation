@@ -18,29 +18,39 @@
         android:text="메뉴닫기"/>
 
     <TextView
+        android:id="@+id/menutv_help"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="도움말"/>
+        android:text="도움말"
+        android:textSize="48sp" />
     <TextView
+        android:id="@+id/menutv_announcement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="공지사항"/>
+        android:text="공지사항"
+        android:textSize="48sp"/>
     <TextView
+        android:id="@+id/menutv_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="48sp"
         android:text="분석요청"/>
     <TextView
+        android:id="@+id/menutv_inquiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="48sp"
         android:text="문의하기"/>
     <TextView
+        android:id="@+id/menutv_set"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textSize="48sp"
         android:text="설정"/>
 
 
