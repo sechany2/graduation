@@ -15,17 +15,26 @@
         android:layout_marginBottom="50dp"
         android:id="@+id/frame">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
-            android:layout_marginBottom="1dp"
             android:orientation="vertical"
             android:id="@+id/homelayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/next_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@color/white"
+                android:gravity="center"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -138,6 +147,6 @@
 
 
     <include layout = "@layout/activity_menu"/>
-
+    <include layout="@layout/drawer_help"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
