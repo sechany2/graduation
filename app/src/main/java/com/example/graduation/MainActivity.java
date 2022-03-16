@@ -8,16 +8,19 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import androidx.appcompat.widget.Toolbar;
 
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,9 +34,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+
+    private View dr_help;
     private View drawerView;
-    //  Button btn_menu, btn_survey, btn_home, btn_my; //하단바 버튼
-    // Button btn_diet, btn_bulkup, btn_health; //분류 버튼
+    //Button btn_menu, btn_survey, btn_home, btn_my; //하단바 버튼
+    //Button btn_diet, btn_bulkup, btn_health; //분류 버튼
     //메인화면 리사이클러뷰
     private RecyclerView recyclerView;
     private CustomAdapter adapter;
@@ -49,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout frame =(FrameLayout)findViewById(R.id.frame);
+
+        //액션바
+        Toolbar toolbar =findViewById(R.id.next_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("graduation");
+
 
         //분류 버튼 다이어트
         Button btn_diet = (Button)findViewById(R.id.btn_diet);
@@ -117,14 +128,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //메뉴버튼
+        Button btn_menu = (Button)findViewById(R.id.btn_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
 
-        Button btn_menu = (Button)findViewById(R.id.btn_menu);
         btn_menu.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-               drawerLayout.openDrawer(drawerView);
+
+                drawerLayout.openDrawer(drawerView);
             }
         });
 
@@ -144,8 +157,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) { return true;}
         });
+        //헬프 버튼
+        dr_help = (View) findViewById(R.id.drawer_help);
+        TextView tv_help = (TextView) findViewById(R.id.tv_help);
+        tv_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View view) {
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(dr_help);
 
+            }
+        });
+        //헬프 뒤로가기 버튼
+        TextView tv_back = (TextView)findViewById(R.id.tv_back);
+        tv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(drawerView);
 
+            }
+        });
         //메인화면 리사이클러뷰
         recyclerView = findViewById(R.id.realtimeview); //아디 연결
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
@@ -213,7 +245,9 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
             @Override
-            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) { }
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+
+            }
             //메뉴오픈시
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {  }

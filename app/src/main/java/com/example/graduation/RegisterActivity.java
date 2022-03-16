@@ -2,9 +2,11 @@
 
     import androidx.annotation.NonNull;
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.appcompat.widget.Toolbar;
 
     import android.content.Intent;
     import android.os.Bundle;
+    import android.view.MenuItem;
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
@@ -24,6 +26,15 @@
         private DatabaseReference mRef; //실시간 데이터베이스
         private EditText mEtName, mEtPhone, mEtEmail, mEtPwd; //회원가입 입력필드
         private Button mBtnRegister;    //회원가입 버튼
+        public boolean onOptionsItemSelected(MenuItem item) {
+            switch (item.getItemId()){
+                case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                    finish();
+                    return true;
+                }
+            }
+            return super.onOptionsItemSelected(item);
+        }
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +49,15 @@
             mEtEmail = findViewById(R.id.et_email);
             mEtPwd = findViewById(R.id.et_pwd);
             mBtnRegister = findViewById(R.id.btn_register);         // 변수 초기화 및 초기설정 )
+
+
+            //툴바
+            Toolbar toolbar =findViewById(R.id.register_toolbar);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle("회원가입");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
             mBtnRegister.setOnClickListener(new View.OnClickListener() {
                 @Override

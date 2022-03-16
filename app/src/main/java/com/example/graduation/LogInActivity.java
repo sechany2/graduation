@@ -2,6 +2,7 @@ package com.example.graduation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,11 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //툴바
+        Toolbar toolbar =findViewById(R.id.login_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("graduation");
 
 
         mAuth = FirebaseAuth.getInstance();                     // ( 변수 초기화 및 초기설정

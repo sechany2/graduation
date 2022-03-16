@@ -27,7 +27,7 @@ public class MenuActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        tv_help = (TextView) findViewById(R.id.menutv_help);
+        tv_help = (TextView) findViewById(R.id.tv_help);
         tv_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
