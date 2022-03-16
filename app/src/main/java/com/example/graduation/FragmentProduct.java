@@ -21,7 +21,7 @@ public class FragmentProduct extends Fragment {
     public FragmentProduct(){
 
     }
-
+    private ArrayList<String> productinfo;
     private TextView tv_pdname;
     private TextView tv_pdbrandname;
     private ImageView iv_profile;
@@ -35,16 +35,18 @@ public class FragmentProduct extends Fragment {
         iv_profile = view.findViewById(R.id.product_iv_pd_profile);
 
         //제품정보
-        ArrayList<String> productinfo = new ArrayList<>();
+        productinfo = new ArrayList<>();
         if (getArguments() != null) {
             productinfo = getArguments().getStringArrayList("product");
             tv_pdname.setText(productinfo.get(0));     //제품 이름
             tv_pdbrandname.setText(productinfo.get(1));//제품 브랜드명
-            Glide.with(FragmentProduct.this).load(productinfo.get(2)).into(iv_profile);
+            Glide.with(FragmentProduct.this).load(productinfo.get(2)).into(iv_profile); //이미지
         }
         else{
             Log.e("번들 이동 실패","오류");
         }
+
+
 
 
 
@@ -53,7 +55,14 @@ public class FragmentProduct extends Fragment {
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceframeProduct(FragmentInfo.newInstance()); //메인 엑티비티에 프래그먼트 이동 메소드 호출
+                //정보분석 프래그먼트로 제품정보 이동
+                Bundle info = new Bundle();
+                info.putStringArrayList("productinfo",productinfo);
+                FragmentInfo fragmentInfo = new FragmentInfo();
+                fragmentInfo.setArguments(info);
+                ((MainActivity)getActivity()).replaceframeProduct(fragmentInfo);  //메인 엑티비티에 프래그먼트 이동 메소드 호출
+
+
             }
         });
 

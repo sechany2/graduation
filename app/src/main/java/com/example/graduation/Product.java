@@ -13,11 +13,84 @@ public class Product {
     private String cd_code;   // 종류 코드
     private String pd_classification; //분류코드
 
+    //식약처 데이터
+    private String ntk_mthd;
+    private String primary_fnclty; //주된기능성
+    private String iftkn_atnt_matr_cn;    //섭취시주의사항
+    private String prdt_shap_cd_nm; //제품형태
+    private String etc_rawmtrl_nm; //기타 원재료
+    private String indiv_rawmtrl_nm; //기능성 원재료
+    private String cap_rawmtrl_nm; //캡슐 원재료
+    private String child_crtfc_yn; // 어린이기호식품품질인증여부
 
     public Product(){}
 
+    public String getNtk_mthd() {
+        return ntk_mthd;
+    }
+
+    public void setNtk_mthd(String ntk_mthd) {
+        this.ntk_mthd = ntk_mthd;
+    }
+
+    public String getPrimary_fnclty() {
+        return primary_fnclty;
+    }
+
+    public void setPrimary_fnclty(String primary_fnclty) {
+        this.primary_fnclty = primary_fnclty;
+    }
+
     public String getPd_profile() {
         return pd_profile;
+    }
+
+    public String getIftkn_atnt_matr_cn() {
+        return iftkn_atnt_matr_cn;
+    }
+
+    public void setIftkn_atnt_matr_cn(String iftkn_atnt_matr_cn) {
+        this.iftkn_atnt_matr_cn = iftkn_atnt_matr_cn;
+    }
+
+    public String getPrdt_shap_cd_nm() {
+        return prdt_shap_cd_nm;
+    }
+
+    public void setPrdt_shap_cd_nm(String PRDT_SHAP_CD_NM) {
+        this.prdt_shap_cd_nm = PRDT_SHAP_CD_NM;
+    }
+
+    public String getEtc_rawmtrl_nm() {
+        return etc_rawmtrl_nm;
+    }
+
+    public void setEtc_rawmtrl_nm(String etc_rawmtrl_nm) {
+        this.etc_rawmtrl_nm = etc_rawmtrl_nm;
+    }
+
+    public String getIndiv_rawmtrl_nm() {
+        return indiv_rawmtrl_nm;
+    }
+
+    public void setIndiv_rawmtrl_nm(String indiv_rawmtrl_nm) {
+        this.indiv_rawmtrl_nm = indiv_rawmtrl_nm;
+    }
+
+    public String getCap_rawmtrl_nm() {
+        return cap_rawmtrl_nm;
+    }
+
+    public void setCap_rawmtrl_nm(String cap_rawmtrl_nm) {
+        this.cap_rawmtrl_nm = cap_rawmtrl_nm;
+    }
+
+    public String getChild_crtfc_yn() {
+        return child_crtfc_yn;
+    }
+
+    public void setChild_crtfc_yn(String child_crtfc_yn) {
+        this.child_crtfc_yn = child_crtfc_yn;
     }
 
     public void setPd_profile(String pd_profile) {

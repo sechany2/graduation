@@ -5,13 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_200">
+    android:background="#B1B1B1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/white"
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,15 +32,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="text"></TextView>
+                android:text="text"
+                android:id="@+id/tv_primary_fnclty"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="MissingConstraints">
@@ -48,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:text="일일섭취량"
+                android:text="섭취방법"
                 android:textSize="30sp"
 
                 tools:ignore="MissingConstraints"
@@ -57,16 +61,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="text"></TextView>
+                android:text="text"
+                android:id="@+id/tv_ntk_mthd"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
 
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
@@ -88,44 +94,122 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="원료정보"
-            android:textSize="30dp"
-            android:layout_marginTop="15dp"
-            tools:layout_editor_absoluteX="19dp">
-
-        </TextView>
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="10dp">
-             <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:text="원료&#10;구성"
-
-                 android:textSize="20dp"></TextView>
-         </LinearLayout>
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="100dp">
+                android:background="@color/white"
+                android:text="원료정보"
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="19dp">
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+
+                >
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="기능성 원료"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:id="@+id/tv_indiv_rawmtrl_nm"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="기타 원료"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:id="@+id/tv_etc_rawmtrl_nm">
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="캡슐 원료"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:id="@+id/tv_cap_rawmtrl_nm">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="주의&#10;사항"
                     android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="text"
+                    android:id="@+id/tv_iftkn_atnt_matr_cn">
+
+                </TextView>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제품&#10;형태"
+                android:textSize="20dp"
+                android:layout_marginRight="10dp">
+
+            </TextView>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="text"
+    android:id="@+id/tv_prdt_shap_cd_nm"></TextView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

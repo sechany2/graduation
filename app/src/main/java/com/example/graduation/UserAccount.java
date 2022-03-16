@@ -8,6 +8,9 @@ public class UserAccount {
     private String password;    //비밀번호
     private String userToken; //firebase Uid 고유 토큰
 
+
+
+
     public UserAccount(){} // 기본 생성자
 
     public String getName() {

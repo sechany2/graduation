@@ -116,13 +116,21 @@ public class Fragmentcategory extends Fragment {
                         //제품정보 저장
                         ArrayList<String> pdinfo= new ArrayList<>();
                         Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
-                        pdinfo.add(arrayList.get(pos).getPd_name());
-                        pdinfo.add(arrayList.get(pos).getPd_brandname());
-                        pdinfo.add(arrayList.get(pos).getPd_profile());
+                        pdinfo.add(arrayList.get(pos).getPd_name());             // 0번 이름
+                        pdinfo.add(arrayList.get(pos).getPd_brandname());        // 1번 브랜드이름
+                        pdinfo.add(arrayList.get(pos).getPd_profile());          // 2번 이미지
+                        pdinfo.add(arrayList.get(pos).getPrimary_fnclty());      // 3번 주된기능성
+                        pdinfo.add(arrayList.get(pos).getNtk_mthd());            // 4번 섭취방법
+                        pdinfo.add(arrayList.get(pos).getIndiv_rawmtrl_nm());    // 5번 기능성원료
+                        pdinfo.add(arrayList.get(pos).getEtc_rawmtrl_nm());      // 6번 기타원료
+                        pdinfo.add(arrayList.get(pos).getCap_rawmtrl_nm());      // 7번 캡슐 원료
+                        pdinfo.add(arrayList.get(pos).getIftkn_atnt_matr_cn());  // 8번 주의사항
+                        pdinfo.add(arrayList.get(pos).getPrdt_shap_cd_nm());     // 9번 제품형태
+
+
                         info.putStringArrayList("product",pdinfo);
                         FragmentProduct fragmentProduct = new FragmentProduct();
                         fragmentProduct.setArguments(info);
-                        Log.e(info.getStringArrayList("product").get(0),info.getStringArrayList("product").get(1));
                         ((MainActivity)getActivity()).replaceFragment(fragmentProduct);//제품 페이지로 이동
 
 
