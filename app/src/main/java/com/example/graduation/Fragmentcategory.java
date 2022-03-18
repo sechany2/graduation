@@ -34,7 +34,7 @@ public class Fragmentcategory extends Fragment {
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private String result, category;
+    private String result;
     private TextView tv_category, tv_semicategory;
 
 
@@ -89,9 +89,22 @@ public class Fragmentcategory extends Fragment {
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()){
                         Product product = snapshot.getValue(Product.class);
-                        category = product.getPd_classification();
-                        if(category.equals(result)){
+
+                        category category = snapshot.child("category").getValue(category.class);
+                        if(category.getDiet()!=null){
+                            if(category.getDiet().equals(result)){
                             arrayList.add(product);
+                            }
+                        }
+                        if(category.getHealth()!=null){
+                            if(category.getHealth().equals(result)) {
+                            arrayList.add(product);
+                        }
+                        }
+                        if(category.getBulkup()!=null) {
+                            if (category.getBulkup().equals(result)) {
+                                arrayList.add(product);
+                            }
                         }
                     }
                     adapter.notifyDataSetChanged();

@@ -52,11 +52,12 @@ public class FragmentInfo extends Fragment {
         return view;
     }
     public void setinfo(TextView view , ArrayList<String> arrayList,int a){
-        if(arrayList.size()>a){
-        view.setText(arrayList.get(a+1));
-        }
-        else{
-            view.setText("정보를 추가해주세요");
+        if(arrayList.size()>a) {
+            if (arrayList.get(a + 1) != null) {
+                view.setText(arrayList.get(a + 1));
+            } else {
+                view.setText("정보를 추가해주세요");
+            }
         }
     }
 }
