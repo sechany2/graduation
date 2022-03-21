@@ -36,7 +36,7 @@
             </TextView>
 
             <SeekBar
-                android:id="@+id/seekBar1"
+                android:id="@+id/seekBar_tall"
                 android:layout_width="339dp"
 
                 android:layout_height="25dp"
@@ -54,7 +54,7 @@
             </TextView>
 
             <SeekBar
-                android:id="@+id/seekBar2"
+                android:id="@+id/seekBar_age"
                 android:layout_width="339dp"
 
                 android:layout_height="25dp"
@@ -72,7 +72,7 @@
             </TextView>
 
             <SeekBar
-                android:id="@+id/seekBar3"
+                android:id="@+id/seekBar_weight"
                 android:layout_width="339dp"
                 android:layout_height="25dp"
                 android:layout_below="@+id/text"

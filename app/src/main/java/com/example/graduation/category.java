@@ -5,6 +5,15 @@ public class category {
 private String health;
 private String diet;
 private String bulkup;
+private String ex;
+
+    public String getEx() {
+        return ex;
+    }
+
+    public void setEx(String ex) {
+        this.ex = ex;
+    }
 
     public String getHealth() {
         return health;

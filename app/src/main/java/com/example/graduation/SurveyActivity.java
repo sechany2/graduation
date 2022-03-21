@@ -16,8 +16,9 @@ public class SurveyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_survey);
-
         FrameLayout frame =(FrameLayout)findViewById(R.id.sv_frame);
+
+
         Button sv_btn_next = (Button) findViewById(R.id.sv_btn_next);
         sv_btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,8 +28,6 @@ public class SurveyActivity extends AppCompatActivity {
                 replaceFragment(fragmentsurvey1);
             }
         });
-
-
 
     }
 
