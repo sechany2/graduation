@@ -27,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextView1" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/sc_btn_health"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="건강"
@@ -36,31 +36,22 @@
         app:layout_constraintTop_toBottomOf="@+id/TextView2" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/sv_btn_diet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="다이어트"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/sc_btn_health" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/sv_btn_ex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="운동능력 향상"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="다음"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sv_btn_diet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

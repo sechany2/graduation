@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -115,6 +116,17 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(Fragmentmy.newInstance());
             }
         });
+
+        //하단바 설문버튼
+        Button btn_survey = (Button)findViewById(R.id.btn_survey);
+        btn_survey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SurveyActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //하단바 홈버튼
         Button btn_home = (Button)findViewById(R.id.btn_home);
         LinearLayout homelayout = (LinearLayout)findViewById(R.id.homelayout);
@@ -243,6 +255,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame, fragment).commit();
     }
+
     public void replaceframeProduct(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
