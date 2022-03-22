@@ -54,7 +54,7 @@ public class Fragmentsurvey1 extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("category","운동");
+                bundle.putString("category","벌크업");
                 Fragmentsurvey2 fragmentsurvey2 = new Fragmentsurvey2();
                 fragmentsurvey2.setArguments(bundle);
                 replaceFragment(fragmentsurvey2);

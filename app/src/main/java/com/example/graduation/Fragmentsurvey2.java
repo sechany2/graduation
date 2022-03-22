@@ -85,9 +85,9 @@ public class Fragmentsurvey2 extends Fragment {
 
 
                     break;
-                case"운동":
+                case"벌크업":
                     tv_category = view.findViewById(R.id.sv_tv_category);
-                    tv_category.setText("운동");
+                    tv_category.setText("운동능력 향상");
 
                     adapter.addItem("1", "근육량 증가");  //(제목 부분, 이미지, 내용)
                     adapter.addItem("2", "운동 능력 향상");
@@ -147,7 +147,7 @@ public class Fragmentsurvey2 extends Fragment {
                     list_select.add(checkedItems.toString());
                     bundle.putString("checked",list_select.toString());
 
-                    Log.e("체크드",list_select.toArray().toString());
+                    Log.e("체크드",list_select.toString());
                     Fragmentsurvey3 fragmentsurvey3 = new Fragmentsurvey3();
                     fragmentsurvey3.setArguments(bundle);
                     replaceFragment(fragmentsurvey3);
