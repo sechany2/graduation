@@ -55,6 +55,8 @@ public class Fragmentsurvey3 extends Fragment {
             database = FirebaseDatabase.getInstance();
             databaseReference = database.getReference("Product");
 
+            Log.e(getArguments().getString("baby"),getArguments().getString("disease"));
+
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -63,15 +65,16 @@ public class Fragmentsurvey3 extends Fragment {
                         Product product = snapshot.getValue(Product.class);
 
                         category category = snapshot.child("category").getValue(category.class);
-                        Log.e(getArguments().getString("checked"),"1");
+                        String checked= getArguments().getString("checked");
 
                         if (category.getDiet() != null) {
 
                             if (category.getDiet().equals(result)) {
+                                Log.e(checked,checked);
+                                if(checked.contains("1")) {
 
-
-                                   arrayList.add(product);
-
+                                    arrayList.add(product);
+                                }
                             }
                         }
                         if (category.getHealth() != null) {

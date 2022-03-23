@@ -25,11 +25,19 @@ public class Fragmentsurvey1 extends Fragment {
         View view = inflater.inflate(R.layout.fragmentsurvey1, container, false);
 
         FrameLayout frame =(FrameLayout)view.findViewById(R.id.sv_frame);
+        Bundle bundle = new Bundle();
+        if (getArguments() != null) {
+            bundle.putString("allergy", getArguments().getString("allergy"));
+            bundle.putString("disease", getArguments().getString("disease"));
+            bundle.putString("pregnant", getArguments().getString("pregnant"));
+            bundle.putString("baby", getArguments().getString("baby"));
+        }
+
         Button sc_btn_health = (Button)view.findViewById(R.id.sc_btn_health);
         sc_btn_health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+
                 bundle.putString("category","건강");
                 Fragmentsurvey2 fragmentsurvey2 = new Fragmentsurvey2();
                 fragmentsurvey2.setArguments(bundle);
@@ -41,7 +49,7 @@ public class Fragmentsurvey1 extends Fragment {
         sv_btn_diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+
                 bundle.putString("category","다이어트");
                 Fragmentsurvey2 fragmentsurvey2 = new Fragmentsurvey2();
                 fragmentsurvey2.setArguments(bundle);
@@ -53,7 +61,7 @@ public class Fragmentsurvey1 extends Fragment {
         sv_btn_ex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+
                 bundle.putString("category","벌크업");
                 Fragmentsurvey2 fragmentsurvey2 = new Fragmentsurvey2();
                 fragmentsurvey2.setArguments(bundle);
