@@ -55,10 +55,15 @@ public class Fragmentsurvey2 extends Fragment {
         listview = (ListView) view.findViewById(R.id.sv_listview);
         listview.setAdapter(adapter);
 
-
+        Bundle bundle = new Bundle();
         if (getArguments() != null)
         {
             result = getArguments().getString("category");
+
+                bundle.putString("allergy", getArguments().getString("allergy"));
+                bundle.putString("disease", getArguments().getString("disease"));
+                bundle.putString("pregnant", getArguments().getString("pregnant"));
+                bundle.putString("baby", getArguments().getString("baby"));
 
             switch( result ){
                 case"다이어트":
@@ -136,9 +141,10 @@ public class Fragmentsurvey2 extends Fragment {
         sv_btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+
                 //체크박스로 체크한 셀의 정보를 담고 있는 희소 논리 배열 얻어오기
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
+
 
                 Log.e("체크드아이템",checkedItems.toString());
                 int count = adapter.getCount(); //전체 몇개인지 세기

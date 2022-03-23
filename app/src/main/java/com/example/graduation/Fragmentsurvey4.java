@@ -111,10 +111,18 @@ public class Fragmentsurvey4 extends Fragment {
 
 
                     list_select.add(checkedItems.toString());
-                    bundle.putString("checked",list_select.toString());
+                    if(result.equals("알레르기")) {
+                        bundle.putString("allergy", list_select.toString());
+                    }
+                    if(result.equals("특정질환")) {
+                       bundle.putString("disease", list_select.toString());
+                     }
+                    bundle.putString("pregnant",getArguments().getString("pregnant"));
+                    bundle.putString("baby",getArguments().getString("baby"));
 
-                    Log.e("체크드",list_select.toString());
+
                 Fragmentsurvey0 fragmentsurvey0 = new Fragmentsurvey0();
+                fragmentsurvey0.setArguments(bundle);
                 replaceFragment(fragmentsurvey0);
 
 
