@@ -1,6 +1,7 @@
 package com.example.graduation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,9 +52,7 @@ public class Fragmentsurvey3 extends Fragment {
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
             arrayList = new ArrayList<>();
-
             database = FirebaseDatabase.getInstance();
-
             databaseReference = database.getReference("Product");
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -64,27 +63,33 @@ public class Fragmentsurvey3 extends Fragment {
                         Product product = snapshot.getValue(Product.class);
 
                         category category = snapshot.child("category").getValue(category.class);
-                        checked checked = snapshot.child("checked").getValue(checked.class);
+                        Log.e(getArguments().getString("checked"),"1");
+
                         if (category.getDiet() != null) {
+
                             if (category.getDiet().equals(result)) {
-                                if (checked.getCheck1() != null) {
-                                    arrayList.add(product);
-                                }
+
+
+                                   arrayList.add(product);
+
                             }
                         }
                         if (category.getHealth() != null) {
+
                             if (category.getHealth().equals(result)) {
+
                                 arrayList.add(product);
                             }
                         }
                         if (category.getBulkup() != null) {
                             if (category.getBulkup().equals(result)) {
+
                                 arrayList.add(product);
                             }
                         }
 
                     }
-
+                    adapter.notifyDataSetChanged();
                 }
 
                 @Override
@@ -96,7 +101,9 @@ public class Fragmentsurvey3 extends Fragment {
             adapter = new DietAdapter(arrayList, getContext());
             recyclerView.setAdapter(adapter);
         }
-
+        else {
+            Log.e("s","s");
+        }
         return view;
     }
 }
