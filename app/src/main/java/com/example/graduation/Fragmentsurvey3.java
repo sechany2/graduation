@@ -410,7 +410,7 @@ public class Fragmentsurvey3 extends Fragment {
             recyclerView.setAdapter(adapter);
         }
         else {
-            Log.e("s","s");
+            Log.e("sasd","sasd");
         }
         return view;
     }
