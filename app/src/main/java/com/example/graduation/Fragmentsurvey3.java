@@ -23,6 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class Fragmentsurvey3 extends Fragment {
     public Fragmentsurvey3(){ }
@@ -67,243 +70,246 @@ public class Fragmentsurvey3 extends Fragment {
                         Product product = snapshot.getValue(Product.class);
 
                         category category = snapshot.child("category").getValue(category.class);
-                        Log.e(getArguments().getString("checked"),"1");
+
 
                         if (category.getDiet() != null) {
 
                             if (category.getDiet().equals(result)) {
-                                if(getArguments().getString("checked").contains("0")){
+                                if (getArguments().getString("checked").contains("0")) {
                                     omega3++;
                                 }
-                                if(getArguments().getString("checked").contains("1")){
+                                if (getArguments().getString("checked").contains("1")) {
                                     probiotics++;
                                     calcium++;
                                 }
-                                if(getArguments().getString("checked").contains("2")){
+                                if (getArguments().getString("checked").contains("2")) {
                                     roughage++;
                                     coq10++;
                                     l_glutamine++;
                                 }
-                                if(getArguments().getString("checked").contains("3")){
+                                if (getArguments().getString("checked").contains("3")) {
                                     calcium++;
                                     arginine++;
                                     l_glutamine++;
                                 }
-                                if(getArguments().getString("checked").contains("4")){
+                                if (getArguments().getString("checked").contains("4")) {
                                     protein++;
                                     arginine++;
                                 }
-                                if(getArguments().getString("checked").contains("5")){
+                                if (getArguments().getString("checked").contains("5")) {
                                     vitaminb++;
                                     coq10++;
                                 }
-                                if(getArguments().getString("checked").contains("6")){
+                                if (getArguments().getString("checked").contains("6")) {
                                     l_carnitine++;
                                 }
-                                if(getArguments().getString("checked").contains("7")){
+                                if (getArguments().getString("checked").contains("7")) {
                                     l_glutamine++;
                                 }
-                                if(getArguments().getString("checked").contains("8")){
+                                if (getArguments().getString("checked").contains("8")) {
                                     omega3++;
                                 }
-                                if(getArguments().getString("checked").contains("9")){
+                                if (getArguments().getString("checked").contains("9")) {
                                     probiotics++;
                                     calcium++;
                                 }
-                                if(getArguments().getString("checked").contains("10")){
+                                if (getArguments().getString("checked").contains("10")) {
                                     roughage++;
                                     protein++;
                                 }
-                                if(getArguments().getString("checked").contains("11")){
+                                if (getArguments().getString("checked").contains("11")) {
                                     calcium++;
                                 }
-                                if(getArguments().getString("checked").contains("12")){
+                                if (getArguments().getString("checked").contains("12")) {
                                     vitaminb++;
                                     coq10++;
                                 }
-                                if(getArguments().getString("checked").contains("13")){
+                                if (getArguments().getString("checked").contains("13")) {
                                     vitaminb++;
                                     coq10++;
                                 }
-                                if(getArguments().getString("checked").contains("14")){
+                                if (getArguments().getString("checked").contains("14")) {
                                     arginine++;
                                 }
-                            }
-                            //배열에 추가
-                            if(omega3>0){
-                                if(product.getPd_classification().equals("오메가3")){
-                                    arrayList.add(product);
+
+                                //배열에 추가
+                                if (omega3 > 0) {
+                                    if (product.getPd_classification().equals("오메가3")) {
+                                        arrayList.add(product);
+
+                                    }
                                 }
-                            }
-                            if(probiotics>0){
-                                if(product.getPd_classification().equals("프로바이오틱스")){
-                                    arrayList.add(product);
+                                if (probiotics > 0) {
+                                    if (product.getPd_classification().equals("프로바이오틱스")) {
+                                        arrayList.add(product);
+
+                                    }
                                 }
-                            }
-                            if(roughage>0){
-                                if(product.getPd_classification().equals("식이섬유")){
-                                    arrayList.add(product);
+                                if (roughage > 0) {
+                                    if (product.getPd_classification().equals("식이섬유")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(calcium>0){
-                                if(product.getPd_classification().equals("칼슘")){
-                                    arrayList.add(product);
+                                if (calcium > 0) {
+                                    if (product.getPd_classification().equals("칼슘")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(protein>0){
-                                if(product.getPd_classification().equals("단백질")){
-                                    arrayList.add(product);
+                                if (protein > 0) {
+                                    if (product.getPd_classification().equals("단백질")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitaminb>0){
-                                if(product.getPd_classification().equals("비타민b군")){
-                                    arrayList.add(product);
+                                if (vitaminb > 0) {
+                                    if (product.getPd_classification().equals("비타민b군")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(coq10>0){
-                                if(product.getPd_classification().equals("코큐텐")){
-                                    arrayList.add(product);
+                                if (coq10 > 0) {
+                                    if (product.getPd_classification().equals("코큐텐")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(l_carnitine>0){
-                                if(product.getPd_classification().equals("L_카르니틴")){
-                                    arrayList.add(product);
+                                if (l_carnitine > 0) {
+                                    if (product.getPd_classification().equals("L_카르니틴")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(arginine>0){
-                                if(product.getPd_classification().equals("아르기닌")){
-                                    arrayList.add(product);
+                                if (arginine > 0) {
+                                    if (product.getPd_classification().equals("아르기닌")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(l_glutamine>0){
-                                if(product.getPd_classification().equals("L_글루타민")){
-                                    arrayList.add(product);
+                                if (l_glutamine > 0) {
+                                    if (product.getPd_classification().equals("L_글루타민")) {
+                                        arrayList.add(product);
+                                    }
                                 }
                             }
                         }
                         if (category.getHealth() != null) {
 
                             if (category.getHealth().equals(result)) {
-                                if(getArguments().getString("checked").contains("0")){
+                                if (getArguments().getString("checked").contains("0")) {
                                     vitaminb++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("1")){
+                                if (getArguments().getString("checked").contains("1")) {
                                     vitaminb++;
                                     mvitamin++;
                                     omega3++;
                                 }
-                                if(getArguments().getString("checked").contains("2")){
+                                if (getArguments().getString("checked").contains("2")) {
                                     vitaminc++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("3")){
+                                if (getArguments().getString("checked").contains("3")) {
                                     vitamind++;
                                     mvitamin++;
                                     omega3++;
                                 }
-                                if(getArguments().getString("checked").contains("4")){
+                                if (getArguments().getString("checked").contains("4")) {
                                     vitamina++;
                                     mvitamin++;
                                     omega3++;
                                 }
-                                if(getArguments().getString("checked").contains("5")){
+                                if (getArguments().getString("checked").contains("5")) {
                                     vitamine++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("6")){
+                                if (getArguments().getString("checked").contains("6")) {
                                     vitamink++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("7")){
+                                if (getArguments().getString("checked").contains("7")) {
                                     vitaminb++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("8")){
+                                if (getArguments().getString("checked").contains("8")) {
                                     vitaminb++;
                                     mvitamin++;
                                 }
-                                if(getArguments().getString("checked").contains("9")){
+                                if (getArguments().getString("checked").contains("9")) {
                                     probiotics++;
                                 }
-                                if(getArguments().getString("checked").contains("10")){
+                                if (getArguments().getString("checked").contains("10")) {
                                     propolis++;
                                     red_ginseng++;
                                 }
-                                if(getArguments().getString("checked").contains("11")){
+                                if (getArguments().getString("checked").contains("11")) {
                                     omega3++;
                                     red_ginseng++;
                                 }
-                                if(getArguments().getString("checked").contains("12")){
+                                if (getArguments().getString("checked").contains("12")) {
                                     propolis++;
                                 }
-                                if(getArguments().getString("checked").contains("13")){
+                                if (getArguments().getString("checked").contains("13")) {
                                     lutein++;
                                 }
-                            }
-                            //배열에 추가
-                            if(vitamina>0){
-                                if(product.getPd_classification().equals("비타민a")){
-                                    arrayList.add(product);
+
+                                //배열에 추가
+                                if (vitamina > 0) {
+                                    if (product.getPd_classification().equals("비타민a")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitaminb>0){
-                                if(product.getPd_classification().equals("비타민b군")){
-                                    arrayList.add(product);
+                                if (vitaminb > 0) {
+                                    if (product.getPd_classification().equals("비타민b군")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitaminc>0){
-                                if(product.getPd_classification().equals("비타민c")){
-                                    arrayList.add(product);
+                                if (vitaminc > 0) {
+                                    if (product.getPd_classification().equals("비타민c")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitamind>0){
-                                if(product.getPd_classification().equals("비타민d")){
-                                    arrayList.add(product);
+                                if (vitamind > 0) {
+                                    if (product.getPd_classification().equals("비타민d")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitamine>0){
-                                if(product.getPd_classification().equals("비타민e")){
-                                    arrayList.add(product);
+                                if (vitamine > 0) {
+                                    if (product.getPd_classification().equals("비타민e")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(vitamink>0){
-                                if(product.getPd_classification().equals("비타민k")){
-                                    arrayList.add(product);
+                                if (vitamink > 0) {
+                                    if (product.getPd_classification().equals("비타민k")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(mvitamin>0){
-                                if(product.getPd_classification().equals("멀티비타민")){
-                                    arrayList.add(product);
+                                if (mvitamin > 0) {
+                                    if (product.getPd_classification().equals("멀티비타민")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(omega3>0){
-                                if(product.getPd_classification().equals("오메가3")){
-                                    arrayList.add(product);
+                                if (omega3 > 0) {
+                                    if (product.getPd_classification().equals("오메가3")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(probiotics>0){
-                                if(product.getPd_classification().equals("프로바이오틱스")){
-                                    arrayList.add(product);
+                                if (probiotics > 0) {
+                                    if (product.getPd_classification().equals("프로바이오틱스")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(propolis>0){
-                                if(product.getPd_classification().equals("프로폴리스")){
-                                    arrayList.add(product);
+                                if (propolis > 0) {
+                                    if (product.getPd_classification().equals("프로폴리스")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(red_ginseng>0){
-                                if(product.getPd_classification().equals("홍삼")){
-                                    arrayList.add(product);
+                                if (red_ginseng > 0) {
+                                    if (product.getPd_classification().equals("홍삼")) {
+                                        arrayList.add(product);
+                                    }
                                 }
-                            }
-                            if(lutein>0){
-                                if(product.getPd_classification().equals("루테인")){
-                                    arrayList.add(product);
+                                if (lutein > 0) {
+                                    if (product.getPd_classification().equals("루테인")) {
+                                        arrayList.add(product);
+                                    }
                                 }
                             }
                         }
-
                         //카테고리 별 분류
                         if (category.getBulkup() != null) {
                             if (category.getBulkup().equals(result)) {
@@ -358,7 +364,7 @@ public class Fragmentsurvey3 extends Fragment {
                                     beta_alanine++;
                                     hmb++;
                                 }
-                            }
+
                             //배열에 추가
                             if(protein>0){
                                 if(product.getPd_classification().equals("단백질")){
@@ -397,6 +403,8 @@ public class Fragmentsurvey3 extends Fragment {
                             }
                         }
                     }
+                    }
+
                     adapter.notifyDataSetChanged();
                 }
 
@@ -414,4 +422,9 @@ public class Fragmentsurvey3 extends Fragment {
         }
         return view;
     }
+
+
+
+
+
 }

@@ -27,7 +27,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        new PearsonCorrelation().Example2();
         //툴바
         Toolbar toolbar =findViewById(R.id.login_toolbar);
         setSupportActionBar(toolbar);
