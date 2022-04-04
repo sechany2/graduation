@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
         mEtPwd = findViewById(R.id.et_pwd);
 
         Button btn_login = findViewById(R.id.btn_login);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +55,7 @@ public class LogInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             //로그인 성공
+
                             Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish(); //로그인 완료 후 현재 액티비티 파괴
