@@ -80,6 +80,8 @@ public class PearsonCorrelation {
         sechany.put("Product_03", 5.0);
         sechany.put("Product_04", null);
         sechany.put("Product_05", 4.0);
+
+
         for (Entry<String, Double> entry : knn2("minju").entrySet()) {
             Log.e(entry.getKey() ,String.valueOf(entry.getValue()));
 

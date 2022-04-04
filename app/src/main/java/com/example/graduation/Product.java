@@ -16,7 +16,7 @@ public class Product {
     //식약처 데이터
     private String ntk_mthd;
     private String primary_fnclty; //주된기능성
-    private String iftkn_atnt_matr_cn;    //섭취시주의사항
+    private String iftkn_atnt_matr_cn; //섭취시주의사항
     private String prdt_shap_cd_nm; //제품형태
     private String etc_rawmtrl_nm; //기타 원재료
     private String indiv_rawmtrl_nm; //기능성 원재료

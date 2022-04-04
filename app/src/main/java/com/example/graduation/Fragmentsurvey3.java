@@ -5,10 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,18 +13,26 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
+
+import java.util.Iterator;
+
 
 public class Fragmentsurvey3 extends Fragment {
+
+
     public Fragmentsurvey3(){ }
 
     private RecyclerView recyclerView;
@@ -36,8 +41,10 @@ public class Fragmentsurvey3 extends Fragment {
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private String result;
-
+    private String result , name;
+    private FirebaseAuth mAuth;
+    private HashMap<String, HashMap> user;
+    private HashMap<String,Double> userReview;
     private int omega3=0,probiotics=0,roughage=0,calcium=0,protein=0, vitaminb=0,coq10=0,l_carnitine=0
             ,arginine=0,l_glutamine=0,creatine=0,bcaa=0,beta_alanine=0,hmb=0
             ,vitamina=0,vitaminc=0,vitamind=0,vitamine=0,vitamink=0,mvitamin=0,
@@ -60,9 +67,49 @@ public class Fragmentsurvey3 extends Fragment {
             recyclerView.setLayoutManager(layoutManager);
             arrayList = new ArrayList<>();
             database = FirebaseDatabase.getInstance();
-            databaseReference = database.getReference("Product");
+            databaseReference = database.getInstance().getReference();
 
-            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            mAuth = FirebaseAuth.getInstance();
+            name = null;
+
+            databaseReference.child("graduation").child("UserAccount").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {  //파이어베이스에서 본인 정보 저장
+                    for (DataSnapshot snapshot2 : snapshot.getChildren()) {
+                        UserAccount userAccount = snapshot2.getValue(UserAccount.class);
+                        if(snapshot2.getKey().equals(mAuth.getUid())){
+                            name = userAccount.getName();       //이름 저장
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("error",error.toString());
+                }
+            });
+
+            databaseReference.child("Review").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dsnapshot) { //파이어베이스에서 리뷰정보 저장
+                    for (DataSnapshot snapshot3 : dsnapshot.getChildren()) {
+                         userReview = null;
+                        try {
+                            userReview = paramMap(snapshot3.getValue());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        user.put(snapshot3.getKey(),userReview);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("error",error.toString());
+                }
+            });
+
+            databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
@@ -71,7 +118,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                         category category = snapshot.child("category").getValue(category.class);
 
-
+                        //카테고리 별 분류
                         if (category.getDiet() != null) {
 
                             if (category.getDiet().equals(result)) {
@@ -135,12 +182,16 @@ public class Fragmentsurvey3 extends Fragment {
                                 //배열에 추가
                                 if (omega3 > 0) {
                                     if (product.getPd_classification().equals("오메가3")) {
+
+                                        Log.e("product1",product.toString());
                                         arrayList.add(product);
 
                                     }
                                 }
                                 if (probiotics > 0) {
                                     if (product.getPd_classification().equals("프로바이오틱스")) {
+                                        //snapshot.getKey() == Product_n
+                                        new PearsonCorrelation().knn2(name);
                                         arrayList.add(product);
 
                                     }
@@ -188,7 +239,6 @@ public class Fragmentsurvey3 extends Fragment {
                             }
                         }
                         if (category.getHealth() != null) {
-
                             if (category.getHealth().equals(result)) {
                                 if (getArguments().getString("checked").contains("0")) {
                                     vitaminb++;
@@ -310,7 +360,6 @@ public class Fragmentsurvey3 extends Fragment {
                                 }
                             }
                         }
-                        //카테고리 별 분류
                         if (category.getBulkup() != null) {
                             if (category.getBulkup().equals(result)) {
                                 if(getArguments().getString("checked").contains("0")){
@@ -403,14 +452,16 @@ public class Fragmentsurvey3 extends Fragment {
                             }
                         }
                     }
+
                     }
 
                     adapter.notifyDataSetChanged();
+                    databaseReference.removeEventListener(this);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Log.e("error",error.toString());
                 }
             });
 
@@ -421,6 +472,25 @@ public class Fragmentsurvey3 extends Fragment {
             Log.e("sasd","sasd");
         }
         return view;
+    }
+
+
+    public HashMap<String, Double> paramMap(Object object ) throws JSONException {
+
+        HashMap<String, Double> hashmap = new HashMap<String, Double>();
+
+        JSONObject json = new JSONObject(String.valueOf(object)); // 받아온 string을 json 으로로 변환
+
+        Iterator i = json.keys(); // json key 요소읽어옴
+
+        while(i.hasNext()){
+
+            String k = i.next().toString(); // key 순차적으로 추출
+
+            hashmap.put(k, Double.valueOf(json.getString(k))); // key, value를 map에 삽입
+        }
+
+        return hashmap;
     }
 
 
