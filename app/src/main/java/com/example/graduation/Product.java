@@ -11,12 +11,11 @@ public class Product {
     private String pd_brandname;   //브랜드이름
     private String form_code;   // 형태 코드
     private String cd_code;   // 종류 코드
-    private String pd_classification; //분류코드
 
     //식약처 데이터
     private String ntk_mthd;
     private String primary_fnclty; //주된기능성
-    private String iftkn_atnt_matr_cn;    //섭취시주의사항
+    private String iftkn_atnt_matr_cn; //섭취시주의사항
     private String prdt_shap_cd_nm; //제품형태
     private String etc_rawmtrl_nm; //기타 원재료
     private String indiv_rawmtrl_nm; //기능성 원재료
@@ -169,11 +168,4 @@ public class Product {
         this.cd_code = cd_code;
     }
 
-    public String getPd_classification() {
-        return pd_classification;
-    }
-
-    public void setPd_classification(String pd_classification) {
-        this.pd_classification = pd_classification;
-    }
 }

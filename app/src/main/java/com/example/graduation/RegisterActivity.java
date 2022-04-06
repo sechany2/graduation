@@ -81,7 +81,7 @@
                                 account.setName(strName);
                                 account.setPhone(strPhone);
                                 account.setUserToken(firebaseUser.getUid());    //생성된 객체에 정보 받기
-                                account.setEmailId(firebaseUser.getEmail());
+                                account.setEmailId(strEmail);
                                 account.setPassword(strPwd);
 
                                 //setValue : database에 insert(삽입) 행위
