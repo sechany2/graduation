@@ -11,7 +11,6 @@ public class Product {
     private String pd_brandname;   //브랜드이름
     private String form_code;   // 형태 코드
     private String cd_code;   // 종류 코드
-    private String pd_classification; //분류코드
 
     //식약처 데이터
     private String ntk_mthd;
@@ -169,11 +168,4 @@ public class Product {
         this.cd_code = cd_code;
     }
 
-    public String getPd_classification() {
-        return pd_classification;
-    }
-
-    public void setPd_classification(String pd_classification) {
-        this.pd_classification = pd_classification;
-    }
 }
