@@ -38,6 +38,7 @@ public class Fragmentsurvey3 extends Fragment {
     }
 
     private RecyclerView recyclerView;
+    private ArrayList<String> productList;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList;
@@ -65,6 +66,7 @@ public class Fragmentsurvey3 extends Fragment {
             recyclerView.setHasFixedSize(true);
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
+            productList = new ArrayList<>();
             arrayList = new ArrayList<>();
             database = FirebaseDatabase.getInstance();
             databaseReference = database.getInstance().getReference();
@@ -114,8 +116,14 @@ public class Fragmentsurvey3 extends Fragment {
             databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    productList.clear();
+                    for (DataSnapshot snapshot : datasnapshot.getChildren()) {
+
+                        productList.add(snapshot.getKey());
+                    }
+
                     resultknn = new HashMap<String, Double>();
-                    resultknn = new PearsonCorrelation().knn(name, user);  //상관계수 구하기
+                    resultknn = new PearsonCorrelation().knn(name, user,productList);  //상관계수 구하기
                     Log.e("knn:",resultknn.toString());
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
@@ -442,7 +450,6 @@ public class Fragmentsurvey3 extends Fragment {
                             }
                         }
                     }
-
                 }
                 if (probiotics > 0) {
                     if(pd_classification.getProbiotics()!=null){

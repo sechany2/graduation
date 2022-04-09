@@ -14,7 +14,7 @@ import java.util.Comparator;
 public class PearsonCorrelation {
 
 
-    public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user) { //비슷한 유저데이터 참조
+    public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user, ArrayList<String> productList) { //비슷한 유저데이터 참조
 
         HashMap<String, Double> recommend = new HashMap<String, Double>() {
         };
@@ -38,13 +38,15 @@ public class PearsonCorrelation {
         HashMap<String, Double> map = user.get(name);
         HashMap<String, Double> map2;
         Log.e("pearson", list_entries.toString());
-        for (Entry<String, Double> entry : map.entrySet()) { //없는 값 찾기
+        for (Object object : productList) { //없는 값 찾기
             boolean resultBoolean = true;
-            for (Entry<String, Double> entry2 : pearsonResult.entrySet()) {
-
-                if (entry.getKey().equals(entry2.getValue())) { //여기 조건 수정해야함
+            String key;
+            key = object.toString();
+            for (Entry<String, Double> entry : map.entrySet()) {
+                if (entry.getKey().equals(object.toString())) { //여기 조건 수정해야함
                     resultBoolean = false;
-                    Log.e("resultBoolean", "False");
+
+
                 }
             }
 
@@ -58,12 +60,18 @@ public class PearsonCorrelation {
                 double mean2 = 0;
                 double result = 0;
                 map2 = user.get(list_entries.get(1).getKey());
-                r1 = map2.get(entry.getKey());      //대조자1 에 제품 점수
+
+                //대조자1 에 제품 점수
+                if (map2.get(key) != null) {
+                    r1 = map2.get(key);      //대조자1 에 제품 점수
+                }
                 mean1 = mean(map2);                   //대조자1에 평균 점수
                 Log.e("map2:대조자1", map2.toString());
                 map2 = user.get(list_entries.get(2).getKey());
                 Log.e("map2:대조자2", map2.toString());
-                r2 = map2.get(entry.getKey());      //대조자2 에 제품 점수
+                if (map2.get(key) != null) {
+                    r2 = map2.get(key);
+                }    //대조자2 에 제품 점수
                 mean2 = mean(map2);                    //대조자2 에 평균 점수
                 p1 = list_entries.get(1).getValue();  //대조자1 에 상관계수
                 p2 = list_entries.get(2).getValue();   //대조자2 에 상관계수
@@ -72,7 +80,7 @@ public class PearsonCorrelation {
 
                 result = mean + ((r1 - mean1) * p1 + (r2 - mean2) * p2) / (p1 + p2); //식 사용자1 평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
 
-                recommend.put(entry.getKey(), result); //값저장
+                recommend.put(key, result); //값저장
             }
 
         }
@@ -81,7 +89,6 @@ public class PearsonCorrelation {
         return recommend;
 
     }
-
 
 
     public Double pearson(HashMap<String, Double> s1, HashMap<String, Double> s2)//s 는 사용자
@@ -112,10 +119,11 @@ public class PearsonCorrelation {
 
 
         }
-        double result = 0;
-        result = sump / Math.sqrt((sumq * sumr));
 
-
+        double result = sump / Math.sqrt((sumq * sumr));
+        if (sump == 0) {
+            result = -1;
+        }
         return result; // pearson(s1,s2);
     }
 
