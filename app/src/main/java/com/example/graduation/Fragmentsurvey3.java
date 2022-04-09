@@ -115,7 +115,8 @@ public class Fragmentsurvey3 extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                     resultknn = new HashMap<String, Double>();
-                    resultknn = new PearsonCorrelation().knn2(name, user);  //상관계수 구하기
+                    resultknn = new PearsonCorrelation().knn(name, user);  //상관계수 구하기
+                    Log.e("knn:",resultknn.toString());
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                         Product product = snapshot.getValue(Product.class);
@@ -176,8 +177,10 @@ public class Fragmentsurvey3 extends Fragment {
         for (Map.Entry<String, Double> entry : resultknn.entrySet()) {
             if (product.equals(entry.getKey())) {
                 result = true;
+
             }
         }
+
         return result;
     }
 

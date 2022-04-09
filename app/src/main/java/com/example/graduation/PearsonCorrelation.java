@@ -12,7 +12,128 @@ import java.util.Comparator;
 
 
 public class PearsonCorrelation {
-    private ArrayList<Integer> user1;
+
+
+    public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user) { //비슷한 유저데이터 참조
+
+        HashMap<String, Double> recommend = new HashMap<String, Double>() {
+        };
+        HashMap<String, Double> pearsonResult = new HashMap<String, Double>();
+        for (Entry<String, HashMap> entry : user.entrySet()) {//pearson 상관계수 구하기
+            pearsonResult.put(entry.getKey(), pearson(user.get(name), entry.getValue()));
+        }
+        // 비교함수 Comparator를 사용하여 내림 차순으로 정렬
+        List<Entry<String, Double>> list_entries = new ArrayList<Entry<String, Double>>(pearsonResult.entrySet());
+        Collections.sort(list_entries, new Comparator<Entry<String, Double>>() {
+            // compare로 값을 비교
+            public int compare(Entry<String, Double> obj1, Entry<String, Double> obj2) {
+                // 내림 차순으로 정렬
+
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+
+        //없는 값 대조하여 구하기
+        HashMap<String, Double> map = user.get(name);
+        HashMap<String, Double> map2;
+        Log.e("pearson", list_entries.toString());
+        for (Entry<String, Double> entry : map.entrySet()) { //없는 값 찾기
+            boolean resultBoolean = true;
+            for (Entry<String, Double> entry2 : pearsonResult.entrySet()) {
+
+                if (entry.getKey().equals(entry2.getValue())) { //여기 조건 수정해야함
+                    resultBoolean = false;
+                    Log.e("resultBoolean", "False");
+                }
+            }
+
+            if (resultBoolean) { //값이 없을때
+                double p1 = 0;   //상관계수 값 계산
+                double r1 = 0;
+                double p2 = 0;
+                double r2 = 0;
+                double mean = 0;
+                double mean1 = 0;
+                double mean2 = 0;
+                double result = 0;
+                map2 = user.get(list_entries.get(1).getKey());
+                r1 = map2.get(entry.getKey());      //대조자1 에 제품 점수
+                mean1 = mean(map2);                   //대조자1에 평균 점수
+                Log.e("map2:대조자1", map2.toString());
+                map2 = user.get(list_entries.get(2).getKey());
+                Log.e("map2:대조자2", map2.toString());
+                r2 = map2.get(entry.getKey());      //대조자2 에 제품 점수
+                mean2 = mean(map2);                    //대조자2 에 평균 점수
+                p1 = list_entries.get(1).getValue();  //대조자1 에 상관계수
+                p2 = list_entries.get(2).getValue();   //대조자2 에 상관계수
+                mean = mean(map); // 사용자1 평균점수
+
+
+                result = mean + ((r1 - mean1) * p1 + (r2 - mean2) * p2) / (p1 + p2); //식 사용자1 평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
+
+                recommend.put(entry.getKey(), result); //값저장
+            }
+
+        }
+
+
+        return recommend;
+
+    }
+
+
+
+    public Double pearson(HashMap<String, Double> s1, HashMap<String, Double> s2)//s 는 사용자
+    {
+
+        double sump = 0;
+        double sumq = 0;
+        double sumr = 0;
+
+
+        double s1mean = mean(s1);
+        double s2mean = mean(s2);
+
+        Object[] keysx = s1.keySet().toArray();
+        Object[] keysy = s2.keySet().toArray();
+        int j = 0;
+        for (int i = 0; i < s1.size(); i++) {  //( s1 점수 - s1평균) * ( s2점수 - s2 평균 )
+
+            for (j = 0; j < s2.size(); j++) {
+
+                if (keysx[i].equals(keysy[j])) {
+
+                    sump = sump + ((s1.get(keysx[i]) - s1mean) * (s2.get(keysy[j]) - s2mean));
+                    sumq = sumq + ((s1.get(keysx[i]) - s1mean) * (s1.get(keysx[i]) - s1mean));
+                    sumr = sumr + ((s2.get(keysy[j]) - s2mean) * (s2.get(keysy[j]) - s2mean));
+                }
+            }
+
+
+        }
+        double result = 0;
+        result = sump / Math.sqrt((sumq * sumr));
+
+
+        return result; // pearson(s1,s2);
+    }
+
+    private double mean(HashMap<String, Double> s) {
+        double sum = 0;
+        int ct = 0;
+        for (Entry<String, Double> entry : s.entrySet()) {
+            if (entry.getValue() != null) {
+                sum = sum + entry.getValue();
+                ct = ct + 1;
+            }
+        }
+
+        double result = sum / ct;
+        return result;
+    }
+
+    /*private ArrayList<Integer> user1;
     private ArrayList<Integer> user2;
     private ArrayList<Integer> user3;
     private ArrayList<Integer> user4;
@@ -87,72 +208,7 @@ public class PearsonCorrelation {
 
 
         }
-    }
-
-    public HashMap<String,Double> knn2 (String name,HashMap<String,HashMap> user){ //비슷한 유저데이터 참조
-
-        HashMap<String, Double> recommend = new HashMap<String, Double>() {};
-        HashMap <String,Double> pearsonResult = new HashMap<String,Double>();
-        for (Entry<String, HashMap> entry : user.entrySet()) {//pearson 상관계수 구하기
-            pearsonResult.put(entry.getKey(),pearson(user.get(name), entry.getValue()));
-        }
-        // 비교함수 Comparator를 사용하여 내림 차순으로 정렬
-        List<Entry<String, Double>> list_entries = new ArrayList<Entry<String, Double>>(pearsonResult.entrySet());
-        Collections.sort(list_entries, new Comparator<Entry<String, Double>>() {
-            // compare로 값을 비교
-            public int compare(Entry<String, Double> obj1, Entry<String, Double> obj2) {
-                // 내림 차순으로 정렬
-                return obj2.getValue().compareTo(obj1.getValue());
-            }
-        });
-
-
-
-        //없는 값 대조하여 구하기
-        HashMap<String,Double> map = user.get(name);
-        HashMap<String,Double> map2;
-
-        for (Entry<String, Double> entry : map.entrySet()) {
-             boolean resultBoolean = true;
-             for (Entry<String, Double> entry2 : pearsonResult.entrySet()) {
-                 if (entry.getKey().equals(entry2.getKey())) {
-                     resultBoolean = false;
-                 }
-             }
-
-             if (resultBoolean) {
-                     double p1 = 0;
-                     double r1 = 0;
-                     double p2 = 0;
-                     double r2 = 0;
-                     double mean = 0;
-                     double mean1 = 0;
-                     double mean2 = 0;
-                     double result = 0;
-                     map2 = user.get(list_entries.get(1).getKey());
-                     r1 = map2.get(entry.getKey());      //대조자1 에 제품 점수
-                     mean1 = mean(map2);                   //대조자1에 평균 점수
-                     map2 = user.get(list_entries.get(2).getKey());
-                     r2 = map2.get(entry.getKey());      //대조자2 에 제품 점수
-                     mean2 = mean(map2);                    //대조자2 에 평균 점수
-                     p1 = list_entries.get(1).getValue();  //대조자1 에 상관계수
-                     p2 = list_entries.get(2).getValue();   //대조자2 에 상관계수
-                     mean = mean(map); // 사용자1 평균점수
-
-
-                     result = mean + ((r1 - mean1) * p1 + (r2 - mean2) * p2) / (p1 + p2); //식 사용자1 평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
-
-
-                     recommend.put(entry.getKey(), result); //값저장
-                 }
-
-             }
-
-
-        return recommend;
-
-    }
-        public HashMap<String,Double> knn2 (String name){ //비슷한 유저데이터 참조
+    } public HashMap<String,Double> knn2 (String name){ //비슷한 유저데이터 참조
 
             HashMap<String, Double> recommend = new HashMap<String, Double>() {};
             HashMap <String,Double> pearsonResult = new HashMap<String,Double>();
@@ -208,63 +264,13 @@ public class PearsonCorrelation {
         return recommend;
 
         }
-        public Double pearson
-        (HashMap < String, Double > s1, HashMap < String, Double > s2)//s 는 사용자
-        {
 
-            double sump = 0;
-            double sumq = 0;
-            double sumr = 0;
-
-
-            double s1mean = mean(s1);
-            double s2mean = mean(s2);
-
-            Object[] keysx = s1.keySet().toArray();
-            Object[] keysy = s2.keySet().toArray();
-            int j = 0;
-            for (int i = 0; i < s1.size(); i++) {  //( s1 점수 - s1평균) * ( s2점수 - s2 평균 )
-
-                    for(j = 0;j< s2.size();j++ ){
-
-                        if ( keysx[i].equals(keysy[j]) ){
-
-                        sump = sump + ((s1.get(keysx[i]) - s1mean) * (s2.get(keysy[j]) - s2mean));
-                        sumq = sumq + ((s1.get(keysx[i]) - s1mean) * (s1.get(keysx[i]) - s1mean));
-                        sumr = sumr + ((s2.get(keysy[j]) - s2mean) * (s2.get(keysy[j]) - s2mean));
-                        }
-                }
-
-
-            }
-            double result = sump / Math.sqrt((sumq * sumr));
-
-
-            return result; // pearson(s1,s2);
-        }
-        private double mean (HashMap < String, Double > s){
-            double sum = 0;
-            int ct = 0;
-            for (Entry<String, Double> entry : s.entrySet()) {
-                if (entry.getValue() != null) {
-                    sum = sum + entry.getValue();
-                    ct = ct + 1;
-                }
-            }
-
-            double result = sum / ct;
-            return result;
-        }
-
-
-
-
-        /*       아이템1 아이템2 아이템3 아이템4  평균  pearson(i,2)
+              아이템1 아이템2 아이템3 아이템4  평균  pearson(i,2)
          * 사용자1   1       3     5     3      3      0.79
          * 사용자2   1       4     ?     5     3.3       1
          * 사용자3   1       4     5     4     3.5     0.915
          * 사용자4   5       1     5     1      3     -0.915
-         * */
+         *
         public void Example () {
 
             user1 = new ArrayList<>();
@@ -366,5 +372,7 @@ public class PearsonCorrelation {
             double result = sum / ct;
             return result;
         }
-    }
+
+         */
+}
 

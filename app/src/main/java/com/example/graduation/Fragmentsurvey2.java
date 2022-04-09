@@ -146,14 +146,14 @@ public class Fragmentsurvey2 extends Fragment {
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
 
 
-                Log.e("체크드아이템",checkedItems.toString());
+
                 int count = adapter.getCount(); //전체 몇개인지 세기
 
                 if(checkedItems.size()!=0){
                     list_select.add(checkedItems.toString());
                     bundle.putString("checked",list_select.toString());
                     bundle.putString("category",result);
-                    Log.e("체크드",list_select.toString());
+
                     Fragmentsurvey3 fragmentsurvey3 = new Fragmentsurvey3();
                     fragmentsurvey3.setArguments(bundle);
                     replaceFragment(fragmentsurvey3);
