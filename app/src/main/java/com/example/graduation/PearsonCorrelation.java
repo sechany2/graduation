@@ -104,7 +104,7 @@ public class PearsonCorrelation {
 
         Object[] keysx = s1.keySet().toArray();
         Object[] keysy = s2.keySet().toArray();
-        int j = 0;
+        int j;
         for (int i = 0; i < s1.size(); i++) {  //( s1 점수 - s1평균) * ( s2점수 - s2 평균 )
 
             for (j = 0; j < s2.size(); j++) {

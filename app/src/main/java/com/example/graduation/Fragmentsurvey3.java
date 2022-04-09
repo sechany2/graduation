@@ -25,9 +25,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 
@@ -41,7 +44,7 @@ public class Fragmentsurvey3 extends Fragment {
     private ArrayList<String> productList;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Product> arrayList;
+    private ArrayList<Product> arrayList,arrayListSort;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private String result, name;
@@ -61,6 +64,7 @@ public class Fragmentsurvey3 extends Fragment {
         View view = inflater.inflate(R.layout.fragmentsurvey3, container, false);
 
         if (getArguments() != null) {
+            arrayListSort = new ArrayList<>();
             result = getArguments().getString("category");
             recyclerView = view.findViewById(R.id.fg3_rv);
             recyclerView.setHasFixedSize(true);
@@ -124,7 +128,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                     resultknn = new HashMap<String, Double>();
                     resultknn = new PearsonCorrelation().knn(name, user,productList);  //상관계수 구하기
-                    Log.e("knn:",resultknn.toString());
+
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                         Product product = snapshot.getValue(Product.class);
@@ -147,7 +151,7 @@ public class Fragmentsurvey3 extends Fragment {
                 }
             });
 
-            adapter = new DietAdapter(arrayList, getContext());
+            adapter = new DietAdapter(arrayListSort, getContext());
 
             recyclerView.setAdapter(adapter);  //리사이클러뷰 출력
         } else {
@@ -798,5 +802,24 @@ public class Fragmentsurvey3 extends Fragment {
                 }
                 break;
         }
+        List<Map.Entry<String, Double>> list_resultknn = new ArrayList<Map.Entry<String, Double>>(resultknn.entrySet());
+        Collections.sort(list_resultknn, new Comparator<Map.Entry<String, Double>>() {
+            // compare로 값을 비교
+            public int compare(Map.Entry<String, Double> obj1, Map.Entry<String, Double> obj2) {
+                // 내림 차순으로 정렬
+
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+        arrayListSort.clear();
+        for(int i = 0 ;list_resultknn.size()>i ; i++){
+            for(int j = 0 ; arrayList.size()>j;j++){
+                if(arrayList.get(j).getPd_code().equals(list_resultknn.get(i).getKey())){
+                    arrayListSort.add(arrayList.get(j));
+                }
+            }
+        }
+        Log.e("list_resultknn :",list_resultknn.toString());
+
     }
 }
