@@ -1,5 +1,6 @@
 package com.example.graduation;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,11 +41,12 @@ public class Fragmentsurvey3 extends Fragment {
     public Fragmentsurvey3() {
     }
 
+    private String flagBundle = "0";
     private RecyclerView recyclerView;
     private ArrayList<String> productList;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Product> arrayList,arrayListSort;
+    private ArrayList<Product> arrayList, arrayListSort;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private String result, name;
@@ -74,7 +76,6 @@ public class Fragmentsurvey3 extends Fragment {
             arrayList = new ArrayList<>();
             database = FirebaseDatabase.getInstance();
             databaseReference = database.getInstance().getReference();
-
             mAuth = FirebaseAuth.getInstance();
             name = null;
 
@@ -127,7 +128,7 @@ public class Fragmentsurvey3 extends Fragment {
                     }
 
                     resultknn = new HashMap<String, Double>();
-                    resultknn = new PearsonCorrelation().knn(name, user,productList);  //상관계수 구하기
+                    resultknn = new PearsonCorrelation().knn(name, user, productList);  //상관계수 구하기
 
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
@@ -138,7 +139,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                         categoryClassification(category);//카테고리 별 분류
 
-                        arraylistAdd(product, snapshot,pd_classification);//배열에 추가
+                        arraylistAdd(product, snapshot, pd_classification);//배열에 추가
 
                         adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
                         // databaseReference.removeEventListener(this);
@@ -184,9 +185,39 @@ public class Fragmentsurvey3 extends Fragment {
         return hashmap;
     }
 
+    public void productIf(int classifcation, Product product, pd_classification pd_classification, DataSnapshot snapshot) {
+        boolean flagboolean = true;
+
+        if (!(getArguments().getString("pregnant").equals(flagBundle))) {
+            if (product.getIftkn_atnt_matr_cn() != null) {
+                if (product.getIftkn_atnt_matr_cn().contains("임산부")) {
+
+                    flagboolean = false;
+                }
+            }
+        }
+        if (!(getArguments().getString("baby").equals(flagBundle))) {
+            if (product.getIftkn_atnt_matr_cn() != null) {
+                if (product.getIftkn_atnt_matr_cn().contains("유아")) {
+
+                    flagboolean = false;
+                }
+            }
+        }
+        if (flagboolean) {
+            if (ifknn(snapshot.getKey())) {
+                if (!arrayList.contains(product)) {
+                    arrayList.add(product);
+                }
+            }
+        }
+    }
+
+
     public boolean ifknn(String product) {
         boolean result = false;
         for (Map.Entry<String, Double> entry : resultknn.entrySet()) {
+
             if (product.equals(entry.getKey())) {
                 result = true;
 
@@ -437,371 +468,229 @@ public class Fragmentsurvey3 extends Fragment {
         }
     }
 
+    @SuppressLint("LongLogTag")
     public void arraylistAdd(Product product, DataSnapshot snapshot, pd_classification pd_classification) {
 
-        result = getArguments().getString("category");
-        //배열에 추가
+
+        result = getArguments().getString("category");  //배열에 추가
         switch (result) {
             case "다이어트":     //배열에 추가
-
                 if (omega3 > 0) {
-                    if(pd_classification.getOmega3()!=null){
+                    if (pd_classification.getOmega3() != null) {
                         if (pd_classification.getOmega3().equals("오메가3")) {
-                            if (ifknn(snapshot.getKey())) {
-                                    if(!arrayList.contains(product)){
-                                        arrayList.add(product);
-                                    }
-                            }
+                            productIf(omega3, product, pd_classification, snapshot);
                         }
                     }
                 }
                 if (probiotics > 0) {
-                    if(pd_classification.getProbiotics()!=null){
+                    if (pd_classification.getProbiotics() != null) {
                         if (pd_classification.getProbiotics().equals("프로바이오틱스")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(probiotics, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (roughage > 0) {
-                    if(pd_classification.getRoughage()!=null){
+                    if (pd_classification.getRoughage() != null) {
                         if (pd_classification.getRoughage().equals("식이섬유")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(roughage, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (calcium > 0) {
-                    if(pd_classification.getCalcium()!=null){
+                    if (pd_classification.getCalcium() != null) {
                         if (pd_classification.getCalcium().equals("칼슘")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(calcium, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (protein > 0) {
-                    if(pd_classification.getProtein()!=null){
+                    if (pd_classification.getProtein() != null) {
                         if (pd_classification.getProtein().equals("단백질")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(protein, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitaminb > 0) {
-                    if(pd_classification.getVitaminb()!=null){
+                    if (pd_classification.getVitaminb() != null) {
                         if (pd_classification.getVitaminb().equals("비타민b군")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitaminb, product, pd_classification, snapshot);
                         }
                     }
                 }
                 if (coq10 > 0) {
-                    if(pd_classification.getCoq10()!=null){
+                    if (pd_classification.getCoq10() != null) {
                         if (pd_classification.getCoq10().equals("코큐텐")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(coq10, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (l_carnitine > 0) {
-                    if(pd_classification.getL_carnitine()!=null){
-                        if (pd_classification.getL_carnitine().equals("L_카르니틴")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                    if (pd_classification.getL_carnitine() != null) {
+                        if (pd_classification.getL_carnitine().equals("L_키르니틴")) {
+                            productIf(l_carnitine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (arginine > 0) {
-                    if(pd_classification.getArginine()!=null){
+                    if (pd_classification.getArginine() != null) {
                         if (pd_classification.getArginine().equals("아르기닌")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(arginine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (l_glutamine > 0) {
-                    if(pd_classification.getL_glutamine()!=null){
+                    if (pd_classification.getL_glutamine() != null) {
                         if (pd_classification.getL_glutamine().equals("L_글루타민")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(l_glutamine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
 
                 break;
 
             case "건강":       //배열에 추가
-
                 if (vitamina > 0) {
-                    if(pd_classification.getVitamina()!=null){
+                    if (pd_classification.getVitamina() != null) {
                         if (pd_classification.getVitamina().equals("비타민a")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitamina, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitaminb > 0) {
-                    if(pd_classification.getVitaminb()!=null){
+                    if (pd_classification.getVitaminb() != null) {
                         if (pd_classification.getVitaminb().equals("비타민b군")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitaminb, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitaminc > 0) {
-                    if(pd_classification.getVitaminc()!=null){
+                    if (pd_classification.getVitaminc() != null) {
                         if (pd_classification.getVitaminc().equals("비타민c")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitaminc, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitamind > 0) {
-                    if(pd_classification.getVitamind()!=null){
+                    if (pd_classification.getVitamind() != null) {
                         if (pd_classification.getVitamind().equals("비타민d")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitamind, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitamine > 0) {
-                    if(pd_classification.getVitamine()!=null){
+                    if (pd_classification.getVitamine() != null) {
                         if (pd_classification.getVitamine().equals("비타민e")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitamine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (vitamink > 0) {
-                    if(pd_classification.getVitamink()!=null){
+                    if (pd_classification.getVitamink() != null) {
                         if (pd_classification.getVitamink().equals("비타민k")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(vitamink, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (mvitamin > 0) {
-                    if(pd_classification.getMvitamin()!=null){
+                    if (pd_classification.getMvitamin() != null) {
                         if (pd_classification.getMvitamin().equals("멀티비타민")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(mvitamin, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (omega3 > 0) {
-                    if(pd_classification.getOmega3()!=null){
+                    if (pd_classification.getOmega3() != null) {
                         if (pd_classification.getOmega3().equals("오메가3")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(omega3, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (probiotics > 0) {
-                    if(pd_classification.getProbiotics()!=null){
-                        if (pd_classification.getProbiotics().equals("프로바이오틱스")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                    if (pd_classification.getProbiotics() != null) {
+                        if (pd_classification.getProbiotics().equals("프로아이오틱스")) {
+                            productIf(probiotics, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (propolis > 0) {
-                    if(pd_classification.getPropolis()!=null){
+                    if (pd_classification.getPropolis() != null) {
                         if (pd_classification.getPropolis().equals("프로폴리스")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(propolis, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (red_ginseng > 0) {
-                    if(pd_classification.getRed_ginseng()!=null){
+                    if (pd_classification.getRed_ginseng() != null) {
                         if (pd_classification.getRed_ginseng().equals("홍삼")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(red_ginseng, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (lutein > 0) {
-                    if(pd_classification.getLutein()!=null){
+                    if (pd_classification.getLutein() != null) {
                         if (pd_classification.getLutein().equals("루테인")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(lutein, product, pd_classification, snapshot);
                         }
                     }
-
                 }
 
                 break;
 
             case "벌크업":      //배열에 추가
-
-
                 if (protein > 0) {
-                    if(pd_classification.getProtein()!=null){
+                    if (pd_classification.getProtein() != null) {
                         if (pd_classification.getProtein().equals("단백질")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(protein, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (creatine > 0) {
-                    if(pd_classification.getCreatine()!=null){
-                        if (pd_classification.getCreatine().equals("크레아틴")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                    if (pd_classification.getCalcium() != null) {
+                        if (pd_classification.getCalcium().equals("크레아틴")) {
+                            productIf(creatine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (bcaa > 0) {
-                    if(pd_classification.getBcaa()!=null){
+                    if (pd_classification.getBcaa() != null) {
                         if (pd_classification.getBcaa().equals("BCAA")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(bcaa, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (arginine > 0) {
-                    if(pd_classification.getArginine()!=null){
+                    if (pd_classification.getArginine() != null) {
                         if (pd_classification.getArginine().equals("아르기닌")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(arginine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (beta_alanine > 0) {
-                    if(pd_classification.getBeta_alanine()!=null){
+                    if (pd_classification.getBeta_alanine() != null) {
                         if (pd_classification.getBeta_alanine().equals("베타알라닌")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(beta_alanine, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (hmb > 0) {
-                    if(pd_classification.getHmb()!=null){
-                        if (pd_classification.getHmb().equals("HMB")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                    if (pd_classification.getHmb() != null) {
+                        if (pd_classification.getHmb().equals("hmb")) {
+                            productIf(hmb, product, pd_classification, snapshot);
                         }
                     }
-
                 }
                 if (l_glutamine > 0) {
-                    if(pd_classification.getL_glutamine()!=null){
+                    if (pd_classification.getL_glutamine() != null) {
                         if (pd_classification.getL_glutamine().equals("L_글루타민")) {
-                            if (ifknn(snapshot.getKey())) {
-                                if(!arrayList.contains(product)){
-                                    arrayList.add(product);
-                                }
-                            }
+                            productIf(l_glutamine, product, pd_classification, snapshot);
                         }
                     }
                 }
+
+
                 break;
         }
+
         List<Map.Entry<String, Double>> list_resultknn = new ArrayList<Map.Entry<String, Double>>(resultknn.entrySet());
         Collections.sort(list_resultknn, new Comparator<Map.Entry<String, Double>>() {
             // compare로 값을 비교
@@ -812,14 +701,15 @@ public class Fragmentsurvey3 extends Fragment {
             }
         });
         arrayListSort.clear();
-        for(int i = 0 ;list_resultknn.size()>i ; i++){
-            for(int j = 0 ; arrayList.size()>j;j++){
-                if(arrayList.get(j).getPd_code().equals(list_resultknn.get(i).getKey())){
+        for (
+                int i = 0; list_resultknn.size() > i; i++) {
+            for (int j = 0; arrayList.size() > j; j++) {
+                if (arrayList.get(j).getPd_code().equals(list_resultknn.get(i).getKey())) {
                     arrayListSort.add(arrayList.get(j));
                 }
             }
         }
-        Log.e("list_resultknn :",list_resultknn.toString());
+
 
     }
 }

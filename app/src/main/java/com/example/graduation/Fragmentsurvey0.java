@@ -183,7 +183,6 @@ public class Fragmentsurvey0 extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragmentsurvey1 fragmentsurvey1 = new Fragmentsurvey1();
-
                 fragmentsurvey1.setArguments(bundle);
                 replaceFragment(fragmentsurvey1);
             }

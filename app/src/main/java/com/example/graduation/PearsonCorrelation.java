@@ -37,7 +37,8 @@ public class PearsonCorrelation {
         //없는 값 대조하여 구하기
         HashMap<String, Double> map = user.get(name);
         HashMap<String, Double> map2;
-        Log.e("pearson", list_entries.toString());
+
+
         for (Object object : productList) { //없는 값 찾기
             boolean resultBoolean = true;
             String key;

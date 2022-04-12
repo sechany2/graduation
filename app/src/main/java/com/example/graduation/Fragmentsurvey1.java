@@ -1,6 +1,7 @@
 package com.example.graduation;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ public class Fragmentsurvey1 extends Fragment {
             bundle.putString("disease", getArguments().getString("disease"));
             bundle.putString("pregnant", getArguments().getString("pregnant"));
             bundle.putString("baby", getArguments().getString("baby"));
+           
         }
 
         Button sc_btn_health = (Button)view.findViewById(R.id.sc_btn_health);

@@ -106,7 +106,7 @@ public class Fragmentsurvey4 extends Fragment {
                 //체크박스로 체크한 셀의 정보를 담고 있는 희소 논리 배열 얻어오기
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
 
-                Log.e("체크드아이템",checkedItems.toString());
+
                 int count = adapter.getCount(); //전체 몇개인지 세기
 
 
