@@ -36,7 +36,7 @@ public class PearsonCorrelation {
 
         //없는 값 대조하여 구하기
         HashMap<String, Double> map = user.get(name);
-        HashMap<String, Double> map2;
+        HashMap<String, Double> map2 = null;
 
 
         for (Object object : productList) { //없는 값 찾기
@@ -44,7 +44,7 @@ public class PearsonCorrelation {
             String key;
             key = object.toString();
             for (Entry<String, Double> entry : map.entrySet()) {
-                if (entry.getKey().equals(object.toString())) { //여기 조건 수정해야함
+                if (entry.getKey().equals(object.toString())) {
                     resultBoolean = false;
 
 
@@ -60,33 +60,52 @@ public class PearsonCorrelation {
                 double mean1 = 0;
                 double mean2 = 0;
                 double result = 0;
-                map2 = user.get(list_entries.get(1).getKey());
+                int i = 1;
+                Log.e(list_entries.toString(), name);
+                boolean flagMap = true;
+
+
 
                 //대조자1 에 제품 점수
-                if (map2.get(key) != null) {
-                    r1 = map2.get(key);      //대조자1 에 제품 점수
+                for(i=i;i<list_entries.size();i++) {
+                    if (!(list_entries.get(i).getKey().equals(name))) {
+                        map2 = user.get(list_entries.get(i).getKey());
+                        if (map2.get(key) != null) {
+                            if(flagMap){
+                            r1 = map2.get(key);
+                            flagMap = false;
+                            }      //대조자1 에 제품 점수
+                        }
+                    }
                 }
                 mean1 = mean(map2);                   //대조자1에 평균 점수
-                Log.e("map2:대조자1", map2.toString());
-                map2 = user.get(list_entries.get(2).getKey());
-                Log.e("map2:대조자2", map2.toString());
-                if (map2.get(key) != null) {
-                    r2 = map2.get(key);
-                }    //대조자2 에 제품 점수
+                flagMap = true;
+                for(i=i+1;i<list_entries.size();i++) {
+                    if (!(list_entries.get(i).getKey().equals(name))) {
+                        map2 = user.get(list_entries.get(i).getKey());
+                        if (map2.get(key) != null) {
+                            if(flagMap){
+                                r2 = map2.get(key);   //대조자2 에 제품 점수
+                                flagMap = false;
+                            }
+                        }
+                    }
+                }
                 mean2 = mean(map2);                    //대조자2 에 평균 점수
                 p1 = list_entries.get(1).getValue();  //대조자1 에 상관계수
                 p2 = list_entries.get(2).getValue();   //대조자2 에 상관계수
-                mean = mean(map); // 사용자1 평균점수
+                mean = mean(map);                     //사용자1 평균점수
 
 
                 result = mean + ((r1 - mean1) * p1 + (r2 - mean2) * p2) / (p1 + p2); //식 사용자1 평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
 
-                recommend.put(key, result); //값저장
+                    recommend.put(key, result); //값저장
+
             }
 
         }
 
-
+        Log.e("recommend", recommend.toString());
         return recommend;
 
     }
