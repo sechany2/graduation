@@ -18,13 +18,12 @@ import java.util.ArrayList;
 
 
 public class FragmentProduct extends Fragment {
-    public FragmentProduct(){
-
-    }
+    public FragmentProduct(){ }
     private ArrayList<String> productinfo;
     private TextView tv_pdname;
     private TextView tv_pdbrandname;
     private ImageView iv_profile;
+    private String pd_code;
 
     @Nullable
     @Override
@@ -46,10 +45,6 @@ public class FragmentProduct extends Fragment {
             Log.e("번들 이동 실패","오류");
         }
 
-
-
-
-
         //정보분석 버튼
         Button btn_info = (Button)view.findViewById(R.id.btn_infome);
         btn_info.setOnClickListener(new View.OnClickListener() {
@@ -61,17 +56,28 @@ public class FragmentProduct extends Fragment {
                 FragmentInfo fragmentInfo = new FragmentInfo();
                 fragmentInfo.setArguments(info);
                 ((MainActivity)getActivity()).replaceframeProduct(fragmentInfo);  //메인 엑티비티에 프래그먼트 이동 메소드 호출
-
-
             }
         });
+
+        pd_code = new String();
+        productinfo = getArguments().getStringArrayList("product");
+        if (getArguments() != null) {
+            pd_code = productinfo.get(10);
+        }
+        else{
+            Log.e("번들 이동 실패","오류");
+        }
 
         //리뷰 버튼
         Button btn_review = (Button)view.findViewById(R.id.btn_review);
         btn_review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity)getActivity()).replaceframeProduct(Fragmentreview.newInstance()); //메인 엑티비티에 프래그먼트 이동 메소드 호출
+                Bundle rvinfo = new Bundle();
+                rvinfo.putString("pd_code",pd_code);
+                Fragmentreview fragmentreview = new Fragmentreview();
+                fragmentreview.setArguments(rvinfo);
+                ((MainActivity)getActivity()).replaceframeProduct(fragmentreview); //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
         });
         return view;

@@ -120,7 +120,6 @@ public class Fragmentcategory extends Fragment {
                         @Override
                         public void onItemClick(View v, int pos) {
 
-
                             //제품정보 저장
                             ArrayList<String> pdinfo = new ArrayList<>();
                             Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
@@ -134,7 +133,7 @@ public class Fragmentcategory extends Fragment {
                             pdinfo.add(arrayList.get(pos).getCap_rawmtrl_nm());      // 7번 캡슐 원료
                             pdinfo.add(arrayList.get(pos).getIftkn_atnt_matr_cn());  // 8번 주의사항
                             pdinfo.add(arrayList.get(pos).getPrdt_shap_cd_nm());     // 9번 제품형태
-
+                            pdinfo.add(arrayList.get(pos).getPd_code());     // 10번 제품코드
 
                             info.putStringArrayList("product", pdinfo);
                             FragmentProduct fragmentProduct = new FragmentProduct();
