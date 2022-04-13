@@ -15,9 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class FragmentInfo extends Fragment {
-    public FragmentInfo(){
-
-    }
+    public FragmentInfo(){ }
     private ArrayList<String> productinfo;
 
     @Nullable

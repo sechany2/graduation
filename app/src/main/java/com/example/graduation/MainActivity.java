@@ -237,6 +237,8 @@ public class MainActivity extends AppCompatActivity {
                         pdinfo.add(arrayList.get(pos).getCap_rawmtrl_nm());      // 7번 캡슐 원료
                         pdinfo.add(arrayList.get(pos).getIftkn_atnt_matr_cn());  // 8번 주의사항
                         pdinfo.add(arrayList.get(pos).getPrdt_shap_cd_nm());     // 9번 제품형태
+                        pdinfo.add(arrayList.get(pos).getPd_code());     // 10번 제품코드
+
                         info.putStringArrayList("product",pdinfo);
                         FragmentProduct fragmentProduct = new FragmentProduct();
                         fragmentProduct.setArguments(info);
@@ -259,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
     public void replaceframeProduct(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         fragmentTransaction.replace(R.id.frameProduct, fragment).commit();
     }
 

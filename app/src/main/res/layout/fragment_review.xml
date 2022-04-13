@@ -48,14 +48,14 @@
                 tools:layout_editor_absoluteX="39dp" />
 
             <RatingBar
-                android:id="@+id/ratingBar2"
-                android:layout_width="145dp"
-                android:layout_height="32dp"
+                android:id="@+id/rv_ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:max="5"
                 android:numStars="5"
                 android:stepSize="0.5"
-
-                />
+                android:rating="5"/>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
