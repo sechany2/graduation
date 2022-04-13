@@ -113,9 +113,11 @@ public class Fragmentsurvey4 extends Fragment {
                     list_select.add(checkedItems.toString());
                     if(result.equals("알레르기")) {
                         bundle.putString("allergy", list_select.toString());
+                        bundle.putString("disease",getArguments().getString("disease"));
                     }
                     if(result.equals("특정질환")) {
                        bundle.putString("disease", list_select.toString());
+                        bundle.putString("allergy",getArguments().getString("allergy"));
                      }
                     bundle.putString("pregnant",getArguments().getString("pregnant"));
                     bundle.putString("baby",getArguments().getString("baby"));

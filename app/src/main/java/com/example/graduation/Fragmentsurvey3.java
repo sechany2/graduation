@@ -204,6 +204,76 @@ public class Fragmentsurvey3 extends Fragment {
                 }
             }
         }
+        if (!(getArguments().getString("allergy").equals(flagBundle))) {
+            if (product.getIftkn_atnt_matr_cn() != null) {
+                if (getArguments().getString("allergy").equals("0")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("대두")) {
+
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("allergy").equals("1")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("밀")) {
+
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("allergy").equals("2")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("게")) {
+
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("allergy").equals("3")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("새우")) {
+
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("allergy").equals("4")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("알레르기")) {
+
+                        flagboolean = false;
+                    }
+                }
+
+            }
+        }
+        if (!(getArguments().getString("disease").equals(flagBundle))) {
+            if (product.getIftkn_atnt_matr_cn() != null) {
+                Log.e(getArguments().getString("disease"), "");
+                if (getArguments().getString("disease").equals("0")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("천식")) {
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("disease").equals("1")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("당뇨")) {
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("disease").equals("2")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("심혈관질환")) {
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("disease").equals("3")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("혈액응고장애")) {
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("disease").equals("4")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("고칼슘혈증")) {
+                        flagboolean = false;
+                    }
+                }
+                if (getArguments().getString("disease").equals("5")) {
+                    if (product.getIftkn_atnt_matr_cn().contains("질환")) {
+                        flagboolean = false;
+                    }
+                }
+            }
+        }
         if (flagboolean) {
             if (ifknn(snapshot.getKey())) {
                 if (!arrayList.contains(product)) {
