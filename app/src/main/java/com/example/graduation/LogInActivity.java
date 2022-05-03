@@ -1,6 +1,7 @@
 package com.example.graduation;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,15 +22,47 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+
 public class LogInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;     //변수 선언(파이어베이스 인증처리)
     private DatabaseReference mRef; //실시간 데이터베이스
     private EditText mEtEmail, mEtPwd; //로그인 입력필드
 
+    private static final int REQ_SIGN_GOOGLE=100;
+    private GoogleSignInClient mGoogleSignInClient;
+    private SignInButton btn_google;
+    /*@Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {//구글 인증후 결과 받아냄
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==REQ_SIGN_GOOGLE){
+            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            if(task.isSuccessful()){
+                GoogleSignInAccount account=task.getResult();//account에는 구글 로그인 정보를 담고 있다.(닉네임, 프로필사진, 이멜주소등)
+                resultLogin(account);//로그인 결과 값 출력 수행하라는 메소드
+            }
+        }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
 
         //툴바
         Toolbar toolbar =findViewById(R.id.login_toolbar);
@@ -36,12 +71,25 @@ public class LogInActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();                     // ( 변수 초기화 및 초기설정
-        mRef = FirebaseDatabase.getInstance().getReference("graduation");
 
+        mRef = FirebaseDatabase.getInstance().getReference("graduation");
+        AuthUI.getInstance()
+                .signOut(this);
         mEtEmail = findViewById(R.id.et_email);
         mEtPwd = findViewById(R.id.et_pwd);
 
         Button btn_login = findViewById(R.id.btn_login);
+
+        btn_google=findViewById(R.id.btn_google);
+        btn_google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=mGoogleSignInClient.getSignInIntent();
+                startActivityForResult(intent,REQ_SIGN_GOOGLE);
+            }
+        });
+
+
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,5 +125,44 @@ public class LogInActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+    private void updateUI(FirebaseUser user) {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { //구글 인증 결과
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQ_SIGN_GOOGLE){
+            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
+            if(task.isSuccessful()){
+                GoogleSignInAccount account=task.getResult();//구글 정보 오브젝트 생성
+                resultLogin(account);                                           //결과값 출력 메소드
+            }
+        }
+    }
+
+    private void resultLogin(GoogleSignInAccount account) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){    //로그인 성공
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
     }
 }
