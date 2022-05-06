@@ -52,7 +52,6 @@ public class Fragmentsurvey3 extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private String result, name;
-    public String pd_code;
     public RatingBar ratingbar;
     public TextView fg3_pdrb_tv, fg3_usrb_tv;
     private FirebaseAuth mAuth;
@@ -146,7 +145,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                         arraylistAdd(product, snapshot, pd_classification);//배열에 추가
 
-                        adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
+                        //adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
                         // databaseReference.removeEventListener(this);
                     }
                 }
@@ -157,48 +156,48 @@ public class Fragmentsurvey3 extends Fragment {
                 }
             });
 
+            database = FirebaseDatabase.getInstance();
+            databaseReference = database.getReference("Review");
             List pdscore = new ArrayList<>();
 
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    // 클래스 모델이 필요?
-                    for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
-                        //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
-                        //하위키들의 value를 어떻게 가져오느냐???
-                        if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
-                            String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
-                            Log.e("value is ", aaa);
-                            pdscore.add(aaa);
+                    for(int i = 0; i < arrayListSort.size(); i++){
+                        // 클래스 모델이 필요?
+                        for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
+                            //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                            //하위키들의 value를 어떻게 가져오느냐???
+                            if (fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class) != null){
+                                String aaa = fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class).toString();
+                                Log.e("value is ", aaa);
+                                pdscore.add(aaa);
+                            }
+                            Log.e("arraylistsort", String.valueOf(arrayListSort.get(0)));
                         }
+                        Log.e("pdscore리스트",pdscore.toString());
+                        Log.e("pdscore리스트",pdscore.get(0).toString());
+
+                        String qwe = null;
+                        double sum = 0;
+                        double avg = 0;
+
+                        for(int j = 0; j < pdscore.size(); j++){
+                            qwe = pdscore.get(j).toString();
+                            sum = sum + Double.parseDouble(qwe);
+                            avg = sum / pdscore.size();
+                        }
+                        System.out.println("평균은 : "+avg);
+                        arrayList.get(i).setPd_avg((float) avg);
                     }
-                    Log.e("pdscore리스트",pdscore.toString());
-                    Log.e("pdscore리스트",pdscore.get(0).toString());
-
-                    String qwe = null;
-                    double sum = 0;
-                    double avg = 0;
-
-                    for(int i = 0; i < pdscore.size(); i++){
-                        qwe = pdscore.get(i).toString();
-                        sum = sum + Double.parseDouble(qwe);
-                        avg = sum / pdscore.size();
-                    }
-                    System.out.println("평균은 : "+avg);
-
-                    ratingbar = view.findViewById(R.id.fg3_pdrb);
-                    ratingbar.setRating((float) avg);
-                    fg3_pdrb_tv = view.findViewById(R.id.fg3_pdrb_tv);
-                    fg3_pdrb_tv.setText(String.format("%.1f", avg) + "점");
+                    adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Log.w("TAG: ", "Failed to read value", databaseError.toException());
                 }
             });
-
 
             adapter = new Fg3Adapter(arrayListSort, getContext());
 

@@ -45,6 +45,12 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         //settext로 텍스트 받아온것 출력
         holder.fg3list_tv_productName.setText(arrayList.get(position).getPd_brandname());
         holder.fg3list_tv_brandName.setText(arrayList.get(position).getPd_name());
+        if(arrayList.get(position).getPd_avg()!=null){
+            holder.fg3_pdrb.setRating(arrayList.get(position).getPd_avg());
+        }
+        if(arrayList.get(position).getUs_avg()!=null){
+            holder.fg3_usrb.setRating(arrayList.get(position).getUs_avg());
+        }
     }
 
     @Override

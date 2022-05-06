@@ -11,6 +11,8 @@ public class Product {
     private String pd_brandname;   //브랜드이름
     private String form_code;   // 형태 코드
     private String cd_code;   // 종류 코드
+    private Float pd_avg;  //제품평균
+    private Float us_avg;  //유저예상평균점수
 
     //식약처 데이터
     private String ntk_mthd;
@@ -23,6 +25,22 @@ public class Product {
     private String child_crtfc_yn; // 어린이기호식품품질인증여부
 
     public Product(){}
+
+    public Float getPd_avg() {
+        return pd_avg;
+    }
+
+    public void setPd_avg(Float pd_avg) {
+        this.pd_avg = pd_avg;
+    }
+
+    public Float getUs_avg() {
+        return us_avg;
+    }
+
+    public void setUs_avg(Float us_avg) {
+        this.us_avg = us_avg;
+    }
 
     public String getNtk_mthd() {
         return ntk_mthd;
