@@ -34,22 +34,11 @@ public class LogInActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;     //변수 선언(파이어베이스 인증처리)
     private DatabaseReference mRef; //실시간 데이터베이스
     private EditText mEtEmail, mEtPwd; //로그인 입력필드
-
+    private  FirebaseUser currentUser;
     private static final int REQ_SIGN_GOOGLE=100;
     private GoogleSignInClient mGoogleSignInClient;
     private SignInButton btn_google;
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {//구글 인증후 결과 받아냄
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==REQ_SIGN_GOOGLE){
-            Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
-            if(task.isSuccessful()){
-                GoogleSignInAccount account=task.getResult();//account에는 구글 로그인 정보를 담고 있다.(닉네임, 프로필사진, 이멜주소등)
-                resultLogin(account);//로그인 결과 값 출력 수행하라는 메소드
-            }
-        }
-    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +119,7 @@ public class LogInActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
     private void updateUI(FirebaseUser user) {
@@ -157,6 +146,14 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){    //로그인 성공
+                            currentUser = mAuth.getCurrentUser();
+                            UserAccount userAccount = new UserAccount();
+                            userAccount.setName(account.getDisplayName());
+                            userAccount.setUserToken(currentUser.getUid());    //생성된 객체에 정보 받기
+                            userAccount.setEmailId(account.getEmail());
+
+
+                            mRef.child("UserAccount").child(currentUser.getUid()).setValue(userAccount);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
 

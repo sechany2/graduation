@@ -152,7 +152,7 @@ public class Fragmentsurvey3 extends Fragment {
                 }
             });
 
-            adapter = new DietAdapter(arrayListSort, getContext());
+            adapter = new Fg3Adapter(arrayListSort, getContext());
 
             recyclerView.setAdapter(adapter);  //리사이클러뷰 출력
         } else {
