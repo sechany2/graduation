@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/ratingbar_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
@@ -81,16 +81,17 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <ProgressBar
-
+                    android:id="@+id/pb_5"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:max="100"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-
+                    android:id="@+id/pb_tv5"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -119,16 +120,17 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <ProgressBar
-
+                    android:id="@+id/pb_4"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:max="100"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-
+                    android:id="@+id/pb_tv4"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -155,16 +157,17 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <ProgressBar
-
+                    android:id="@+id/pb_3"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:max="100"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-
+                    android:id="@+id/pb_tv3"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -192,16 +195,17 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <ProgressBar
-
+                    android:id="@+id/pb_2"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:max="100"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-
+                    android:id="@+id/pb_tv2"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -228,16 +232,17 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <ProgressBar
-                    android:id="@+id/progressBar"
+                    android:id="@+id/pb_1"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="100dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:max="100"
                     tools:layout_editor_absoluteX="48dp"
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/pb_tv1"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"

@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
@@ -50,6 +52,9 @@ public class Fragmentsurvey3 extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private String result, name;
+    public String pd_code;
+    public RatingBar ratingbar;
+    public TextView fg3_pdrb_tv, fg3_usrb_tv;
     private FirebaseAuth mAuth;
     private HashMap<String, HashMap> user;
     private HashMap<String, Double> userReview, resultknn;
@@ -151,6 +156,49 @@ public class Fragmentsurvey3 extends Fragment {
                     Log.e("error", error.toString());
                 }
             });
+
+            List pdscore = new ArrayList<>();
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    // 클래스 모델이 필요?
+                    for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
+                        //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                        //하위키들의 value를 어떻게 가져오느냐???
+                        if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
+                            String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
+                            Log.e("value is ", aaa);
+                            pdscore.add(aaa);
+                        }
+                    }
+                    Log.e("pdscore리스트",pdscore.toString());
+                    Log.e("pdscore리스트",pdscore.get(0).toString());
+
+                    String qwe = null;
+                    double sum = 0;
+                    double avg = 0;
+
+                    for(int i = 0; i < pdscore.size(); i++){
+                        qwe = pdscore.get(i).toString();
+                        sum = sum + Double.parseDouble(qwe);
+                        avg = sum / pdscore.size();
+                    }
+                    System.out.println("평균은 : "+avg);
+
+                    ratingbar = view.findViewById(R.id.fg3_pdrb);
+                    ratingbar.setRating((float) avg);
+                    fg3_pdrb_tv = view.findViewById(R.id.fg3_pdrb_tv);
+                    fg3_pdrb_tv.setText(String.format("%.1f", avg) + "점");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w("TAG: ", "Failed to read value", databaseError.toException());
+                }
+            });
+
 
             adapter = new Fg3Adapter(arrayListSort, getContext());
 

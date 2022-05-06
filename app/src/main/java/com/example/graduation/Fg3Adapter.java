@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +30,9 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
     public Fg3ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fg3list_item,parent,false);
         Fg3ViewHolder holder = new Fg3ViewHolder(view);
+
+
+
         return holder;
     }
 
@@ -52,11 +56,14 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         ImageView fg3_iv;
         TextView fg3list_tv_productName;
         TextView fg3list_tv_brandName;
+        RatingBar fg3_pdrb, fg3_usrb;
         public Fg3ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.fg3_iv = itemView.findViewById(R.id.fg3_iv);
             this.fg3list_tv_productName = itemView.findViewById(R.id.fg3list_tv_pd_name);
             this.fg3list_tv_brandName = itemView.findViewById(R.id.fg3list_tv_pd_brandname);
+            this.fg3_pdrb = itemView.findViewById(R.id.fg3_pdrb);
+            this.fg3_usrb = itemView.findViewById(R.id.fg3_usrb);
         }
     }
 }
