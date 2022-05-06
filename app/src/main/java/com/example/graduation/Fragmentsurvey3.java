@@ -83,27 +83,30 @@ public class Fragmentsurvey3 extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             name = null;
 
-            databaseReference.child("graduation").child("UserAccount").addListenerForSingleValueEvent(new ValueEventListener() {
+            ValueEventListener uavalueEventListener = new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {  //파이어베이스에서 본인 정보 저장
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    //파이어베이스에서 본인 정보 저장
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
                         UserAccount userAccount = snapshot2.getValue(UserAccount.class);
                         if (snapshot2.getKey().equals(mAuth.getUid())) {
                             name = userAccount.getName();       //이름 저장
                         }
                     }
-                    //databaseReference.removeEventListener(this);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.e("error", error.toString());
                 }
-            });
-            user = new HashMap<String, HashMap>();
-            databaseReference.child("Review").addListenerForSingleValueEvent(new ValueEventListener() {
+            };
+            databaseReference.child("graduation").child("UserAccount").addValueEventListener(uavalueEventListener);
+            databaseReference.removeEventListener(uavalueEventListener);
+
+            ValueEventListener rvvalueEventListener= new ValueEventListener(){
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dsnapshot) { //파이어베이스에서 리뷰정보 저장
+                    user = new HashMap<String,HashMap>();
                     for (DataSnapshot snapshot3 : dsnapshot.getChildren()) {
                         userReview = null;
                         userReview = paramMap(snapshot3.getValue());
@@ -119,12 +122,14 @@ public class Fragmentsurvey3 extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.e("error", error.toString());
                 }
-            });
+            };
+            databaseReference.child("Review").addValueEventListener(rvvalueEventListener);
+            databaseReference.removeEventListener(rvvalueEventListener);
 
-
-            databaseReference.child("Product").addListenerForSingleValueEvent(new ValueEventListener() {
+            ValueEventListener pdvalueEventListener= new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    Log.e("1", String.valueOf(arrayList.size()));
                     productList.clear();
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
 
@@ -135,6 +140,8 @@ public class Fragmentsurvey3 extends Fragment {
                     resultknn = new PearsonCorrelation().knn(name, user, productList);  //상관계수 구하기
 
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
+
+
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
                         Product product = snapshot.getValue(Product.class);
 
@@ -154,50 +161,57 @@ public class Fragmentsurvey3 extends Fragment {
                 public void onCancelled(@NonNull DatabaseError error) {
                     Log.e("error", error.toString());
                 }
-            });
+            };
+            databaseReference.child("Product").addValueEventListener(pdvalueEventListener);
 
-            database = FirebaseDatabase.getInstance();
-            databaseReference = database.getReference("Review");
+
+
             List pdscore = new ArrayList<>();
 
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            ValueEventListener rvvalueEventListener2= new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    for(int i = 0; i < arrayListSort.size(); i++){
-                        // 클래스 모델이 필요?
-                        for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
-                            //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
-                            //하위키들의 value를 어떻게 가져오느냐???
-                            if (fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class) != null){
-                                String aaa = fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class).toString();
-                                Log.e("value is ", aaa);
-                                pdscore.add(aaa);
+                    Log.e("2", String.valueOf(arrayList.size()));
+                        for (int i = 0; i < arrayListSort.size(); i++) {
+                            // 클래스 모델이 필요?
+                            for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
+                                //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                                //하위키들의 value를 어떻게 가져오느냐???
+                                if (fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class) != null) {
+                                    String aaa = fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class).toString();
+                                    Log.e("value is ", aaa);
+                                    pdscore.add(aaa);
+                                }
+                                Log.e("arraylistsort", String.valueOf(arrayListSort.get(0)));
                             }
-                            Log.e("arraylistsort", String.valueOf(arrayListSort.get(0)));
-                        }
-                        Log.e("pdscore리스트",pdscore.toString());
-                        Log.e("pdscore리스트",pdscore.get(0).toString());
+                            Log.e("pdscore리스트", pdscore.toString());
+                            Log.e("pdscore리스트", pdscore.get(0).toString());
 
-                        String qwe = null;
-                        double sum = 0;
-                        double avg = 0;
+                            String qwe = null;
+                            double sum = 0;
+                            double avg = 0;
 
-                        for(int j = 0; j < pdscore.size(); j++){
-                            qwe = pdscore.get(j).toString();
-                            sum = sum + Double.parseDouble(qwe);
-                            avg = sum / pdscore.size();
+                            for (int j = 0; j < pdscore.size(); j++) {
+                                qwe = pdscore.get(j).toString();
+                                sum = sum + Double.parseDouble(qwe);
+                                avg = sum / pdscore.size();
+                            }
+                            System.out.println("평균은 : " + avg);
+                            arrayList.get(i).setPd_avg((float) avg);
                         }
-                        System.out.println("평균은 : "+avg);
-                        arrayList.get(i).setPd_avg((float) avg);
-                    }
                     adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                     Log.w("TAG: ", "Failed to read value", databaseError.toException());
                 }
-            });
+            };
+
+            databaseReference.child("Review").addValueEventListener(rvvalueEventListener2);
+
+            databaseReference.removeEventListener(rvvalueEventListener2);
+            databaseReference.removeEventListener(pdvalueEventListener);
 
             adapter = new Fg3Adapter(arrayListSort, getContext());
 
