@@ -9,15 +9,15 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.lang.Math;
 
 
 public class PearsonCorrelation {
 
 
-    public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user, ArrayList<String> productList) { //비슷한 유저데이터 참조
+    public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user, ArrayList<String> productList, int number) { //비슷한 유저데이터 참조
 
-        HashMap<String, Double> recommend = new HashMap<String, Double>() {
-        };
+        HashMap<String, Double> recommend = new HashMap<String, Double>() {};
         HashMap<String, Double> pearsonResult = new HashMap<String, Double>();
         for (Entry<String, HashMap> entry : user.entrySet()) {//pearson 상관계수 구하기
             pearsonResult.put(entry.getKey(), pearson(user.get(name), entry.getValue()));
@@ -37,76 +37,88 @@ public class PearsonCorrelation {
         //없는 값 대조하여 구하기
         HashMap<String, Double> map = user.get(name);
         HashMap<String, Double> map2 = null;
-
-
+        String[] keys = new String[map.size()];
+        HashMap<String, Double> results = new HashMap<String, Double>() {};
+        int k = 0;
         for (Object object : productList) { //없는 값 찾기
-            boolean resultBoolean = true;
+            boolean resultBoolean = false;
             String key;
             key = object.toString();
             for (Entry<String, Double> entry : map.entrySet()) {
                 if (entry.getKey().equals(object.toString())) {
-                    resultBoolean = false;
+                    resultBoolean = true;
 
 
                 }
             }
 
             if (resultBoolean) { //값이 없을때
-                double p1 = 0;   //상관계수 값 계산
-                double r1 = 0;
-                double p2 = 0;
-                double r2 = 0;
-                double mean = 0;
-                double mean1 = 0;
-                double mean2 = 0;
-                double result = 0;
-                int i = 1;
-                Log.e(list_entries.toString(), name);
-                boolean flagMap = true;
+                double[] p = new double[number];   //상관계수 값 계산
+                double[] r = new double[number];
+
+
+                double[] mean = new double[number];
+                double mymean = 0;
+
+
+                int i = 0;
+                int j = 0;
+
+                // Log.e(list_entries.toString(), name);
 
 
 
-                //대조자1 에 제품 점수
-                for(i=i;i<list_entries.size();i++) {
-                    if (!(list_entries.get(i).getKey().equals(name))) {
-                        map2 = user.get(list_entries.get(i).getKey());
-                        if (map2.get(key) != null) {
-                            if(flagMap){
-                            r1 = map2.get(key);
-                            flagMap = false;
-                            }      //대조자1 에 제품 점수
-                        }
-                    }
-                }
-                mean1 = mean(map2);                   //대조자1에 평균 점수
-                flagMap = true;
-                for(i=i+1;i<list_entries.size();i++) {
-                    if (!(list_entries.get(i).getKey().equals(name))) {
-                        map2 = user.get(list_entries.get(i).getKey());
-                        if (map2.get(key) != null) {
-                            if(flagMap){
-                                r2 = map2.get(key);   //대조자2 에 제품 점수
-                                flagMap = false;
+
+                    for (j = j; j < list_entries.size(); j++) {
+                        if (!(list_entries.get(j).getKey().equals(name))) {
+                            map2 = user.get(list_entries.get(j).getKey());
+                            if (map2.get(key) != null) {
+                                if(i<number){
+                                    r[i] = map2.get(key);  //대조자 에 제품 점수
+                                    p[i] = list_entries.get(j).getValue();   //대조자에 상관계수
+                                    mean[i] = mean(map2);                    //대조자에 평균 점수
+                                    i++;
+                                }
+
                             }
                         }
+
                     }
+
+
+
+                mymean = mean(map);                     //사용자 평균점수
+
+                double psum = 0;
+                double qsum = 0;
+                for (i = 0; i < number; i++) {
+                    psum += p[i];
+                    qsum += (r[i] - mean[i]) * p[i];
                 }
-                mean2 = mean(map2);                    //대조자2 에 평균 점수
-                p1 = list_entries.get(1).getValue();  //대조자1 에 상관계수
-                p2 = list_entries.get(2).getValue();   //대조자2 에 상관계수
-                mean = mean(map);                     //사용자1 평균점수
+                double result = 0;
+                result = ( qsum/ psum )+ mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
+                recommend.put(key, result ); //값저장
+                results.put(key, Math.abs(recommend.get(key)-map.get(key))/map.get(key) * 100 );
 
 
-                result = mean + ((r1 - mean1) * p1 + (r2 - mean2) * p2) / (p1 + p2); //식 사용자1 평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
-
-                    recommend.put(key, result); //값저장
+                keys[k] = key;
+                k++;
 
             }
 
-        }
 
-        Log.e("recommend", recommend.toString());
-        return recommend;
+
+        }
+        double as = 0;
+        for(int d =0 ;d<keys.length;d++ ){
+            as =as +results.get(keys[d]);
+        }
+        double avg = 0;
+        avg = as/ keys.length ;
+        HashMap<String,Double> avgs = new HashMap<String, Double>() {};
+        avgs.put("1",avg);
+        return  avgs;
+        //return recommend;
 
     }
 
@@ -124,16 +136,18 @@ public class PearsonCorrelation {
 
         Object[] keysx = s1.keySet().toArray();
         Object[] keysy = s2.keySet().toArray();
-        int j;
+        int flag = 0;
         for (int i = 0; i < s1.size(); i++) {  //( s1 점수 - s1평균) * ( s2점수 - s2 평균 )
 
-            for (j = 0; j < s2.size(); j++) {
+            for (int j = 0; j < s2.size(); j++) {
 
                 if (keysx[i].equals(keysy[j])) {
 
                     sump = sump + ((s1.get(keysx[i]) - s1mean) * (s2.get(keysy[j]) - s2mean));
                     sumq = sumq + ((s1.get(keysx[i]) - s1mean) * (s1.get(keysx[i]) - s1mean));
                     sumr = sumr + ((s2.get(keysy[j]) - s2mean) * (s2.get(keysy[j]) - s2mean));
+
+                    flag++;
                 }
             }
 
@@ -141,7 +155,7 @@ public class PearsonCorrelation {
         }
 
         double result = sump / Math.sqrt((sumq * sumr));
-        if (sump == 0) {
+        if (sump == 0 || flag < 2) {
             result = -1;
         }
         return result; // pearson(s1,s2);
