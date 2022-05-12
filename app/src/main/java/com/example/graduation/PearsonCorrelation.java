@@ -38,15 +38,15 @@ public class PearsonCorrelation {
         HashMap<String, Double> map = user.get(name);
         HashMap<String, Double> map2 = null;
         String[] keys = new String[map.size()];
-        HashMap<String, Double> results = new HashMap<String, Double>() {};
+
         int k = 0;
         for (Object object : productList) { //없는 값 찾기
-            boolean resultBoolean = false;
+            boolean resultBoolean = true;
             String key;
             key = object.toString();
             for (Entry<String, Double> entry : map.entrySet()) {
                 if (entry.getKey().equals(object.toString())) {
-                    resultBoolean = true;
+                    resultBoolean = false;
 
 
                 }
@@ -98,7 +98,7 @@ public class PearsonCorrelation {
                 double result = 0;
                 result = ( qsum/ psum )+ mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
                 recommend.put(key, result ); //값저장
-                results.put(key, Math.abs(recommend.get(key)-map.get(key))/map.get(key) * 100 );
+
 
 
                 keys[k] = key;
@@ -109,16 +109,8 @@ public class PearsonCorrelation {
 
 
         }
-        double as = 0;
-        for(int d =0 ;d<keys.length;d++ ){
-            as =as +results.get(keys[d]);
-        }
-        double avg = 0;
-        avg = as/ keys.length ;
-        HashMap<String,Double> avgs = new HashMap<String, Double>() {};
-        avgs.put("1",avg);
-        return  avgs;
-        //return recommend;
+
+        return recommend;
 
     }
 

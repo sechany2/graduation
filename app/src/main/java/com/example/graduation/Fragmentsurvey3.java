@@ -126,7 +126,7 @@ public class Fragmentsurvey3 extends Fragment {
             ValueEventListener pdvalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                    Log.e("1", String.valueOf(arrayList.size()));
+
                     productList.clear();
                     for (DataSnapshot snapshot : datasnapshot.getChildren()) {
 
@@ -136,17 +136,14 @@ public class Fragmentsurvey3 extends Fragment {
                     resultknn = new HashMap<String, Double>();
                     double[] avg = new double[user.size()];
 
-                    for (int w = 2; w < 50; w++) {
-                        for(Map.Entry<String,HashMap> entry: user.entrySet()) {
-
-                            resultknn = new PearsonCorrelation().knn(entry.getKey(), user, productList, w);  //상관계수 구하기
-                            avg[w] = avg[w]+ resultknn.get("1");
-                        }
-                        avg[w] = avg[w] / user.size();
-                        Log.e(Integer.toString(w), Double.toString(avg[w]));
 
 
-                    }
+
+                    resultknn = new PearsonCorrelation().knn(name, user, productList, 5);  //상관계수 구하기
+
+
+
+
 
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
 
@@ -169,7 +166,7 @@ public class Fragmentsurvey3 extends Fragment {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            Log.e("2", String.valueOf(arrayList.size()));
+
                             for (int i = 0; i < arrayListSort.size(); i++) {
                                 // 클래스 모델이 필요?
                                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
