@@ -44,7 +44,7 @@ public class PearsonCorrelation {
             boolean resultBoolean = true;
             String key;
             key = object.toString();
-            for (Entry<String, Double> entry : map.entrySet()) {
+            for ( Entry<String, Double> entry: map.entrySet()) {
                 if (entry.getKey().equals(object.toString())) {
                     resultBoolean = false;
 

@@ -79,12 +79,12 @@ public class FragmentProduct extends Fragment {
                     //하위키들의 value를 어떻게 가져오느냐???
                     if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
                         String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
-                        Log.e("value is ", aaa);
+                        //Log.e("value is ", aaa);
                         pdscore.add(aaa);
                     }
                 }
-                Log.e("pdscore리스트",pdscore.toString());
-                Log.e("pdscore리스트",pdscore.get(0).toString());
+               // Log.e("pdscore리스트",pdscore.toString());
+               // Log.e("pdscore리스트",pdscore.get(0).toString());
 
                 String qwe = null;
                 double sum = 0;

@@ -133,7 +133,11 @@ public class Fragmentcategory extends Fragment {
                             pdinfo.add(arrayList.get(pos).getCap_rawmtrl_nm());      // 7번 캡슐 원료
                             pdinfo.add(arrayList.get(pos).getIftkn_atnt_matr_cn());  // 8번 주의사항
                             pdinfo.add(arrayList.get(pos).getPrdt_shap_cd_nm());     // 9번 제품형태
-                            pdinfo.add(arrayList.get(pos).getPd_code());     // 10번 제품코드
+                            pdinfo.add(arrayList.get(pos).getPd_code());             // 10번 제품코드
+                            pdinfo.add(arrayList.get(pos).getPd_protein());          //11번 단백질
+                            pdinfo.add(arrayList.get(pos).getPd_carbohydrate());     //12번 탄수화물
+                            pdinfo.add(arrayList.get(pos).getPd_province());         //13번 지방
+                            pdinfo.add(arrayList.get(pos).getPd_salt());             //14번 나트륨
 
                             info.putStringArrayList("product", pdinfo);
                             FragmentProduct fragmentProduct = new FragmentProduct();

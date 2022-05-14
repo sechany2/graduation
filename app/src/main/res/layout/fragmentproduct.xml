@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B1B1B1">
+    android:background="#D8D8D8">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -13,38 +12,38 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:background="@color/white"
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="15dp"
+            android:background="@color/white"
+            android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="기능성"
                 android:layout_margin="5dp"
-                android:textSize="30sp">
+                android:text="기능성"
+                android:textSize="20sp">
 
             </TextView>
 
             <TextView
+                android:id="@+id/tv_primary_fnclty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:layout_margin="5dp"
-                android:id="@+id/tv_primary_fnclty"></TextView>
+                android:text="text"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:background="@color/white"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             tools:ignore="MissingConstraints">
@@ -54,55 +53,274 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:text="섭취방법"
-                android:textSize="30sp"
                 android:layout_margin="5dp"
+                android:text="섭취방법"
+                android:textSize="20sp"
 
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="125dp"></TextView>
 
             <TextView
+                android:id="@+id/tv_ntk_mthd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="text"
                 android:layout_margin="5dp"
-                android:id="@+id/tv_ntk_mthd"></TextView>
+                android:text="text"></TextView>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:orientation="vertical"
 
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="함량"
-                android:textSize="30dp"
-                android:layout_margin="5dp"
-                tools:layout_editor_absoluteX="26dp">
+                >
 
-            </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="함량정보"
+                    android:textSize="20dp"
+                    >
 
-            <TextView
+                </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="250dp"
+                    android:text="성인 기준"
+                    android:textSize="10dp">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp"
+                    android:text="단백질"></TextView>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/progressBar_1">
+
+                </ProgressBar>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 g"
+                        android:id="@+id/tv_protein"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 %"
+                        android:id="@+id/tv_RIProtein">
+
+                    </TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="380dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:text="text"></TextView>
+                android:background="#D8D8D8"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp"
+                    android:text="탄수화물"></TextView>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/progressBar_2">
+
+                </ProgressBar>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 g"
+                        android:id="@+id/tv_carbohydrate"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 %"
+                        android:id="@+id/tv_RICarbohydrate">
+
+                    </TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="380dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="#D8D8D8"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp"
+                    android:text="지방"></TextView>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/progressBar_3">
+
+                </ProgressBar>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 g"
+                        android:id="@+id/tv_fat"></TextView>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 %"
+                        android:id="@+id/tv_RIFat">
+
+                    </TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="380dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="#D8D8D8"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="15dp"
+                    android:text="나트륨"></TextView>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/progressBar_4">
+
+                </ProgressBar>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 g"
+                        android:id="@+id/tv_salt"></TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 %"
+                        android:id="@+id/tv_RISalt">
+
+                    </TextView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="380dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="#D8D8D8"></View>
+
+
+
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
@@ -110,10 +328,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="5dp"
                 android:background="@color/white"
                 android:text="원료정보"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 tools:layout_editor_absoluteX="19dp">
 
             </TextView>
@@ -126,99 +344,350 @@
 
                 >
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="원료&#10;구성"
+                        android:textSize="20dp"></TextView>.0
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:id="@+id/layout01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="50dp"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_circle_24"
+                                    app:tint="#7FD19D">
+
+                                </ImageView>
+
+                                <TextView
+                                    android:id="@+id/tv_indiv_rawmtrl_nm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="0"
+                                    android:textColor="@color/white"
+                                    android:textSize="25dp"></TextView>
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="기능성 원료"
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/layout02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="50dp"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_panorama_fish_eye_24"
+                                    app:tint="#7FD19D"></ImageView>
+
+                                <TextView
+                                    android:id="@+id/tv_etc_rawmtrl_nm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="0"
+                                    android:textSize="25dp"></TextView>
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="기타 원료"
+                                android:textSize="12dp"
+
+                                ></TextView>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/layout03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_panorama_fish_eye_24"
+                                    app:tint="#7FD19D"></ImageView>
+
+                                <TextView
+                                    android:id="@+id/tv_cap_rawmtrl_nm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="0"
+                                    android:textSize="25dp"></TextView>
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="캡슐 원료"
+                                android:textSize="12dp"
+
+                                ></TextView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layout04"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="기능성 원료"
-                    android:textSize="20dp"></TextView>
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="text"
-                    android:layout_margin="8dp"
-                    android:id="@+id/tv_indiv_rawmtrl_nm"
-                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:text="주의&#10;사항"
+                        android:textSize="20dp"></TextView>
 
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="기타 원료"
-                    android:textSize="20dp"></TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="text"
-                    android:layout_margin="8dp"
-                    android:id="@+id/tv_etc_rawmtrl_nm">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:orientation="vertical">
 
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="캡슐 원료"
-                    android:textSize="20dp"></TextView>
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="text"
-                    android:layout_margin="8dp"
-                    android:id="@+id/tv_cap_rawmtrl_nm">
+                                <ImageView
+                                    android:id="@+id/iv_precautions1"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_report_problem_24">
 
-                </TextView>
-            </LinearLayout>
+                                </ImageView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
 
-                android:orientation="horizontal">
+                            </FrameLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="주의&#10;사항"
-                    android:textSize="20dp"></TextView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="특정질환"
+                                android:textSize="12dp"></TextView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="text"
-                    android:id="@+id/tv_iftkn_atnt_matr_cn">
+                        </LinearLayout>
 
-                </TextView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/iv_precautions2"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_report_problem_24">
+
+                                </ImageView>
+
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="알레르기"
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/iv_precautions3"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_report_problem_24">
+
+                                </ImageView>
+
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="어린이"
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/iv_precautions4"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_report_problem_24">
+
+                                </ImageView>
+
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="임신,수유시"
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/iv_precautions5"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/ic_baseline_report_problem_24">
+
+                                </ImageView>
+
+
+                            </FrameLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="섭취시"
+
+                                android:textSize="12dp"></TextView>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_iftkn_atnt_matr_cn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="text">
+
+
+                    </TextView>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:background="@color/white"
-            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout11">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="제품&#10;형태"
-                android:textSize="20dp"
-                android:layout_marginRight="10dp">
+                android:textSize="20dp">
 
             </TextView>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="text"
-    android:id="@+id/tv_prdt_shap_cd_nm"></TextView>
+
+            <TextView
+                android:id="@+id/tv_prdt_shap_cd_nm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="text"></TextView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
