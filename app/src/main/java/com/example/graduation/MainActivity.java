@@ -2,6 +2,7 @@ package com.example.graduation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //메인화면 리사이클러뷰
         recyclerView = findViewById(R.id.realtimeview); //아디 연결
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
