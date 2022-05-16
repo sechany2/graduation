@@ -137,12 +137,7 @@ public class Fragmentsurvey3 extends Fragment {
                     double[] avg = new double[user.size()];
 
 
-
-
                     resultknn = new PearsonCorrelation().knn(name, user, productList, 5);  //상관계수 구하기
-
-
-
 
 
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
@@ -842,17 +837,20 @@ public class Fragmentsurvey3 extends Fragment {
         arrayListSort.clear();
         for (
                 int i = 0; list_resultknn.size() > i; i++) {
+
             for (int j = 0; arrayList.size() > j; j++) {
                 if (arrayList.get(j).getPd_code().equals(list_resultknn.get(i).getKey())) {
                     arrayListSort.add(arrayList.get(j));
-                    double a =list_resultknn.get(j).getValue();
-                    if(arrayListSort.size()>j){
-                    arrayListSort.get(j).setUs_avg( (float)a);
-                    }
+
+
+
                 }
             }
         }
-
+        for (int k =0; arrayListSort.size() > k ; k++){
+            double a = list_resultknn.get(k).getValue();
+            arrayListSort.get(k).setUs_avg((float) a);
+        }
 
     }
 }
