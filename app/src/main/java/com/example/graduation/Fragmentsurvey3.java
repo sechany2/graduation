@@ -845,6 +845,10 @@ public class Fragmentsurvey3 extends Fragment {
             for (int j = 0; arrayList.size() > j; j++) {
                 if (arrayList.get(j).getPd_code().equals(list_resultknn.get(i).getKey())) {
                     arrayListSort.add(arrayList.get(j));
+                    double a =list_resultknn.get(j).getValue();
+                    if(arrayListSort.size()>j){
+                    arrayListSort.get(j).setUs_avg( (float)a);
+                    }
                 }
             }
         }
