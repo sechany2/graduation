@@ -24,6 +24,45 @@ public class Product {
     private String cap_rawmtrl_nm; //캡슐 원재료
     private String child_crtfc_yn; // 어린이기호식품품질인증여부
 
+
+    //함럄정보
+    private String pd_protein;  //단백질
+    private String pd_carbohydrate;//탄수화물
+    private String pd_province; //지방
+    private String pd_salt; //나트륨
+
+    public String getPd_protein() {
+        return pd_protein;
+    }
+
+    public void setPd_protein(String pd_protein) {
+        this.pd_protein = pd_protein;
+    }
+
+    public String getPd_province() {
+        return pd_province;
+    }
+
+    public void setPd_province(String pd_province) {
+        this.pd_province = pd_province;
+    }
+
+    public String getPd_carbohydrate() {
+        return pd_carbohydrate;
+    }
+
+    public void setPd_carbohydrate(String pd_carbohydrate) {
+        this.pd_carbohydrate = pd_carbohydrate;
+    }
+
+    public String getPd_salt() {
+        return pd_salt;
+    }
+
+    public void setPd_salt(String pd_salt) {
+        this.pd_salt = pd_salt;
+    }
+
     public Product(){}
 
     public Float getPd_avg() {

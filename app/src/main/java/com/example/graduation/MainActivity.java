@@ -2,6 +2,7 @@ package com.example.graduation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -190,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //메인화면 리사이클러뷰
         recyclerView = findViewById(R.id.realtimeview); //아디 연결
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
@@ -237,7 +239,13 @@ public class MainActivity extends AppCompatActivity {
                         pdinfo.add(arrayList.get(pos).getCap_rawmtrl_nm());      // 7번 캡슐 원료
                         pdinfo.add(arrayList.get(pos).getIftkn_atnt_matr_cn());  // 8번 주의사항
                         pdinfo.add(arrayList.get(pos).getPrdt_shap_cd_nm());     // 9번 제품형태
-                        pdinfo.add(arrayList.get(pos).getPd_code());     // 10번 제품코드
+                        pdinfo.add(arrayList.get(pos).getPd_code());             // 10번 제품코드
+                        pdinfo.add(arrayList.get(pos).getPd_protein());          //11번 단백질
+                        pdinfo.add(arrayList.get(pos).getPd_carbohydrate());     //12번 탄수화물
+                        pdinfo.add(arrayList.get(pos).getPd_province());         //13번 지방
+                        pdinfo.add(arrayList.get(pos).getPd_salt());             //14번 나트륨
+
+
 
                         info.putStringArrayList("product",pdinfo);
                         FragmentProduct fragmentProduct = new FragmentProduct();
