@@ -6,23 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
      android:id="@+id/fragmentmylayout">
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:id="@+id/linearLayout12"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-
             android:orientation="horizontal"
-
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <TextView
                 android:id="@+id/tv_backbtn"
                 android:layout_width="50dp"
@@ -30,16 +24,13 @@
                 android:gravity="center"
                 android:text="&lt;"
                 android:textSize="30dp"></TextView>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="45dp"
                 android:gravity="center"
                 android:text="마이페이지">
-
             </TextView>
-
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -53,16 +44,15 @@
             android:id="@+id/iv_userprofile"
             android:layout_width="130dp"
             android:layout_height="130dp"
-
             android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line"
-            tools:src="@drawable/ic_baseline_person_24"
+            android:src="@drawable/ic_baseline_person_24"
             app:tint="@color/black"/>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/my_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -71,20 +61,17 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_userprofile" />
-
         <View
             android:id="@+id/view"
             android:layout_width="380dp"
             android:layout_height="1dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-
-
             android:layout_marginTop="70dp"
             android:background="#D8D8D8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"></View>
+            app:layout_constraintTop_toBottomOf="@+id/my_name"></View>
 
         <TextView
             android:id="@+id/textView5"
@@ -104,19 +91,16 @@
             android:layout_height="wrap_content"
             android:text="내가 쓴 리뷰"
             android:layout_marginTop="20dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
+            app:layout_constraintTop_toBottomOf="@+id/my_rvcount" />
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/my_rvcount"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:text="0"
             android:textSize="30dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />

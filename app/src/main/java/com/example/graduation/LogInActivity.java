@@ -133,8 +133,11 @@ public class LogInActivity extends AppCompatActivity {
         if(requestCode == REQ_SIGN_GOOGLE){
             Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(data);
             if(task.isSuccessful()){
+
                 GoogleSignInAccount account=task.getResult();//구글 정보 오브젝트 생성
                 resultLogin(account);                                           //결과값 출력 메소드
+            }else{
+                Log.e(task.getException().toString(),"exception");
             }
         }
     }
@@ -146,6 +149,7 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){    //로그인 성공
+                            //Log.e("확인","로그확인");
                             currentUser = mAuth.getCurrentUser();
                             UserAccount userAccount = new UserAccount();
                             userAccount.setName(account.getDisplayName());
@@ -157,6 +161,8 @@ public class LogInActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
 
+                        }else{
+                            Log.e(task.getException().toString(),task.getResult().toString());
                         }
                     }
                 });

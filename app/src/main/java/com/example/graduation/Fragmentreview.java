@@ -222,8 +222,6 @@ public class Fragmentreview extends Fragment {
             }
         });
 
-        arrayList2 = new ArrayList<>();
-        //List arlist = new ArrayList();
 
         reviewReview = view.findViewById(R.id.reviewReview);
         //리뷰 쓴거 불러오기
