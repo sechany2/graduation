@@ -237,7 +237,7 @@ public class Fragmentreview extends Fragment {
                     //Review_write review_write = new Review_write();
                     if (dataSnapshot.child(pd_code).getValue(String.class) != null) {
                         String rvwrite = dataSnapshot.child(pd_code).getValue(String.class);
-                        Log.e("리뷰쓴거", rvwrite);
+                        //Log.e("리뷰쓴거", rvwrite);
                         //review.setReview(rvwrite);
                         String idx = dataSnapshot.getKey();
                         for (int i=0; i<arrayList.size();i++){
