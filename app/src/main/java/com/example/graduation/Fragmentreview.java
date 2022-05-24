@@ -25,9 +25,12 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class Fragmentreview extends Fragment {
     public static Fragmentreview newInstance() {
@@ -47,6 +50,8 @@ public class Fragmentreview extends Fragment {
     private ArrayList<Review> arrayList;
     private ArrayList<Review_write> arrayList2;
     private FirebaseAuth mAuth;
+    private boolean sortflag = true;
+
 
     @Nullable
     @Override
@@ -56,12 +61,12 @@ public class Fragmentreview extends Fragment {
         String rvinfo = getArguments().getString("pd_code");
         pd_code = rvinfo; //pd_code 받기.
         //Log.e("pd_code",pd_code);
-
+        TextView tv_sort = view.findViewById(R.id.tv_sort);
         recyclerView = view.findViewById(R.id.review_recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
+        arrayList = new ArrayList<Review>();
 
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -70,6 +75,22 @@ public class Fragmentreview extends Fragment {
         reviewRate = view.findViewById(R.id.reviewRate);
         reviewUserid = view.findViewById(R.id.reviewUserid);
 
+        tv_sort.setOnClickListener(new View.OnClickListener() {   //정렬버튼
+            @Override
+            public void onClick(View view) {
+                if (sortflag){
+                tv_sort.setText("⇅ 최고별점순");
+                    Collections.sort(arrayList, Collections.reverseOrder());
+                    adapter.notifyDataSetChanged();
+                sortflag = false;}
+                else{
+                    tv_sort.setText("⇅ 최신등록순");
+                    Collections.sort(arrayList, new Review());
+                    sortflag = true;
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
 
         ValueEventListener uavalueEventListener = new ValueEventListener() {
             @Override
@@ -97,13 +118,17 @@ public class Fragmentreview extends Fragment {
                     //Review review = snapshot.child(pd_code).getValue(Review.class);
                     //Log.e(snapshot.child(pd_code).getValue(Review.class),"점수");
                     //Log.e("review",review.getUserID());
-                    if (snapshot.child(pd_code).getValue(Double.class) != null){
-                        String score = snapshot.child(pd_code).getValue(Double.class).toString();
-                        //Log.e("스코어",score);
+                    if (snapshot.child(pd_code).child("rate").getValue(Double.class) != null){
+                        String score = snapshot.child(pd_code).child("rate").getValue(Double.class).toString();
+                        score=score.replace(".0","");
+                        String date = snapshot.child(pd_code).child("date").getValue(String.class);
+                        date = date.substring(0,10);
                         String userid = snapshot.getKey();
                         Review review = new Review(); // 만들어뒀던 Review 객체에 데이터를 담는다.
                         review.setUserid(userid);
                         review.setScore(score);
+                        review.setDate(date);
+
                         //review.getScore() = snapshot.child(pd_code).getValue(Double.class);
                         //Log.e("아이디",userid);
                         //reviewRate.setText(score);
@@ -114,15 +139,15 @@ public class Fragmentreview extends Fragment {
                     //arrayList.add(review);// 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
 
                 }
-
+                Collections.sort(arrayList, new Review());
                 adapter.notifyDataSetChanged();
 
                 // 클래스 모델이 필요?
                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                     //하위키들의 value를 어떻게 가져오느냐???
-                    if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
-                        String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
+                    if (fileSnapshot.child(pd_code).child("rate").getValue(Double.class) != null){
+                        String aaa = fileSnapshot.child(pd_code).child("rate").getValue(Double.class).toString();
                         //Log.e("value is ", aaa);
                         pdscore.add(aaa);
                     }
@@ -242,7 +267,7 @@ public class Fragmentreview extends Fragment {
                             //Log.e("유저아이디",userid);
                             //Log.e("리스트아이디",arrayList.get(i).getUserid());
                             if(userid.equals(arrayList.get(i).getUserid())){
-                                Log.e("가나다라마바사","123");
+                              //  Log.e("가나다라마바사","123");
                                 arrayList.get(i).setReview(rvwrite);
                             }
                         }

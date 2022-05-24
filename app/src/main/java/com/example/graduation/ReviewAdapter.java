@@ -40,6 +40,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         holder.reviewUserid.setText(arrayList.get(position).getUserid());
         holder.reviewRate.setText(String.valueOf(arrayList.get(position).getScore()));
         holder.reviewReview.setText(arrayList.get(position).getReview());
+        holder.reviewDate.setText(arrayList.get(position).getDate());
     }
 
     @Override
@@ -51,12 +52,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         TextView reviewUserid;
         TextView reviewRate;
         TextView reviewReview;
+        TextView reviewDate;
 
         public ReviewViewHolder(@NonNull View itemView) {
             super(itemView);
             this.reviewUserid = itemView.findViewById(R.id.reviewUserid);
             this.reviewRate = itemView.findViewById(R.id.reviewRate);
             this.reviewReview = itemView.findViewById(R.id.reviewReview);
+            this.reviewDate = itemView.findViewById(R.id.tv_date);
         }
     }
 }

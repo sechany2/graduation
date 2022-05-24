@@ -1,12 +1,26 @@
 package com.example.graduation;
 
-public class Review {
+import java.util.Comparator;
+
+public class Review implements Comparable<Review>, Comparator<Review>{
     private String score;
     private String pd_code;
     private String userid;
     private String review;
+    private String date;
 
-    public Review(){}
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+
+
+    public Review() {
+    }
 
     public String getScore() {
         return score;
@@ -39,4 +53,22 @@ public class Review {
     public void setReview(String review) {
         this.review = review;
     }
+
+
+
+    @Override
+    public int compareTo(Review review) {
+        if (Double.parseDouble(review.score) <Double.parseDouble(score)) {
+            return 1;
+        } else if (Double.parseDouble(review.score) > Double.parseDouble(score)) {
+            return -1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int compare(Review review, Review t1) {
+        return t1.date.compareTo( review.date);
+    }
 }
+
