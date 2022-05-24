@@ -86,9 +86,9 @@ public class FragmentProduct extends Fragment {
                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                     //하위키들의 value를 어떻게 가져오느냐???
-                    if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
-                        String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
-                        //Log.e("value is ", aaa);
+                    if (fileSnapshot.child(pd_code).child("rate").getValue(Double.class) != null){
+                        String aaa = fileSnapshot.child(pd_code).child("rate").getValue(Double.class).toString();
+                        //   Log.e("value is ", aaa);
                         pdscore.add(aaa);
                     }
                 }

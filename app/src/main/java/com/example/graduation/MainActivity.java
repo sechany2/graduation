@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tv_help = (TextView) findViewById(R.id.tv_help);
         tv_help.setOnClickListener(new View.OnClickListener() {
             @Override
-           public void onClick(View view) {
+            public void onClick(View view) {
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
 
@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){ // 반복문으로 데이터 List를 추출해냄
                     Product product = snapshot.getValue(Product.class);// 만들어뒀던 Product 객체에 데이터를 담는다.
 
-                            int a= 0;
+                    int a= 0;
 
                     arrayList.add(product); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
@@ -277,21 +277,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+    DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
+        @Override
+        public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
-            }
-            //메뉴오픈시
-            @Override
-            public void onDrawerOpened(@NonNull View drawerView) {  }
-            //메뉴닫았을때
-            @Override
-            public void onDrawerClosed(@NonNull View drawerView) {  }
-            @Override
-            public void onDrawerStateChanged(int newState) { }
-        };
+        }
+        //메뉴오픈시
+        @Override
+        public void onDrawerOpened(@NonNull View drawerView) {  }
+        //메뉴닫았을때
+        @Override
+        public void onDrawerClosed(@NonNull View drawerView) {  }
+        @Override
+        public void onDrawerStateChanged(int newState) { }
+    };
 
 
-    }
+}
 

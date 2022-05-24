@@ -7,7 +7,6 @@ public class Review implements Comparable<Review>, Comparator<Review>{
     private String pd_code;
     private String userid;
     private String review;
-    private String pd_name;
     private String date;
 
     public String getDate() {
@@ -54,15 +53,6 @@ public class Review implements Comparable<Review>, Comparator<Review>{
     public void setReview(String review) {
         this.review = review;
     }
-
-    public String getPd_name() {
-        return pd_name;
-    }
-
-    public void setPd_name(String pd_name) {
-        this.pd_name = pd_name;
-    }
-
 
 
 
