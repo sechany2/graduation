@@ -168,7 +168,7 @@ public class FragmentInfo extends Fragment {
         }
         if (str.contains("g")) {
             str = str.replace("g", "");
-            Log.e(str, str);
+         //   Log.e(str, str);
             result = Double.parseDouble(str);
         }
         return result;
@@ -214,7 +214,7 @@ public class FragmentInfo extends Fragment {
             if (arrayList.get(a + 1) != null) {
                 int amonut = 1;
                 amonut = amonut + countChar(arrayList.get(a + 1), ',');
-                Log.e("amonut", String.valueOf(amonut));
+             //   Log.e("amonut", String.valueOf(amonut));
                 view.setText(String.valueOf(amonut));
             } else {
                 view.setText("0");

@@ -22,8 +22,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class Fragmentreview_write extends Fragment {
     public static Fragmentreview_write newInstance() {
@@ -33,7 +34,8 @@ public class Fragmentreview_write extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     double rate;
-    public String pd_code,name;
+
+    public String pd_code,name, getTime;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -52,6 +54,11 @@ public class Fragmentreview_write extends Fragment {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference();
         mAuth = FirebaseAuth.getInstance();
+
+        long longNow = System.currentTimeMillis();
+        Date date = new Date(longNow);
+        SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        getTime = now.format(date);
 
 
         ValueEventListener uavalueEventListener = new ValueEventListener() {
@@ -104,6 +111,7 @@ public class Fragmentreview_write extends Fragment {
 
         //Log.e("리뷰라이트",review);
         databaseReference.child("Reviewwrite").child(name).child(pd_code).setValue(review);
-        databaseReference.child("Review").child(name).child(pd_code).setValue(rate);
+        databaseReference.child("Review").child(name).child(pd_code).child("rate").setValue(rate);
+        databaseReference.child("Review").child(name).child(pd_code).child("date").setValue(getTime);
     }
 }
