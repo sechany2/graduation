@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 public class Fragmentreview_write extends Fragment {
@@ -55,9 +57,11 @@ public class Fragmentreview_write extends Fragment {
         databaseReference = database.getReference();
         mAuth = FirebaseAuth.getInstance();
 
-        long longNow = System.currentTimeMillis();
-        Date date = new Date(longNow);
-        SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        TimeZone tz;                                        // 객체 생성
+        tz = TimeZone.getTimeZone("Asia/Seoul");  // TimeZone에 표준시 설정
+        Date date = new Date();
+        SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd kk:mm", Locale.KOREAN);
+        now.setTimeZone(tz);
         getTime = now.format(date);
 
 
