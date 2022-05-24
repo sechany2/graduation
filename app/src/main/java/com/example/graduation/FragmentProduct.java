@@ -30,7 +30,7 @@ public class FragmentProduct extends Fragment {
     private TextView tv_pdname;
     private TextView tv_pdbrandname;
     private ImageView iv_profile;
-    private String pd_code;
+    private String pd_code,pd_name;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     double avg = 0;
@@ -65,6 +65,15 @@ public class FragmentProduct extends Fragment {
             Log.e("번들 이동 실패","오류");
         }
 
+        pd_name = new String();
+        //productinfo = getArguments().getStringArrayList("product");
+        if (getArguments() != null) {
+            pd_name = productinfo.get(0);
+        }
+        else{
+            Log.e("번들 이동 실패","오류");
+        }
+
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Review");
         List pdscore = new ArrayList<>();
@@ -79,12 +88,12 @@ public class FragmentProduct extends Fragment {
                     //하위키들의 value를 어떻게 가져오느냐???
                     if (fileSnapshot.child(pd_code).getValue(Double.class) != null){
                         String aaa = fileSnapshot.child(pd_code).getValue(Double.class).toString();
-                        Log.e("value is ", aaa);
+                        //Log.e("value is ", aaa);
                         pdscore.add(aaa);
                     }
                 }
-                Log.e("pdscore리스트",pdscore.toString());
-                Log.e("pdscore리스트",pdscore.get(0).toString());
+                //Log.e("pdscore리스트",pdscore.toString());
+                //Log.e("pdscore리스트",pdscore.get(0).toString());
 
                 String qwe = null;
                 double sum = 0;
@@ -127,6 +136,7 @@ public class FragmentProduct extends Fragment {
             public void onClick(View view) {
                 Bundle rvinfo = new Bundle();
                 rvinfo.putString("pd_code",pd_code);
+                rvinfo.putString("pd_name",pd_name);
                 Fragmentreview fragmentreview = new Fragmentreview();
                 fragmentreview.setArguments(rvinfo);
                 ((MainActivity)getActivity()).replaceframeProduct(fragmentreview); //메인 엑티비티에 프래그먼트 이동 메소드 호출

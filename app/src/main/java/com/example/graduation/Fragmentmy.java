@@ -87,6 +87,15 @@ public class Fragmentmy extends Fragment {
             }
         };
 
+        TextView my_write_review = view.findViewById(R.id.my_write_review);
+        my_write_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragmentmyreview fragmentmyreview = new Fragmentmyreview();
+                ((MainActivity)getActivity()).replaceFragment(fragmentmyreview); //메인 엑티비티에 프래그먼트 이동 메소드 호출
+            }
+        });
+
 
 
         databaseReference.child("graduation").child("UserAccount").addValueEventListener(uavalueEventListener);

@@ -19,7 +19,7 @@
             android:textSize="16dp"
             android:text="ID"></TextView>
         <TextView
-            android:id="@+id/reviewUserid"
+            android:id="@+id/myreviewUserid"
             android:textSize="16dp"
             android:layout_width="116dp"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="16dp"
             android:text="별점"></TextView>
         <TextView
-            android:id="@+id/reviewRate"
+            android:id="@+id/myreviewRate"
             android:layout_width="38dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -51,13 +51,13 @@
             android:text="/5"></TextView>
     </LinearLayout>
     <TextView
-        android:id="@+id/reviewProduct"
+        android:id="@+id/myreviewProduct"
         android:text="제품이름"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </TextView>
     <TextView
-        android:id="@+id/reviewReview"
+        android:id="@+id/myreviewReview"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"

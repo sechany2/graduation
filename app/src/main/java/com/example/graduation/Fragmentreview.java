@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,8 +36,8 @@ public class Fragmentreview extends Fragment {
     }
     public Fragmentreview(){ }
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference,dbrreviewwrite;
-    public String pd_code,name,review_write, userid;
+    private DatabaseReference databaseReference,dbrreviewwrite,dbrfproduct;
+    public String pd_code,name,review_write, userid,pd_name;
     public RatingBar ratingbar;
     public TextView ratingbar_tv, pb_tv5, pb_tv4, pb_tv3, pb_tv2, pb_tv1, reviewReview, reviewUserid, reviewRate;
     public ProgressBar pb_5, pb_4, pb_3, pb_2, pb_1;
@@ -47,6 +48,7 @@ public class Fragmentreview extends Fragment {
     private ArrayList<Review> arrayList;
     private ArrayList<Review_write> arrayList2;
     private FirebaseAuth mAuth;
+    private ArrayList<String> productinfo;
 
     @Nullable
     @Override
@@ -54,7 +56,10 @@ public class Fragmentreview extends Fragment {
         View view = inflater.inflate(R.layout.fragment_review, container, false);
 
         String rvinfo = getArguments().getString("pd_code");
+        String rv_pdname = getArguments().getString("pd_name");
         pd_code = rvinfo; //pd_code 받기.
+        pd_name = rv_pdname;
+
         //Log.e("pd_code",pd_code);
 
         recyclerView = view.findViewById(R.id.review_recyclerView);
@@ -66,6 +71,7 @@ public class Fragmentreview extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Review");
+        dbrfproduct = database.getReference("Product");
         List pdscore = new ArrayList<>();
         reviewRate = view.findViewById(R.id.reviewRate);
         reviewUserid = view.findViewById(R.id.reviewUserid);
@@ -108,6 +114,7 @@ public class Fragmentreview extends Fragment {
                         //Log.e("아이디",userid);
                         //reviewRate.setText(score);
                         //reviewUserid.setText(userid);
+                        //review.setPd_name(pd_name);
                         arrayList.add(review);
                     }
                     //Review review = snapshot.getValue(Review.class);
@@ -224,6 +231,8 @@ public class Fragmentreview extends Fragment {
 
 
         reviewReview = view.findViewById(R.id.reviewReview);
+        //TextView reviewProduct = view.findViewById(R.id.reviewProduct);
+        //reviewProduct.setText(pd_name);
         //리뷰 쓴거 불러오기
         dbrreviewwrite = database.getReference("Reviewwrite");
         dbrreviewwrite.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -237,18 +246,20 @@ public class Fragmentreview extends Fragment {
                         String rvwrite = dataSnapshot.child(pd_code).getValue(String.class);
                         //Log.e("리뷰쓴거", rvwrite);
                         //review.setReview(rvwrite);
-                        String idx = dataSnapshot.getKey();
+                        //String idx = dataSnapshot.getKey();
                         for (int i=0; i<arrayList.size();i++){
                             //Log.e("유저아이디",userid);
                             //Log.e("리스트아이디",arrayList.get(i).getUserid());
                             if(userid.equals(arrayList.get(i).getUserid())){
-                                Log.e("가나다라마바사","123");
+                                //Log.e("가나다라마바사","123");
+
                                 arrayList.get(i).setReview(rvwrite);
                             }
                         }
                     }
                     //Log.e("리뷰글",dataSnapshot.child(pd_code).getValue(String.class));
                 }
+
                 adapter.notifyDataSetChanged();
             }
 

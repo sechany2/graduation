@@ -1,13 +1,21 @@
 package com.example.graduation;
 
-public class Review {
+public class MyReview {
     private String score;
     private String pd_code;
-    private String userid;
     private String review;
+    private String userid;
     private String pd_name;
 
-    public Review(){}
+    public MyReview(){}
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
     public String getScore() {
         return score;
@@ -23,14 +31,6 @@ public class Review {
 
     public void setPd_code(String pd_code) {
         this.pd_code = pd_code;
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
     }
 
     public String getReview() {
