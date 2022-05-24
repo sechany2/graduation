@@ -142,13 +142,11 @@ public class Fragmentmyreview extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
 
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-
                 adapter.notifyDataSetChanged();
             }
 
