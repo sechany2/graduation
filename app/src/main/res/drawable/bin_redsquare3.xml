@@ -3,8 +3,11 @@
     <item android:state_enabled="true">
         <shape>
             <solid android:color="#BFF14F4F"/>
+            <stroke
+                android:width="0dp"
+                android:color="#111" /> //선색
 
-        <corners android:radius="20dp">
+        <corners android:radius="0dp">
 
         </corners>
         </shape>

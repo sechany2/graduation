@@ -107,8 +107,13 @@ public class Fragmentsurvey3 extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot dsnapshot) { //파이어베이스에서 리뷰정보 저장
                     user = new HashMap<String, HashMap>();
                     for (DataSnapshot snapshot3 : dsnapshot.getChildren()) {
-                        userReview = null;
-                        userReview = paramMap(snapshot3.getValue());
+                        userReview = new HashMap<String,Double>();
+                        for(DataSnapshot snapshot4 : snapshot3.getChildren()) {
+                            String pdcode = snapshot4.getKey();
+                            double rate = snapshot4.child("rate").getValue(Double.class);
+                            userReview.put(pdcode, rate);
+
+                        }
                         if (userReview != null) {
                             user.put(snapshot3.getKey(), userReview);
                         }
@@ -167,8 +172,8 @@ public class Fragmentsurvey3 extends Fragment {
                                 for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                                     //하위키들의 value를 어떻게 가져오느냐???
-                                    if (fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class) != null) {
-                                        String aaa = fileSnapshot.child(arrayListSort.get(i).getPd_code()).getValue(Double.class).toString();
+                                    if (fileSnapshot.child(arrayListSort.get(i).getPd_code()).child("rate").getValue(Double.class) != null) {
+                                        String aaa = fileSnapshot.child(arrayListSort.get(i).getPd_code()).child("rate").getValue(Double.class).toString();
                                         pdscore.add(aaa);
                                     }
 

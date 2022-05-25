@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/TextView2"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:gravity="center"
         android:text="관심있는 분야"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -26,29 +26,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:drawableLeft="@drawable/ic_baseline_directions_walk_24"
+        android:background="@drawable/bin_red2"
         android:id="@+id/sc_btn_health"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
         android:text="건강"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextView2" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:drawableLeft="@drawable/ic_baseline_directions_run_24"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bin_red2"
         android:id="@+id/sv_btn_diet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
         android:text="다이어트"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sc_btn_health" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:drawableLeft="@drawable/ic_baseline_fitness_center_24"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bin_red2"
         android:id="@+id/sv_btn_ex"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
         android:text="운동능력 향상"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sv_btn_diet" />

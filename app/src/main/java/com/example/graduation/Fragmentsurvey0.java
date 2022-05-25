@@ -117,11 +117,11 @@ public class Fragmentsurvey0 extends Fragment {
             @Override
             public void onClick(View view) {
                 if(check_baby==0 ) {
-                    btn_baby.setBackgroundColor(0xFFBB86FC); //puple 200
+                    btn_baby.setBackgroundColor(0xBFF14F4F); //puple 200
                     bundle.putString("baby","유아");
                     check_baby=1;
                 }
-                else{btn_baby.setBackgroundColor(0xFF6200EE); //puple 500
+                else{btn_baby.setBackgroundColor(0xDDF32424); //puple 500
                     bundle.putString("baby","0");
                     check_baby= 0;
 
@@ -139,11 +139,11 @@ public class Fragmentsurvey0 extends Fragment {
 
                 if(check_pregnant == 0 ) {
 
-                    btn_pregnant.setBackgroundColor(0xFFBB86FC); //puple 200
+                    btn_pregnant.setBackgroundColor(0xBFF14F4F); //puple 200
                     bundle.putString("pregnant","임산부");
                     check_pregnant = 1;
                 }
-                else{btn_pregnant.setBackgroundColor(0xFF6200EE); //puple 500
+                else{btn_pregnant.setBackgroundColor(0xDDF32424); //puple 500
                     bundle.putString("pregnant","0");
                     check_pregnant = 0 ;
                 }

@@ -69,21 +69,21 @@ public class PearsonCorrelation {
 
 
 
-                    for (j = j; j < list_entries.size(); j++) {
-                        if (!(list_entries.get(j).getKey().equals(name))) {
-                            map2 = user.get(list_entries.get(j).getKey());
-                            if (map2.get(key) != null) {
-                                if(i<number){
-                                    r[i] = map2.get(key);  //대조자 에 제품 점수
-                                    p[i] = list_entries.get(j).getValue();   //대조자에 상관계수
-                                    mean[i] = mean(map2);                    //대조자에 평균 점수
-                                    i++;
-                                }
-
+                for (j = j; j < list_entries.size(); j++) {
+                    if (!(list_entries.get(j).getKey().equals(name))) {
+                        map2 = user.get(list_entries.get(j).getKey());
+                        if (map2.get(key) != null) {
+                            if(i<number){
+                                r[i] = map2.get(key);  //대조자 에 제품 점수
+                                p[i] = list_entries.get(j).getValue();   //대조자에 상관계수
+                                mean[i] = mean(map2);                    //대조자에 평균 점수
+                                i++;
                             }
-                        }
 
+                        }
                     }
+
+                }
 
 
 

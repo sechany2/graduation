@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name = "loginbtn_style">
-        <item name = "android:background">#0095F8</item>
+        <item name = "android:background">#F14F4F</item>
     </style>
 </resources>

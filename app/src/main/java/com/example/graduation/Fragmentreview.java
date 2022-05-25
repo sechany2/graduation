@@ -163,7 +163,7 @@ public class Fragmentreview extends Fragment {
                     sum = sum + Double.parseDouble(qwe);
                     avg = sum / pdscore.size();
                 }
-                System.out.println("평균은 : "+avg);
+                //System.out.println("평균은 : "+avg);
 
                 ratingbar = view.findViewById(R.id.rv_ratingBar);
                 ratingbar.setRating((float) avg);
