@@ -86,7 +86,7 @@
 
                                 //setValue : database에 insert(삽입) 행위
                                 mRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
-
+                                mRef.child("UserAccount").child(firebaseUser.getUid()).child("email").setValue(strEmail);
                                 Toast.makeText(RegisterActivity.this, "회원가입에 성공했습니다",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LogInActivity.class);
                                 startActivity(intent);

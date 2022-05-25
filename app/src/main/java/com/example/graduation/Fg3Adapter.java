@@ -30,9 +30,6 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
     public Fg3ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fg3list_item,parent,false);
         Fg3ViewHolder holder = new Fg3ViewHolder(view);
-
-
-
         return holder;
     }
 

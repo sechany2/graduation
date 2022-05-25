@@ -14,7 +14,8 @@
         android:gravity="center"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/WHITE"/>
     <EditText
         android:id="@+id/et_email"
         android:layout_width="wrap_content"
@@ -57,11 +58,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <Button
+
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="로그인"
+
         app:layout_constraintEnd_toEndOf="@+id/et_pwd"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/et_pwd"

@@ -80,6 +80,11 @@ public class Fragmentmyreview extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){ // 반복문으로 데이터 List를 추출해냄
+                    if (name.equals("admin")){
+                        if(getArguments()!=null) {
+                            name = getArguments().getString("name");
+                        }
+                    }
                     if (snapshot.getKey().equals(name)){
                         for(DataSnapshot snapshot2 : snapshot.getChildren()){
                             pd_code = snapshot2.getKey();
@@ -92,6 +97,7 @@ public class Fragmentmyreview extends Fragment {
                             arrayList.add(review);
                         }
                     }
+
                 }
                 abrfpd = database.getReference("Product"); // DB테이블 연결
                 abrfpd.addListenerForSingleValueEvent(new ValueEventListener() {

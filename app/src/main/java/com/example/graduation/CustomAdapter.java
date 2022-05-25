@@ -28,9 +28,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public interface  OnItemClickListener{
         void  onItemClick(View v,int pos);
     }
-    private DietAdapter.OnItemClickListener mListener = null; //리스너 초기화
+    private CustomAdapter.OnItemClickListener mListener = null; //리스너 초기화
 
-    public  void setOnItemClickListener(DietAdapter.OnItemClickListener listener){  //리스너 setter
+    public  void setOnItemClickListener(CustomAdapter.OnItemClickListener listener){  //리스너 setter
         this.mListener = listener;
     }
 

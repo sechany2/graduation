@@ -24,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -109,15 +111,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //하단바 마이버튼
-        Button btn_my = (Button)findViewById(R.id.btn_my);
-        btn_my.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                frame.removeAllViews();
-                replaceFragment(Fragmentmy.newInstance());
-            }
-        });
+        FirebaseAuth mAuth;
+        mAuth = FirebaseAuth.getInstance();
+        String name= mAuth.getCurrentUser().getEmail();
+        Log.e("name",name);
+        Button btn_my = (Button) findViewById(R.id.btn_my);
+        if(name.equals("admin@a.com")){
+            btn_my.setText("회원 관리");
+            btn_my.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    frame.removeAllViews();
+                    replaceFragment(Fragmentadmin.newInstance());
+                }
+            });
+        }
+        else {
 
+            btn_my.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    frame.removeAllViews();
+                    replaceFragment(Fragmentmy.newInstance());
+                }
+            });
+        }
         //하단바 설문버튼
         Button btn_survey = (Button)findViewById(R.id.btn_survey);
         btn_survey.setOnClickListener(new View.OnClickListener() {
@@ -209,9 +227,6 @@ public class MainActivity extends AppCompatActivity {
                 arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){ // 반복문으로 데이터 List를 추출해냄
                     Product product = snapshot.getValue(Product.class);// 만들어뒀던 Product 객체에 데이터를 담는다.
-
-                    int a= 0;
-
                     arrayList.add(product); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
@@ -226,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new CustomAdapter(arrayList, this);
         adapter.setOnItemClickListener(
-                new DietAdapter.OnItemClickListener() {
+                new CustomAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
                         frame.removeAllViews();

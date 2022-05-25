@@ -86,7 +86,9 @@ public class LogInActivity extends AppCompatActivity {
                 //로그인 요청
                 String strEmail = mEtEmail.getText().toString();  //문자열 변수선언 및 입력받은 문자 저장
                 String strPwd = mEtPwd.getText().toString();
-
+                if(strEmail.equals("admin")){
+                    strEmail="admin@a.com";
+                }
                 mAuth.signInWithEmailAndPassword(strEmail,strPwd).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -155,9 +157,10 @@ public class LogInActivity extends AppCompatActivity {
                             userAccount.setName(account.getDisplayName());
                             userAccount.setUserToken(currentUser.getUid());    //생성된 객체에 정보 받기
                             userAccount.setEmailId(account.getEmail());
-
-
+                            userAccount.setPassword("구글 로그인");
+                            userAccount.setPhone("구글 로그인");
                             mRef.child("UserAccount").child(currentUser.getUid()).setValue(userAccount);
+                            mRef.child("UserAccount").child(currentUser.getUid()).child("email").setValue(account.getEmail());
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
 
