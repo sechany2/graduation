@@ -13,17 +13,17 @@
 
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
-            android:name=".SurveyActivity"
+            android:name=".Activity.SurveyActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
         <activity
-            android:name=".HelpActivity"
+            android:name=".Activity.HelpActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LogInActivity"
+            android:name=".Activity.LogInActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
              />

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
 
     <FrameLayout
@@ -60,8 +60,13 @@
                         app:queryBackground="@drawable/searchview_background"
                         app:searchIcon="@drawable/ic_baseline_search_24"/>
                 </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
 
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#D8D8D8">
+            </LinearLayout>
 
 
             <LinearLayout
@@ -153,10 +158,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_menu_24"
+            android:drawableTop="@drawable/ic_baseline_menu_24_off"
             android:text="메뉴"
             android:textSize="12dp"
-            android:textColor="#DDF32424"/>
+            android:textColor="#FF828282"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_survey"
@@ -164,10 +169,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_assignment_24"
+            android:drawableTop="@drawable/ic_baseline_assignment_24_off"
             android:text="설문"
             android:textSize="12dp"
-            android:textColor="#DDF32424"/>
+            android:textColor="#FF828282"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_home"
@@ -175,10 +180,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_home_24"
+            android:drawableTop="@drawable/ic_baseline_home_24_off"
             android:text="홈"
             android:textSize="12dp"
-            android:textColor="#DDF32424"/>
+            android:textColor="#FF828282"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_my"
@@ -186,10 +191,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_face_24"
+            android:drawableTop="@drawable/ic_baseline_face_24_off"
             android:text="마이"
             android:textSize="12dp"
-            android:textColor="#DDF32424"/>
+            android:textColor="#FF828282"/>
     </LinearLayout>
 
 
