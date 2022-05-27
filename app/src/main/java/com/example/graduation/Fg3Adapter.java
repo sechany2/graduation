@@ -48,6 +48,14 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         if(arrayList.get(position).getUs_avg()!=null){
             holder.fg3_usrb.setRating(arrayList.get(position).getUs_avg());
         }
+        //holder.fg3_usrb_tv.setText(arrayList.get(position).getUs_avg().toString());
+        Float a = arrayList.get(position).getUs_avg();
+        String usrbtv = String.format("%.1f",a);
+        holder.fg3_usrb_tv.setText(usrbtv+"점");
+        Float b = arrayList.get(position).getPd_avg();
+        String pdrbtv = String.format("%.1f",b);
+        holder.fg3_pdrb_tv.setText(pdrbtv+"점");
+        //holder.fg3_pdrb_tv.setText(arrayList.get(position).getPd_avg().toString());
     }
 
     @Override
@@ -60,6 +68,7 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         TextView fg3list_tv_productName;
         TextView fg3list_tv_brandName;
         RatingBar fg3_pdrb, fg3_usrb;
+        TextView fg3_usrb_tv, fg3_pdrb_tv;
         public Fg3ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.fg3_iv = itemView.findViewById(R.id.fg3_iv);
@@ -67,6 +76,8 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
             this.fg3list_tv_brandName = itemView.findViewById(R.id.fg3list_tv_pd_brandname);
             this.fg3_pdrb = itemView.findViewById(R.id.fg3_pdrb);
             this.fg3_usrb = itemView.findViewById(R.id.fg3_usrb);
+            this.fg3_usrb_tv = itemView.findViewById(R.id.fg3_usrb_tv);
+            this.fg3_pdrb_tv = itemView.findViewById(R.id.fg3_pdrb_tv);
         }
     }
 }

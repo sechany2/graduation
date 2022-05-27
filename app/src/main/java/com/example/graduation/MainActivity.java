@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         //액션바
         Toolbar toolbar =findViewById(R.id.next_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("graduation");
+        getSupportActionBar().setTitle(null);
 
 
         //분류 버튼 다이어트

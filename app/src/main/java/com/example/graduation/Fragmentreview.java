@@ -122,6 +122,7 @@ public class Fragmentreview extends Fragment {
                         String score = snapshot.child(pd_code).child("rate").getValue(Double.class).toString();
                         score=score.replace(".0","");
                         String date = snapshot.child(pd_code).child("date").getValue(String.class);
+                        date = date.substring(0,10);
                         String userid = snapshot.getKey();
                         Review review = new Review(); // 만들어뒀던 Review 객체에 데이터를 담는다.
                         review.setUserid(userid);
@@ -162,7 +163,7 @@ public class Fragmentreview extends Fragment {
                     sum = sum + Double.parseDouble(qwe);
                     avg = sum / pdscore.size();
                 }
-                System.out.println("평균은 : "+avg);
+                //System.out.println("평균은 : "+avg);
 
                 ratingbar = view.findViewById(R.id.rv_ratingBar);
                 ratingbar.setRating((float) avg);

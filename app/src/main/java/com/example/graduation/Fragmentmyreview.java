@@ -134,11 +134,13 @@ public class Fragmentmyreview extends Fragment {
                                     for(DataSnapshot snapshot3 : snapshot2.getChildren()){
                                         pd_code = snapshot3.getKey();
                                         String userid = dataSnapshot.getKey();
-                                        if (dataSnapshot.child(pd_code).getValue(String.class) != null) {
-                                            String rvwrite = dataSnapshot.child(pd_code).getValue(String.class);
-                                            for (int i=0; i<arrayList.size();i++){
-                                                if(pd_code.equals(arrayList.get(i).getPd_code())){
-                                                    arrayList.get(i).setReview(rvwrite);
+                                        if(userid.equals(name)){
+                                            if (dataSnapshot.child(pd_code).getValue(String.class) != null) {
+                                                String rvwrite = dataSnapshot.child(pd_code).getValue(String.class);
+                                                for (int i=0; i<arrayList.size();i++){
+                                                    if(pd_code.equals(arrayList.get(i).getPd_code())){
+                                                        arrayList.get(i).setReview(rvwrite);
+                                                    }
                                                 }
                                             }
                                         }

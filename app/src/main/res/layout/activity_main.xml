@@ -15,7 +15,6 @@
         android:layout_marginBottom="50dp"
         android:id="@+id/frame">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,36 +25,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
             <androidx.appcompat.widget.Toolbar
+                style="@style/loginbtn_style"
                 android:id="@+id/next_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
                 app:titleTextColor="@color/white"
                 android:gravity="center"
                 android:minHeight="?attr/actionBarSize"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="355dp"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/ic_launcher_foreground" />
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/icon64px"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                <androidx.appcompat.widget.SearchView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
+                    <androidx.appcompat.widget.SearchView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        app:queryBackground="@drawable/searchview_background"
+                        app:searchIcon="@drawable/ic_baseline_search_24"/>
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
 
 
             <LinearLayout
@@ -63,26 +69,35 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/bin_whitesquare"
                     android:id="@+id/btn_diet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="다이어트" />
+                    android:text="다이어트"
+                    />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/bin_whitesquare"
                     android:id="@+id/btn_bulkup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="벌크업" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/bin_whitesquare"
                     android:id="@+id/btn_health"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="건강" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#D8D8D8">
             </LinearLayout>
 
             <TextView
@@ -106,43 +121,75 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </androidx.recyclerview.widget.RecyclerView>
+
         </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D8D8D8">
+        </LinearLayout>
+
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="메뉴" />
+            android:background="@drawable/bin_whitesquare"
+            android:drawableTop="@drawable/ic_baseline_menu_24"
+            android:text="메뉴"
+            android:textSize="12dp"
+            android:textColor="#DDF32424"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_survey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="설문" />
+            android:background="@drawable/bin_whitesquare"
+            android:drawableTop="@drawable/ic_baseline_assignment_24"
+            android:text="설문"
+            android:textSize="12dp"
+            android:textColor="#DDF32424"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="홈" />
+            android:background="@drawable/bin_whitesquare"
+            android:drawableTop="@drawable/ic_baseline_home_24"
+            android:text="홈"
+            android:textSize="12dp"
+            android:textColor="#DDF32424"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_my"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="마이" />
+            android:background="@drawable/bin_whitesquare"
+            android:drawableTop="@drawable/ic_baseline_face_24"
+            android:text="마이"
+            android:textSize="12dp"
+            android:textColor="#DDF32424"/>
     </LinearLayout>
 
 

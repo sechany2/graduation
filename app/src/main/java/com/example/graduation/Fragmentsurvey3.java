@@ -101,6 +101,7 @@ public class Fragmentsurvey3 extends Fragment {
                     Log.e("error", error.toString());
                 }
             };
+
             ValueEventListener rvvalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dsnapshot) { //파이어베이스에서 리뷰정보 저장

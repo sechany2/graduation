@@ -33,7 +33,7 @@
             android:valueTo="200"
             android:layout_height="25dp"
             android:stepSize="1"
-
+            android:theme="@style/SeekBarColor"
             />
 
         <TextView
@@ -78,62 +78,73 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="161dp"
             android:layout_marginTop="100dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_baby"
-
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bin_redsquare2"
                 android:text="영 유아"
+                android:textColor="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_pregnant"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bin_redsquare2"
                 android:text="임산부"
+                android:textColor="#ffffff"
                 app:layout_constraintBottom_toTopOf="@+id/btn_disease"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/button1"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_allergy"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
+                android:background="@drawable/bin_redsquare2"
                 android:text="알레르기"
+                android:textColor="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_disease"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.313"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button1" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_disease"
-                android:layout_width="170dp"
+                android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bin_redsquare2"
                 android:text="특정질환"
+                android:textColor="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     </LinearLayout>
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:drawableRight="@drawable/ic_baseline_east_24"
         android:id="@+id/sv_btn_next"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
-        android:layout_gravity="bottom"
+        android:layout_gravity="bottom|right"
+        android:background="@drawable/bin_whitesquare"
         android:text="다음" />
+
 </FrameLayout>
