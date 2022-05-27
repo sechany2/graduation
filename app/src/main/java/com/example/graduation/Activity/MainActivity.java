@@ -220,22 +220,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
-                btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
-                Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24);
-                btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
-                Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
-                btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
-                Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
-                btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
-                btn_survey.setTextColor(Color.parseColor("#FF828282"));
-                btn_menu.setTextColor(Color.parseColor("#DDF32424"));
-                btn_my.setTextColor(Color.parseColor("#FF828282"));
-                btn_home.setTextColor(Color.parseColor("#FF828282"));
+
                 drawerLayout.openDrawer(drawerView);
             }
         });
-        Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
+        Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24);
         btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
         Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
         btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
@@ -376,9 +365,6 @@ public class MainActivity extends AppCompatActivity {
         //메뉴닫았을때
         @Override
         public void onDrawerClosed(@NonNull View drawerView) {
-            btn_menu.setTextColor(Color.parseColor("#FF828282"));
-            Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-            btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
 
         }
         @Override
