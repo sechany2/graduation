@@ -49,20 +49,20 @@ public class Fragmentcategory extends Fragment {
                 case "다이어트":
                     tv_category = view.findViewById(R.id.tv_category);
                     tv_category.setText("다이어트");
-                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
-                    tv_semicategory.setText("다이어트 세부 메뉴");
+                    //tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    //tv_semicategory.setText("다이어트 세부 메뉴");
                     break;
                 case "벌크업":
                     tv_category = view.findViewById(R.id.tv_category);
                     tv_category.setText("벌크업");
-                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
-                    tv_semicategory.setText("벌크업 세부 메뉴");
+                    //tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    //tv_semicategory.setText("벌크업 세부 메뉴");
                     break;
                 case "건강":
                     tv_category = view.findViewById(R.id.tv_category);
                     tv_category.setText("건강");
-                    tv_semicategory = view.findViewById(R.id.tv_semicategory);
-                    tv_semicategory.setText("건강 세부 메뉴");
+                    //tv_semicategory = view.findViewById(R.id.tv_semicategory);
+                    //tv_semicategory.setText("건강 세부 메뉴");
                     break;
             }
 

@@ -14,6 +14,7 @@
         android:gravity="center"
         android:textSize="20dp"
         android:text="리뷰작성"
+        android:fontFamily="@font/nanumsquareroundeb"
         >
     </TextView>
 
@@ -45,6 +46,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:hint="제품에 대한 여러분의 소중한 의견 부탁드립니다"
+        android:fontFamily="@font/nanumsquareroundb"
         android:inputType="textMultiLine"
         android:lines="8"
         android:maxLines="10"
@@ -61,6 +63,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_weight="5"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="취소"
             >
         </Button>
@@ -71,6 +74,7 @@
             android:gravity="center"
             android:layout_weight="5"
             android:text="확인"
+            android:fontFamily="@font/nanumsquareroundb"
             >
         </Button>
     </LinearLayout>

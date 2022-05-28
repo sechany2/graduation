@@ -20,12 +20,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-
-
                 <LinearLayout
                     android:id="@+id/imfom"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="280dp"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical"
                     tools:ignore="MissingConstraints">
@@ -44,7 +42,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="10dp"
-                        android:text="텍스트 오류"></TextView>
+                        android:text="텍스트 오류"
+                        android:textSize="12dp"
+                        android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                     <TextView
                         android:id="@+id/product_tv_pd_name"
@@ -52,7 +52,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="10dp"
-                        android:text="제품명 : 텍스트 오류"></TextView>
+                        android:text="제품명 : 텍스트 오류"
+                        android:fontFamily="@font/nanumsquareroundb"></TextView>
 
 
                 </LinearLayout>
@@ -80,37 +81,36 @@
                         android:layout_gravity="left"
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="10dp"
-                        android:text="인증 :"></TextView>
+                        android:text="인증 :"
+                        android:fontFamily="@font/nanumsquareroundb"></TextView>
 
 
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="50dp"
-                            android:layout_marginBottom="3dp"
-                            android:text="평점 : "></TextView>
+                            android:layout_marginBottom="0dp"
+                            android:text="평점 : "
+                            android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                         <RatingBar
                             android:id="@+id/pd_ratingbar"
                             style="@style/Widget.AppCompat.RatingBar.Indicator"
                             android:layout_width="wrap_content"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:max="5"
                             android:numStars="5"
-                            android:stepSize="0.5" />
+                            android:stepSize="0.5"
+                            android:progressTint="#E6FFEB3B"
+                            android:secondaryProgressTint="#00FFFFFF"/>
                     </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="50dp"
-                        android:text="가격 :"></TextView>
 
 
                 </LinearLayout>
@@ -136,7 +136,8 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:text="정보 분석"></androidx.appcompat.widget.AppCompatButton>
+                        android:text="정보 분석"
+                        android:fontFamily="@font/nanumsquareroundb"></androidx.appcompat.widget.AppCompatButton>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:background="@drawable/bin_whitesquare"
@@ -144,7 +145,8 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="1dp"
-                        android:text="리뷰" />
+                        android:text="리뷰"
+                        android:fontFamily="@font/nanumsquareroundb"/>
 
                 </LinearLayout>
 

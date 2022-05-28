@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,9 +12,9 @@
         <ImageView
             android:id="@+id/category_iv_pd_profile"
             android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:layout_height="83dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,22 +27,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="브랜드"
-                android:layout_margin="5dp"/>
+                android:fontFamily="@font/nanumsquareroundr"
+                android:layout_margin="5dp"
+                android:textSize="12dp"/>
 
             <TextView
                 android:id="@+id/category_tv_pd_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="브랜드"
+                android:text="제품 이름"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:layout_margin="5dp"/>
 
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"/>
-
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ratestarb"
+                android:layout_margin="5dp">
+            </ImageView>
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D8D8D8">
     </LinearLayout>
 
 </LinearLayout>

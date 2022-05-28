@@ -17,6 +17,7 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:textSize="16dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="ID"></TextView>
         <TextView
             android:id="@+id/myreviewUserid"
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
+            android:fontFamily="@font/nanumsquareroundeb"
             />
 
         <TextView
@@ -32,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:textSize="16dp"
             android:text="별점"></TextView>
         <TextView
@@ -41,6 +44,7 @@
             android:layout_margin="5dp"
             android:textSize="16dp"
             android:padding="5dp"
+            android:fontFamily="@font/nanumsquareroundb"
             ></TextView>
         <TextView
             android:layout_width="50dp"
@@ -48,21 +52,29 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:textSize="16dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="/5"></TextView>
     </LinearLayout>
     <TextView
         android:id="@+id/myreviewProduct"
         android:text="제품이름"
+        android:fontFamily="@font/nanumsquareroundb"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
     </TextView>
     <TextView
         android:id="@+id/myreviewReview"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_marginLeft="5dp"
         android:padding="5dp"
+        android:fontFamily="@font/nanumsquareroundeb"
         ></TextView>
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#D8D8D8">
+    </LinearLayout>
 </LinearLayout>

@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="기능성"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:textSize="20sp">
 
             </TextView>
@@ -34,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="text"></TextView>
+                android:text="text"
+                android:fontFamily="@font/nanumsquareroundb"></TextView>
 
         </LinearLayout>
 
@@ -52,7 +54,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:layout_margin="5dp"
                 android:text="섭취방법"
                 android:textSize="20sp"
@@ -65,7 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="text"></TextView>
+                android:text="text"
+                android:fontFamily="@font/nanumsquareroundb"></TextView>
 
         </LinearLayout>
 
@@ -90,6 +93,7 @@
                     android:layout_margin="5dp"
                     android:layout_marginTop="15dp"
                     android:text="함량정보"
+                    android:fontFamily="@font/nanumsquareroundeb"
                     android:textSize="20dp"
                     >
 
@@ -100,6 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="250dp"
                     android:text="성인 기준"
+                    android:fontFamily="@font/nanumsquareroundeb"
                     android:textSize="10dp">
 
                 </TextView>
@@ -114,7 +119,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="15dp"
-                    android:text="단백질"></TextView>
+                    android:text="단백질"
+                    android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                 <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
@@ -136,12 +142,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 g"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_protein"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 %"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_RIProtein">
 
                     </TextView>
@@ -165,7 +173,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="15dp"
-                    android:text="탄수화물"></TextView>
+                    android:text="탄수화물"
+                    android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                 <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
@@ -187,12 +196,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 g"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_carbohydrate"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 %"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_RICarbohydrate">
 
                     </TextView>
@@ -216,7 +227,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="15dp"
-                    android:text="지방"></TextView>
+                    android:text="지방"
+                    android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                 <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
@@ -238,6 +250,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 g"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_fat"></TextView>
 
 
@@ -245,6 +258,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 %"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_RIFat">
 
                     </TextView>
@@ -268,7 +282,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="15dp"
-                    android:text="나트륨"></TextView>
+                    android:text="나트륨"
+                    android:fontFamily="@font/nanumsquareroundb"></TextView>
 
                 <ProgressBar
                     style="?android:attr/progressBarStyleHorizontal"
@@ -290,12 +305,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 g"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_salt"></TextView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0 %"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:id="@+id/tv_RISalt">
 
                     </TextView>
@@ -331,6 +348,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/white"
                 android:text="원료정보"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:textSize="20dp"
                 tools:layout_editor_absoluteX="19dp">
 
@@ -345,15 +363,17 @@
                 >
 
                 <LinearLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_gravity="center"
                         android:text="원료&#10;구성"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:textSize="20dp"></TextView>.0
 
                     <LinearLayout
@@ -387,6 +407,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="0"
+                                    android:fontFamily="@font/nanumsquareroundeb"
                                     android:textColor="@color/white"
                                     android:textSize="25dp"></TextView>
                             </FrameLayout>
@@ -395,6 +416,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="기능성 원료"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -424,6 +446,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="0"
+                                    android:fontFamily="@font/nanumsquareroundeb"
                                     android:textSize="25dp"></TextView>
                             </FrameLayout>
 
@@ -432,6 +455,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="기타 원료"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"
 
                                 ></TextView>
@@ -462,6 +486,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:text="0"
+                                    android:fontFamily="@font/nanumsquareroundeb"
                                     android:textSize="25dp"></TextView>
                             </FrameLayout>
 
@@ -470,6 +495,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="캡슐 원료"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"
 
                                 ></TextView>
@@ -489,8 +515,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_gravity="center"
                         android:text="주의&#10;사항"
+                        android:fontFamily="@font/nanumsquareroundb"
                         android:textSize="20dp"></TextView>
 
                     <LinearLayout
@@ -525,6 +554,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="특정질환"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -556,6 +586,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="알레르기"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -587,6 +618,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="어린이"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -618,6 +650,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="임신,수유시"
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -648,7 +681,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="섭취시"
-
+                                android:fontFamily="@font/nanumsquareroundb"
                                 android:textSize="12dp"></TextView>
 
                         </LinearLayout>
@@ -677,8 +710,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="제품&#10;형태"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:textSize="20dp">
 
             </TextView>
@@ -687,6 +722,7 @@
                 android:id="@+id/tv_prdt_shap_cd_nm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:text="text"></TextView>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

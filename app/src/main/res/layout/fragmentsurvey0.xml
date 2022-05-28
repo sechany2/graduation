@@ -14,13 +14,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="맞춤 정보 입력"></TextView>
+            android:text="맞춤 정보 입력"
+            android:fontFamily="@font/nanumsquareroundeb"></TextView>
 
         <TextView
             android:id="@+id/tv_tall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="키">
 
         </TextView>
@@ -41,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="나이">
 
         </TextView>
@@ -61,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/nanumsquareroundb"
             android:text="몸무게">
 
         </TextView>
@@ -88,6 +92,7 @@
                 android:layout_marginStart="16dp"
                 android:background="@drawable/bin_redsquare2"
                 android:text="영 유아"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textColor="#ffffff"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -99,6 +104,7 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bin_redsquare2"
                 android:text="임산부"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textColor="#ffffff"
                 app:layout_constraintBottom_toTopOf="@+id/btn_disease"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -114,6 +120,7 @@
                 android:layout_marginTop="50dp"
                 android:background="@drawable/bin_redsquare2"
                 android:text="알레르기"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textColor="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_disease"
@@ -129,6 +136,7 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/bin_redsquare2"
                 android:text="특정질환"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:textColor="#ffffff"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -145,6 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:background="@drawable/bin_whitesquare"
+        android:fontFamily="@font/nanumsquareroundeb"
         android:text="다음" />
 
 </FrameLayout>

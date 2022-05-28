@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -233,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
         Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
         btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
         //닫기버튼
+        /*
         Button btn_close = (Button)findViewById(R.id.btn_close);
 
         btn_close.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                }
         });
+         */
 
         drawerLayout.setDrawerListener(listener);
 
@@ -337,6 +340,16 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
 
 
+    }
+
+    // 웹 페이지 띄우기
+    public void onghealthClicked(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.g-health.kr/portal/bbs/selectBoardList.do?bbsId=U00190&menuNo=200462"));
+        startActivity(intent);
+    }
+    public void onhanClicked(View view){
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.hani.co.kr/arti/society/health/home01.html"));
+        startActivity(intent);
     }
 
     //프래그먼트 이동 메소드

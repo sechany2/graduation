@@ -64,7 +64,7 @@
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:background="#D8D8D8">
             </LinearLayout>
 
@@ -81,6 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="다이어트"
+                    android:fontFamily="@font/nanumsquareroundb"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -89,7 +90,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="벌크업" />
+                    android:text="벌크업"
+                    android:fontFamily="@font/nanumsquareroundb"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:background="@drawable/bin_whitesquare"
@@ -97,11 +99,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="건강" />
+                    android:text="건강"
+                    android:fontFamily="@font/nanumsquareroundb"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="2dp"
                 android:background="#D8D8D8">
             </LinearLayout>
 
@@ -109,31 +112,83 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="실시간 뷰가 많은 제품" />
+                android:fontFamily="@font/nanumsquareroundeb"
+                android:text="인기가 많은 제품 >" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/realtimeview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textView3"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="건강관련 칼럼" />
+                android:layout_height="2dp"
+                android:background="#D8D8D8">
+            </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="건강관련 칼럼"
+                        android:fontFamily="@font/nanumsquareroundeb"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D8D8D8">
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/ghealth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ghealth"
+                        android:onClick="onghealthClicked"
+                        tools:ignore="OnClick">
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="건강관련 기사"
+                        android:fontFamily="@font/nanumsquareroundeb"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#D8D8D8">
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/han"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/han"
+                        android:onClick="onhanClicked"
+                        tools:ignore="OnClick">
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D8D8">
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D8D8D8">
-        </LinearLayout>
+
 
     </FrameLayout>
 
@@ -141,6 +196,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
     </LinearLayout>
 
 
@@ -160,6 +216,7 @@
             android:background="@drawable/bin_whitesquare"
             android:drawableTop="@drawable/ic_baseline_menu_24_off"
             android:text="메뉴"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
             android:textColor="#FF828282"/>
 
@@ -171,6 +228,7 @@
             android:background="@drawable/bin_whitesquare"
             android:drawableTop="@drawable/ic_baseline_assignment_24_off"
             android:text="설문"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
             android:textColor="#FF828282"/>
 
@@ -182,6 +240,7 @@
             android:background="@drawable/bin_whitesquare"
             android:drawableTop="@drawable/ic_baseline_home_24_off"
             android:text="홈"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
             android:textColor="#FF828282"/>
 
@@ -193,6 +252,7 @@
             android:background="@drawable/bin_whitesquare"
             android:drawableTop="@drawable/ic_baseline_face_24_off"
             android:text="마이"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
             android:textColor="#FF828282"/>
     </LinearLayout>
