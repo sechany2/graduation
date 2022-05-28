@@ -19,6 +19,7 @@
     android:layout_marginEnd="64dp"
 
     >
+
     <TextView
         android:layout_width="50dp"
         android:layout_height="match_parent"
@@ -34,7 +35,9 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="text"
-        android:fontFamily="@font/nanumsquareroundeb">
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:id="@+id/manu_title"
+        >
 
     </TextView>
 </LinearLayout>
@@ -44,9 +47,16 @@
     android:background="#B1B1B1">
 
 </View>
-    <GridView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/fg_menu">
 
-        ></GridView>
+    </FrameLayout>
+
+
+
+
+
+
 </LinearLayout>

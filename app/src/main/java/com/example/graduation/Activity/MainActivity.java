@@ -27,9 +27,14 @@ import android.widget.TextView;
 
 import com.example.graduation.Adapter.CustomAdapter;
 import com.example.graduation.Fragments.FragmentProduct;
+import com.example.graduation.Fragments.Fragment_announcement;
+import com.example.graduation.Fragments.Fragment_help;
+import com.example.graduation.Fragments.Fragment_request;
+import com.example.graduation.Fragments.Fragment_set;
 import com.example.graduation.Fragments.Fragmentadmin;
 import com.example.graduation.Fragments.Fragmentcategory;
 import com.example.graduation.Fragments.Fragmentmy;
+import com.example.graduation.Fragments.fragment_inquiry;
 import com.example.graduation.Object.Product;
 import com.example.graduation.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FrameLayout frame =(FrameLayout)findViewById(R.id.frame);
-
+        FrameLayout menuframe = (FrameLayout)findViewById(R.id.fg_menu);
         //액션바
         Toolbar toolbar =findViewById(R.id.next_toolbar);
         setSupportActionBar(toolbar);
@@ -213,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //메뉴버튼
-         btn_menu = (Button)findViewById(R.id.btn_menu);
+        btn_menu = (Button)findViewById(R.id.btn_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
 
@@ -246,22 +251,69 @@ public class MainActivity extends AppCompatActivity {
          */
 
         drawerLayout.setDrawerListener(listener);
-
         drawerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 return true;}
 
         });
+        TextView tv_manutitle = (TextView)findViewById(R.id.manu_title);
+
         //헬프 버튼
         dr_help = (View) findViewById(R.id.drawer_help);
         TextView tv_help = (TextView) findViewById(R.id.tv_help);
         tv_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tv_manutitle.setText("도움말");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
+                replaceMenuFragment(Fragment_help.newInstance());
+            }
+        });
 
+        TextView tv_announcement = (TextView) findViewById(R.id.menutv_announcement);
+        tv_announcement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tv_manutitle.setText("공지사항");
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(dr_help);
+                replaceMenuFragment(Fragment_announcement.newInstance());
+            }
+        });
+
+        TextView tv_request =(TextView)findViewById(R.id.menutv_request);
+        tv_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tv_manutitle.setText("분석 요청");
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(dr_help);
+                replaceMenuFragment(Fragment_request.newInstance());
+            }
+        });
+
+        TextView tv_set = (TextView)findViewById(R.id.menutv_set);
+        tv_set.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tv_manutitle.setText("설정");
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(dr_help);
+                replaceMenuFragment(Fragment_set.newInstance());
+            }
+        });
+
+
+        TextView tv_iquiry = (TextView) findViewById(R.id.menutv_inquiry);
+        tv_iquiry.setOnClickListener(new View.OnClickListener() {//문의하기 버튼
+            @Override
+            public void onClick(View view) {
+                tv_manutitle.setText("문의 하기");
+                drawerLayout.closeDrawers();
+                drawerLayout.openDrawer(dr_help);
+                replaceMenuFragment(fragment_inquiry.newInstance());
             }
         });
         //헬프 뒤로가기 버튼
@@ -364,6 +416,12 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         fragmentTransaction.replace(R.id.frameProduct, fragment).commit();
+    }
+
+    public  void replaceMenuFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fg_menu, fragment).commit();
     }
 
 
