@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의 유형" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:spinnerMode="dropdown">
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의 제목" />
+
+    <EditText
+        android:id="@+id/et_inquiry_title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="제목을 입력해주세요"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의 내용" />
+
+    <EditText
+        android:id="@+id/et_inquiry_contents"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="내용을 입력해주세요"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btn_inquiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의 요청 보내기" />
+    </LinearLayout>
+</FrameLayout>
