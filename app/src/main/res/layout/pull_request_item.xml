@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:layout_margin="5dp"
+    android:background="#ffffff">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_rq_category"
+        android:text="유형"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:textSize="20dp"
+        android:textColor="#00a7f5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_rq_title"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:text="문의 제목"
+        android:textSize="15dp"
+        android:textColor="#f92a3f" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_rq_name"
+        android:text="이름"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:textSize="26dp"
+        android:textColor="#000" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/tv_rq_contents"
+        android:text="문의 내용"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:textSize="18dp"
+        android:textColor="#00a7f5"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+
+</LinearLayout>
