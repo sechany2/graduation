@@ -54,6 +54,8 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
                 .into(holder.category_iv_pd_profile);
         holder.category_tv_pd_brandname.setText(arrayList.get(position).getPd_brandname());
         holder.category_tv_pd_name.setText(arrayList.get(position).getPd_name());
+        Float b = arrayList.get(position).getPd_avg();
+        holder.tv_cg_pd_rt.setText(String.format("%.1f",b));
     }
 
     @Override
@@ -66,6 +68,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
         ImageView category_iv_pd_profile;
         TextView category_tv_pd_brandname;
         TextView category_tv_pd_name;
+        TextView tv_cg_pd_rt;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,6 +87,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
             this.category_iv_pd_profile = itemView.findViewById(R.id.category_iv_pd_profile);
             this.category_tv_pd_brandname = itemView.findViewById(R.id.category_tv_pd_brandname);
             this.category_tv_pd_name = itemView.findViewById(R.id.category_tv_pd_name);
+            this.tv_cg_pd_rt = itemView.findViewById(R.id.tv_cg_pd_rt);
         }
     }
 }

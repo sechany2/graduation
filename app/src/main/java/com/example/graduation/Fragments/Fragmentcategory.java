@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fragmentcategory extends Fragment {
     public Fragmentcategory() {
@@ -34,9 +35,9 @@ public class Fragmentcategory extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference,dbrfrv;
     private String result;
-    private TextView tv_category, tv_semicategory;
+    private TextView tv_category, tv_semicategory, tv_cg_pd_rt;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,10 +73,12 @@ public class Fragmentcategory extends Fragment {
             layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);
             arrayList = new ArrayList<>();
+            List pdscore = new ArrayList<>();
 
             database = FirebaseDatabase.getInstance();
 
             databaseReference = database.getReference("Product");
+            dbrfrv = database.getReference("Review");
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -102,6 +105,43 @@ public class Fragmentcategory extends Fragment {
                             }
                         }
                     }
+                    dbrfrv.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (int i = 0; i < arrayList.size(); i++) {
+                                // 클래스 모델이 필요?
+                                for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
+                                    //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
+                                    //하위키들의 value를 어떻게 가져오느냐???
+                                    if (fileSnapshot.child(arrayList.get(i).getPd_code()).child("rate").getValue(Double.class) != null) {
+                                        String aaa = fileSnapshot.child(arrayList.get(i).getPd_code()).child("rate").getValue(Double.class).toString();
+                                        pdscore.add(aaa);
+                                    }
+
+                                }
+
+
+                                String qwe = null;
+                                double sum = 0;
+                                double avg = 0;
+
+                                for (int j = 0; j < pdscore.size(); j++) {
+                                    qwe = pdscore.get(j).toString();
+                                    sum = sum + Double.parseDouble(qwe);
+                                    avg = sum / pdscore.size();
+                                }
+
+                                arrayList.get(i).setPd_avg((float) avg);
+
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     adapter.notifyDataSetChanged();
                 }
                 @Override
@@ -110,6 +150,7 @@ public class Fragmentcategory extends Fragment {
                 }
             });
             adapter = new DietAdapter(arrayList, getContext());
+
             recyclerView.setAdapter(adapter);
         }
 

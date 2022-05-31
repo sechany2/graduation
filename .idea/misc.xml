@@ -67,11 +67,16 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/categorydiet.xml" value="0.16" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/content.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/drawer_help.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fargment_help.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fg3list_item.xml" value="0.33240740740740743" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment1.xml" value="0.3170289855072464" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment3.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment_full_request.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment_inquiry.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment_request.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment_review.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment_set.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentadmin.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentcategory.xml" value="0.22025316455696203" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentmy.xml" value="0.36614583333333334" />
@@ -82,6 +87,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentsurvey1.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentsurvey2.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fragmentsurvey3.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/frgment_announcement.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.16574074074074074" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/myreview_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/recommend.xml" value="0.25885416666666666" />

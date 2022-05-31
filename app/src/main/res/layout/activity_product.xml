@@ -74,16 +74,40 @@
                     app:layout_constraintTop_toBottomOf="@+id/imfom"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="0dp">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginTop="10dp"
-                        android:text="인증 :"
-                        android:fontFamily="@font/nanumsquareroundb"></TextView>
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="50dp"
+                            android:text="인증 :"
+                            android:fontFamily="@font/nanumsquareroundb"></TextView>
+
+                        <ImageView
+                            android:id="@+id/iv_gmp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp">
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/iv_hacccp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp">
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/iv_healthfood"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp">
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/iv_child"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp">
+                        </ImageView>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -110,6 +134,16 @@
                             android:stepSize="0.5"
                             android:progressTint="#E6FFEB3B"
                             android:secondaryProgressTint="#00FFFFFF"/>
+
+                        <TextView
+                            android:id="@+id/tv_rt"
+                            android:layout_marginLeft="3dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.0점">
+
+                        </TextView>
                     </LinearLayout>
 
 

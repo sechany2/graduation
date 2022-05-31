@@ -30,7 +30,7 @@ public class FragmentProduct extends Fragment {
     public FragmentProduct(){ }
     private ArrayList<String> productinfo;
     private TextView tv_pdname;
-    private TextView tv_pdbrandname;
+    private TextView tv_pdbrandname,tv_rt;
     private ImageView iv_profile;
     private String pd_code,pd_name;
     private FirebaseDatabase database;
@@ -105,9 +105,11 @@ public class FragmentProduct extends Fragment {
                     sum = sum + Double.parseDouble(qwe);
                     avg = sum / pdscore.size();
                 }
-                System.out.println("평균은 : "+avg);
+                //System.out.println("평균은 : "+avg);
 
                 ratingbar = view.findViewById(R.id.pd_ratingbar);
+                tv_rt = view.findViewById(R.id.tv_rt);
+                tv_rt.setText(String.format("%.1f",avg));
                 ratingbar.setRating((float) avg);
             }
 
