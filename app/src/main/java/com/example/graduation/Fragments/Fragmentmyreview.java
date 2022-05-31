@@ -104,6 +104,7 @@ public class Fragmentmyreview extends Fragment {
                     }
 
                 }
+                //
                 abrfpd = database.getReference("Product"); // DB테이블 연결
                 abrfpd.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
