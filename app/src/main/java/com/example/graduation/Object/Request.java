@@ -5,6 +5,26 @@ package com.example.graduation.Object;
 public class Request {
      public String title;
      public String contents;
+     public String name;
+    public  String category;
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 
     public String getTitle() {
         return title;

@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.example.graduation.Adapter.CustomAdapter;
 import com.example.graduation.Fragments.FragmentProduct;
 import com.example.graduation.Fragments.Fragment_announcement;
+import com.example.graduation.Fragments.Fragment_full_request;
 import com.example.graduation.Fragments.Fragment_help;
 import com.example.graduation.Fragments.Fragment_request;
 import com.example.graduation.Fragments.Fragment_set;
@@ -61,29 +62,29 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private Button btn_my,btn_survey,btn_home,btn_menu;
+    private Button btn_my, btn_survey, btn_home, btn_menu;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FrameLayout frame =(FrameLayout)findViewById(R.id.frame);
-        FrameLayout menuframe = (FrameLayout)findViewById(R.id.fg_menu);
+        FrameLayout frame = (FrameLayout) findViewById(R.id.frame);
+        FrameLayout menuframe = (FrameLayout) findViewById(R.id.fg_menu);
         //액션바
-        Toolbar toolbar =findViewById(R.id.next_toolbar);
+        Toolbar toolbar = findViewById(R.id.next_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
 
 
         //분류 버튼 다이어트
-        Button btn_diet = (Button)findViewById(R.id.btn_diet);
+        Button btn_diet = (Button) findViewById(R.id.btn_diet);
         btn_diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 번들 프레그먼트카테고리에 데이터 전달
                 Bundle bundle = new Bundle();
-                bundle.putString("category","다이어트");
+                bundle.putString("category", "다이어트");
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
@@ -92,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //분류 버튼 벌크업
-        Button btn_bulkup = (Button)findViewById(R.id.btn_bulkup);
+        Button btn_bulkup = (Button) findViewById(R.id.btn_bulkup);
         btn_bulkup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 번들 프레그먼트카텍고리에 데이터 전달
                 Bundle bundle = new Bundle();
-                bundle.putString("category","벌크업");
+                bundle.putString("category", "벌크업");
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
@@ -107,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //분류 버튼 건강
-        Button btn_health = (Button)findViewById(R.id.btn_health);
+        Button btn_health = (Button) findViewById(R.id.btn_health);
         btn_health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 번들 프레그먼트카텍고리에 데이터 전달
                 Bundle bundle = new Bundle();
-                bundle.putString("category","건강");
+                bundle.putString("category", "건강");
                 Fragmentcategory fragmentcategory = new Fragmentcategory();
                 //번들 데이터 전달
                 fragmentcategory.setArguments(bundle);
@@ -124,22 +125,22 @@ public class MainActivity extends AppCompatActivity {
         //하단바 마이버튼
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
-        String name= mAuth.getCurrentUser().getEmail();
-        Log.e("name",name);
-         btn_my = (Button) findViewById(R.id.btn_my);
-        if(name.equals("admin@a.com")){
+        String name = mAuth.getCurrentUser().getEmail();
+        boolean adminCheck = name.equals("admin@a.com");
+        btn_my = (Button) findViewById(R.id.btn_my);
+        if (adminCheck) {
             btn_my.setText("회원 관리");
             btn_my.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
-                    btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
+                    btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
                     Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-                    btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
+                    btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
                     Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
-                    btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
+                    btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
                     Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24);
-                    btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
+                    btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                     btn_survey.setTextColor(Color.parseColor("#FF828282"));
                     btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                     btn_my.setTextColor(Color.parseColor("#DDF32424"));
@@ -148,20 +149,19 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(Fragmentadmin.newInstance());
                 }
             });
-        }
-        else {
+        } else {
 
             btn_my.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
-                    btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
+                    btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
                     Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-                    btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
+                    btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
                     Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
-                    btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
+                    btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
                     Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24);
-                    btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
+                    btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                     btn_survey.setTextColor(Color.parseColor("#FF828282"));
                     btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                     btn_my.setTextColor(Color.parseColor("#DDF32424"));
@@ -172,18 +172,18 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         //하단바 설문버튼
-        btn_survey = (Button)findViewById(R.id.btn_survey);
+        btn_survey = (Button) findViewById(R.id.btn_survey);
         btn_survey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
-                btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
+                btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
                 Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-                btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
+                btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
                 Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24);
-                btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
+                btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
                 Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
-                btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
+                btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                 btn_survey.setTextColor(Color.parseColor("#DDF32424"));
                 btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                 btn_my.setTextColor(Color.parseColor("#FF828282"));
@@ -194,19 +194,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //하단바 홈버튼
-         btn_home = (Button)findViewById(R.id.btn_home);
-        LinearLayout homelayout = (LinearLayout)findViewById(R.id.homelayout);
+        btn_home = (Button) findViewById(R.id.btn_home);
+        LinearLayout homelayout = (LinearLayout) findViewById(R.id.homelayout);
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24);
-                btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
+                btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
                 Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-                btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
+                btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
                 Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
-                btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
+                btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
                 Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
-                btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
+                btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                 btn_survey.setTextColor(Color.parseColor("#FF828282"));
                 btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                 btn_my.setTextColor(Color.parseColor("#FF828282"));
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //메뉴버튼
-        btn_menu = (Button)findViewById(R.id.btn_menu);
+        btn_menu = (Button) findViewById(R.id.btn_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawer);
 
@@ -231,13 +231,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24);
-        btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home , null, null);
+        btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
         Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-        btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu , null, null);
+        btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
         Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
-        btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey , null, null);
+        btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
         Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
-        btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my , null, null);
+        btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
         //닫기버튼
         /*
         Button btn_close = (Button)findViewById(R.id.btn_close);
@@ -254,10 +254,11 @@ public class MainActivity extends AppCompatActivity {
         drawerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;}
+                return true;
+            }
 
         });
-        TextView tv_manutitle = (TextView)findViewById(R.id.manu_title);
+        TextView tv_manutitle = (TextView) findViewById(R.id.manu_title);
 
         //헬프 버튼
         dr_help = (View) findViewById(R.id.drawer_help);
@@ -283,18 +284,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TextView tv_request =(TextView)findViewById(R.id.menutv_request);
+        TextView tv_request = (TextView) findViewById(R.id.menutv_request);
         tv_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tv_manutitle.setText("분석 요청");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
-                replaceMenuFragment(Fragment_request.newInstance());
+                if (adminCheck) {
+                    replaceMenuFragment(Fragment_full_request.newInstance());
+                } else {
+                    replaceMenuFragment(Fragment_request.newInstance());
+                }
             }
         });
 
-        TextView tv_set = (TextView)findViewById(R.id.menutv_set);
+        TextView tv_set = (TextView) findViewById(R.id.menutv_set);
         tv_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -313,11 +318,15 @@ public class MainActivity extends AppCompatActivity {
                 tv_manutitle.setText("문의 하기");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
-                replaceMenuFragment(fragment_inquiry.newInstance());
+                if (adminCheck) {
+                    replaceMenuFragment(Fragment_full_request.newInstance());
+                } else {
+                    replaceMenuFragment(fragment_inquiry.newInstance());
+                }
             }
         });
         //헬프 뒤로가기 버튼
-        TextView tv_back = (TextView)findViewById(R.id.tv_back);
+        TextView tv_back = (TextView) findViewById(R.id.tv_back);
         tv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -342,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는 곳
                 arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){ // 반복문으로 데이터 List를 추출해냄
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
                     Product product = snapshot.getValue(Product.class);// 만들어뒀던 Product 객체에 데이터를 담는다.
                     arrayList.add(product); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
@@ -362,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View v, int pos) {
                         frame.removeAllViews();
-                        ArrayList<String> pdinfo= new ArrayList<>();
+                        ArrayList<String> pdinfo = new ArrayList<>();
                         Bundle info = new Bundle();//제품정보 보낼 번들 info 생성
                         pdinfo.add(arrayList.get(pos).getPd_name());             // 0번 이름
                         pdinfo.add(arrayList.get(pos).getPd_brandname());        // 1번 브랜드이름
@@ -381,8 +390,7 @@ public class MainActivity extends AppCompatActivity {
                         pdinfo.add(arrayList.get(pos).getPd_salt());             //14번 나트륨
 
 
-
-                        info.putStringArrayList("product",pdinfo);
+                        info.putStringArrayList("product", pdinfo);
                         FragmentProduct fragmentProduct = new FragmentProduct();
                         fragmentProduct.setArguments(info);
                         replaceFragment(fragmentProduct);
@@ -395,11 +403,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // 웹 페이지 띄우기
-    public void onghealthClicked(View view){
+    public void onghealthClicked(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.g-health.kr/portal/bbs/selectBoardList.do?bbsId=U00190&menuNo=200462"));
         startActivity(intent);
     }
-    public void onhanClicked(View view){
+
+    public void onhanClicked(View view) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.hani.co.kr/arti/society/health/home01.html"));
         startActivity(intent);
     }
@@ -418,7 +427,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameProduct, fragment).commit();
     }
 
-    public  void replaceMenuFragment(Fragment fragment){
+    public void replaceMenuFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fg_menu, fragment).commit();
@@ -430,16 +439,21 @@ public class MainActivity extends AppCompatActivity {
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
 
         }
+
         //메뉴오픈시
         @Override
-        public void onDrawerOpened(@NonNull View drawerView) {  }
+        public void onDrawerOpened(@NonNull View drawerView) {
+        }
+
         //메뉴닫았을때
         @Override
         public void onDrawerClosed(@NonNull View drawerView) {
 
         }
+
         @Override
-        public void onDrawerStateChanged(int newState) { }
+        public void onDrawerStateChanged(int newState) {
+        }
     };
 
 
