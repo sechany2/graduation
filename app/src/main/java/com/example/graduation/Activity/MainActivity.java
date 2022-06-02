@@ -400,6 +400,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
 
 
+
     }
 
     // 웹 페이지 띄우기

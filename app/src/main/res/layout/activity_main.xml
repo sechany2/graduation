@@ -147,14 +147,28 @@
                         android:layout_height="1dp"
                         android:background="#D8D8D8">
                     </LinearLayout>
+                    <LinearLayout
+                        android:background="@drawable/round_backgroud_border_black"
+                        android:id="@+id/layout_img_border"
+                        android:backgroundTint="#9A9A9A"
+                        android:padding="1dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
                     <ImageView
+                        android:background="@drawable/round_backgroud_border_black"
+                        android:scaleType="centerCrop"
+                        android:clipToOutline="true"
                         android:id="@+id/ghealth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ghealth"
                         android:onClick="onghealthClicked"
                         tools:ignore="OnClick">
+
                     </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -173,7 +187,19 @@
                         android:layout_height="1dp"
                         android:background="#D8D8D8">
                     </LinearLayout>
+                    <LinearLayout
+                        android:background="@drawable/round_backgroud_border_black"
+                        android:backgroundTint="#9A9A9A"
+                        android:id="@+id/layout_img_border2"
+                        android:padding="1dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
                     <ImageView
+                        android:background="@drawable/round_backgroud_border_black"
+                        android:scaleType="centerCrop"
+                        android:clipToOutline="true"
                         android:id="@+id/han"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -181,6 +207,7 @@
                         android:onClick="onhanClicked"
                         tools:ignore="OnClick">
                     </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_gravity="bottom"

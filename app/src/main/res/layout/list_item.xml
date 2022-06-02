@@ -7,29 +7,31 @@
         android:layout_width="88dp"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:background="@drawable/square_background_border_gray"
 
+            android:id="@+id/layout_img_border2"
+            android:padding="5dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <ImageView
+            android:background="@drawable/round_backgroud_border_black"
+            android:scaleType="centerCrop"
             android:id="@+id/list_iv_pd_profile"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_margin="5dp"
-            android:src='@drawable/ic_launcher_background'></ImageView>
 
+            android:src='@drawable/ic_launcher_background'></ImageView>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/list_tv_pd_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumsquareroundb"
-                android:text="브랜드명"
-                android:textSize="12dp"
-                android:ellipsize="end"
-                android:maxLines="1"></TextView>
+
 
             <TextView
                 android:id="@+id/list_tv_pd_brandname"
@@ -37,8 +39,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="제품명"
+                android:textColor="#373737"
+                android:layout_gravity="center"
                 android:fontFamily="@font/nanumsquareroundb"
                 android:ellipsize="end"
+                android:maxLines="1"></TextView>
+            <TextView
+                android:id="@+id/list_tv_pd_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareroundb"
+                android:text="브랜드명"
+                android:textColor="#979797"
+                android:textSize="10dp"
+                android:ellipsize="end"
+                android:layout_gravity="center"
                 android:maxLines="1"></TextView>
         </LinearLayout>
     </LinearLayout>

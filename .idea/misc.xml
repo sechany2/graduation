@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/drawable/round_backgroud_border_black.xml" value="0.1955" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/drawable/square_background_border_black.xml" value="0.1" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/drawable/square_background_border_black2.xml" value="0.1955" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/activity_menu.xml" value="0.1875" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_review.xml" value="0.1875" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragmentmyreview.xml" value="0.1875" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.67" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/review_item.xml" value="0.25" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/review_write.xml" value="0.33" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/sv_list.xml" value="0.1875" />
+        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/user_item.xml" value="0.1875" />
         <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/activity_product.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/alswn/AndroidStudioProjects/graduation/app/src/main/res/layout/fragment1.xml" value="0.1" />
@@ -108,7 +120,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

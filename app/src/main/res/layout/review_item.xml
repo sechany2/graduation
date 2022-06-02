@@ -2,9 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/square_background_border_gray"
+    android:padding="2dp"
     android:weightSum="10"
+    android:layout_margin="20dp"
     android:layout_width="match_parent"
-    android:background="#FFFFFF"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <LinearLayout
@@ -66,21 +68,23 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
+
             android:fontFamily="@font/nanumsquareroundb"
             android:textSize="16dp"
             android:text="/5"></TextView>
     </LinearLayout>
     <TextView
         android:id="@+id/reviewProduct"
-        android:text=""
+        android:text="reviewProdeuct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </TextView>
     <TextView
         android:id="@+id/reviewReview"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:text="empty"
         android:fontFamily="@font/nanumsquareroundeb"
         android:padding="5dp"
         ></TextView>
