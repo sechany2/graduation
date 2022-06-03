@@ -13,12 +13,14 @@
             android:id="@+id/textView23"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="공지사항" />
+            android:text="공지사항"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/black"
             android:text="TextView" />
     </LinearLayout>
 </FrameLayout>

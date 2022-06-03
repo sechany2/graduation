@@ -18,14 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-          android:textColor="#FF0000"
-            android:text="'잘못된 정보'를 알려주세요!" />
+            android:textColor="#FF0000"
+            android:text="'잘못된 정보'를 알려주세요!"
+            android:fontFamily="@font/nanumsquareroundeb"/>
 
         <TextView
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-          android:layout_marginBottom="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:text="미처 저희의 손이 닿지 않은 곳엔 여러분의 도움이 필요해요!\n\n\n\n카테고리, 제품명, 전성분 등\n잘못 등록된 정보를 말씀해주시면\n빠르게 수정하도록 하겠습니다." />
 
 
@@ -35,7 +37,7 @@
          android:layout_height="45dp"
          android:ems="10"
          android:gravity="start|top"
-
+         android:fontFamily="@font/nanumsquareroundb"
          android:hint="제목을 입력해주세요"
          android:background="@color/white"
          android:layout_marginBottom="20dp"
@@ -45,6 +47,7 @@
          android:id="@+id/et_request_contents"
          android:layout_width="match_parent"
          android:layout_height="184dp"
+         android:fontFamily="@font/nanumsquareroundb"
          android:hint="내용을 입력해주세요"
          android:ems="10"
          android:background="@color/white"
@@ -56,8 +59,9 @@
             android:id="@+id/btn_request"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#575757"
-      android:textColor="@color/white"
+            android:background="@drawable/bin_red2"
+            android:textColor="@color/white"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:text="분석 요청하기" />
     </LinearLayout>
     </LinearLayout>

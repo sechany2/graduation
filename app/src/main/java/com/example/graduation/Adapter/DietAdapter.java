@@ -55,7 +55,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
         holder.category_tv_pd_brandname.setText(arrayList.get(position).getPd_brandname());
         holder.category_tv_pd_name.setText(arrayList.get(position).getPd_name());
         Float b = arrayList.get(position).getPd_avg();
-        holder.tv_cg_pd_rt.setText(String.format("%.1f",b));
+        holder.tv_cg_pd_rt.setText(String.format("%.1f 점",b));
     }
 
     @Override

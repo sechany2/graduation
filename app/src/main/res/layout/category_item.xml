@@ -27,7 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="브랜드"
-                android:fontFamily="@font/nanumsquareroundr"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanumsquareroundb"
                 android:layout_margin="5dp"
                 android:textSize="12dp"/>
 
@@ -36,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="제품 이름"
+                android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundb"
                 android:layout_margin="5dp"/>
 
@@ -54,7 +56,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="0.0점">
+                    android:text="0.0점"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nanumsquareroundb">
                 </TextView>
             </LinearLayout>
 

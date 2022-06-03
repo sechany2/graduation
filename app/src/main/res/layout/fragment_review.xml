@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="제품리뷰"
-                android:fontFamily="@font/nanumsquareroundeb"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanumsquareroundb"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="구매 만족도"
-                android:fontFamily="@font/nanumsquareroundeb">
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanumsquareroundb">
             </TextView>
 
             <RatingBar
@@ -77,7 +79,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
                 android:text="점수"
+                android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundeb"
                 app:layout_constraintBottom_toTopOf="@+id/ratingBar2"
                 app:layout_constraintTop_toBottomOf="@+id/textView11"
@@ -100,7 +104,7 @@
                 android:layout_margin="10dp">
 
                 <TextView
-
+                    android:textColor="@color/black"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -122,9 +126,10 @@
 
                 <TextView
                     android:id="@+id/pb_tv5"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:textColor="@color/black"
                     android:text="TextView"
                     android:fontFamily="@font/nanumsquareroundeb"
                     tools:layout_editor_absoluteX="151dp"
@@ -141,7 +146,7 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
-
+                    android:textColor="@color/black"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -163,9 +168,10 @@
 
                 <TextView
                     android:id="@+id/pb_tv4"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
+                    android:textColor="@color/black"
                     android:text="TextView"
                     android:fontFamily="@font/nanumsquareroundeb"
                     tools:layout_editor_absoluteX="151dp"
@@ -181,7 +187,7 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
-
+                    android:textColor="@color/black"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -203,10 +209,11 @@
 
                 <TextView
                     android:id="@+id/pb_tv3"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
                     android:text="TextView"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumsquareroundeb"
                     tools:layout_editor_absoluteX="151dp"
                     tools:layout_editor_absoluteY="16dp" />
@@ -222,7 +229,7 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
-
+                    android:textColor="@color/black"
                     android:layout_width="30dp"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
@@ -244,10 +251,11 @@
 
                 <TextView
                     android:id="@+id/pb_tv2"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
                     android:text="TextView"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumsquareroundeb"
                     tools:layout_editor_absoluteX="151dp"
                     tools:layout_editor_absoluteY="16dp" />
@@ -262,6 +270,7 @@
                 tools:layout_editor_absoluteX="0dp">
 
                 <TextView
+                    android:textColor="@color/black"
                     android:id="@+id/textView13"
                     android:layout_width="30dp"
                     android:layout_height="21dp"
@@ -284,10 +293,11 @@
 
                 <TextView
                     android:id="@+id/pb_tv1"
-                    android:layout_width="30dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="15dp"
                     android:layout_margin="3dp"
                     android:text="TextView"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumsquareroundeb"
                     tools:layout_editor_absoluteX="151dp"
                     tools:layout_editor_absoluteY="16dp" />
@@ -310,6 +320,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:text="⇅ 최신등록순"
+                android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundeb"
                 android:textSize="20dp">
 

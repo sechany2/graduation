@@ -31,6 +31,7 @@
                 android:layout_margin="2dp"
                 android:text="브랜드"
                 android:fontFamily="@font/nanumsquareroundb"
+                android:textColor="@color/black"
                 android:textSize="12dp"
                 android:ellipsize="end"
                 android:maxLines="1"></TextView>
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="제품이름"
                 android:fontFamily="@font/nanumsquareroundb"
+                android:textColor="@color/black"
                 android:layout_margin="2dp"></TextView>
 
             <LinearLayout
@@ -62,6 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="나의 예상 별점"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/nanumsquareroundb"
                         android:layout_gravity="center"
                         android:layout_marginTop="0dp"
@@ -71,6 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="점수"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/nanumsquareroundeb"
                         android:layout_gravity="center"
                         android:layout_marginTop="0dp"
@@ -89,6 +93,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="제품 별점"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/nanumsquareroundb"
                         android:layout_gravity="center"
                         android:layout_marginTop="0dp"
@@ -99,6 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="점수"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/nanumsquareroundeb"
                         android:layout_marginTop="0dp"
                         android:layout_marginLeft="10dp"/>

@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="맞춤 정보 입력"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundeb"></TextView>
 
         <TextView
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/nanumsquareroundb"
+            android:textColor="@color/black"
             android:text="키">
 
         </TextView>
@@ -43,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:text="나이">
 
@@ -64,6 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:text="몸무게">
 

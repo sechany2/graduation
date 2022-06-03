@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="다이어트"
-                    android:fontFamily="@font/nanumsquareroundb"
+                    android:fontFamily="@font/nanumsquareroundeb"
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="벌크업"
-                    android:fontFamily="@font/nanumsquareroundb"/>
+                    android:fontFamily="@font/nanumsquareroundeb"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:background="@drawable/bin_whitesquare"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="건강"
-                    android:fontFamily="@font/nanumsquareroundb"/>
+                    android:fontFamily="@font/nanumsquareroundeb"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -114,7 +114,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquareroundeb"
                 android:text="인기가 많은 제품 >"
-                android:textSize="15dp"/>
+                android:textColor="@color/black"
+                android:textSize="20dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/realtimeview"
@@ -140,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="건강관련 칼럼"
+                        android:textColor="@color/black"
                         android:textSize="15dp"
                         android:fontFamily="@font/nanumsquareroundeb"/>
                     <LinearLayout
@@ -180,6 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="건강관련 기사"
+                        android:textColor="@color/black"
                         android:textSize="15dp"
                         android:fontFamily="@font/nanumsquareroundeb"/>
                     <LinearLayout
@@ -248,7 +251,7 @@
             android:text="메뉴"
             android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
-            android:textColor="#FF828282"/>
+            android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_survey"
@@ -260,7 +263,7 @@
             android:text="설문"
             android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
-            android:textColor="#FF828282"/>
+            android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_home"
@@ -272,7 +275,7 @@
             android:text="홈"
             android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
-            android:textColor="#FF828282"/>
+            android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_my"
@@ -284,7 +287,7 @@
             android:text="마이"
             android:fontFamily="@font/nanumsquareroundeb"
             android:textSize="12dp"
-            android:textColor="#FF828282"/>
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 

@@ -13,12 +13,16 @@
             android:id="@+id/textView23"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="도움말" />
+            android:text="도움말"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nanumsquareroundeb"/>
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nanumsquareroundeb"/>
     </LinearLayout>
 </FrameLayout>

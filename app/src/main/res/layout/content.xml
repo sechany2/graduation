@@ -12,6 +12,7 @@
         android:layout_gravity="bottom"
         android:layout_marginLeft="15dp"
         android:text="단백질"
+        android:textColor="@color/black"
         android:fontFamily="@font/nanumsquareroundeb"></TextView>
 
     <ProgressBar
@@ -33,12 +34,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0 g"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundeb"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0 %"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundeb">
 
         </TextView>

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -34,7 +35,7 @@ public class FragmentProduct extends Fragment {
     private ImageView iv_profile;
     private String pd_code,pd_name;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference,dbrfpd;
     double avg = 0;
     public RatingBar ratingbar;
 
@@ -45,6 +46,8 @@ public class FragmentProduct extends Fragment {
         tv_pdname = view.findViewById(R.id.product_tv_pd_name);
         tv_pdbrandname = view.findViewById(R.id.product_tv_pd_brandname);
         iv_profile = view.findViewById(R.id.product_iv_pd_profile);
+        ImageView iv_gmp = view.findViewById(R.id.iv_gmp);
+        ImageView iv_hacccp = view.findViewById(R.id.iv_hacccp);
 
         //제품정보
         productinfo = new ArrayList<>();
@@ -77,9 +80,28 @@ public class FragmentProduct extends Fragment {
         }
 
         database = FirebaseDatabase.getInstance();
+        dbrfpd = database.getReference("Product");
+
+
+        dbrfpd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.child(pd_code).child("pd_certified").child("gmp").getValue(String.class)!=null){
+                        iv_gmp.setImageResource(R.drawable.gmp);
+                    }
+                    if(snapshot.child(pd_code).child("pd_certified").child("haccp").getValue(String.class)!=null){
+                        iv_hacccp.setImageResource(R.drawable.haccp);
+                    }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         databaseReference = database.getReference("Review");
         List pdscore = new ArrayList<>();
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -109,7 +131,7 @@ public class FragmentProduct extends Fragment {
 
                 ratingbar = view.findViewById(R.id.pd_ratingbar);
                 tv_rt = view.findViewById(R.id.tv_rt);
-                tv_rt.setText(String.format("%.1f",avg));
+                tv_rt.setText(String.format("%.1f 점",avg));
                 ratingbar.setRating((float) avg);
             }
 

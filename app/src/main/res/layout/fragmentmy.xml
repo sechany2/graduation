@@ -30,16 +30,16 @@
                 android:layout_marginRight="45dp"
                 android:gravity="center"
                 android:text="마이 페이지"
+                android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundeb">
             </TextView>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="#B1B1B1"
+            android:background="@color/black"
             android:id="@+id/line"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
-
         </View>
         <ImageView
             android:id="@+id/iv_userprofile"
@@ -59,6 +59,7 @@
             android:layout_marginTop="28dp"
             android:text="이름"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -71,7 +72,7 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:layout_marginTop="70dp"
-            android:background="#D8D8D8"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/my_name"></View>
@@ -82,6 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="정보"
+            android:textColor="@color/black"
             android:textSize="15dp"
             android:fontFamily="@font/nanumsquareroundeb"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +97,7 @@
             android:layout_height="wrap_content"
             android:text="내가 쓴 리뷰"
             android:textSize="20dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -106,6 +109,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:text="0"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"

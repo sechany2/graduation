@@ -17,6 +17,7 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:textSize="16dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:text="ID"></TextView>
         <TextView
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundeb"
             />
 
@@ -36,6 +38,7 @@
             android:padding="5dp"
             android:fontFamily="@font/nanumsquareroundb"
             android:textSize="16dp"
+            android:textColor="@color/black"
             android:text="별점"></TextView>
         <TextView
             android:id="@+id/myreviewRate"
@@ -44,6 +47,7 @@
             android:layout_margin="5dp"
             android:textSize="16dp"
             android:padding="5dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             ></TextView>
         <TextView
@@ -52,12 +56,14 @@
             android:layout_margin="5dp"
             android:padding="5dp"
             android:textSize="16dp"
+            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             android:text="/5"></TextView>
     </LinearLayout>
     <TextView
         android:id="@+id/myreviewProduct"
         android:text="제품이름"
+        android:textColor="@color/black"
         android:fontFamily="@font/nanumsquareroundb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,6 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:padding="5dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/nanumsquareroundeb"
         ></TextView>
 

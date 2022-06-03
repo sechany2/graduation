@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메뉴 목록"
+            android:textColor="@color/black"
             android:textSize="40sp"
             android:fontFamily="@font/nanumsquareroundeb">
         </TextView>
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="도움말"
+        android:textColor="@color/black"
         android:textSize="48sp"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="공지사항"
+        android:textColor="@color/black"
         android:textSize="48sp"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
@@ -43,12 +46,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="48sp"
+        android:textColor="@color/black"
         android:text="분석요청"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
         android:id="@+id/menutv_inquiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:gravity="center"
         android:textSize="48sp"
         android:text="문의하기"
@@ -58,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textColor="@color/black"
         android:textSize="48sp"
         android:text="설정"
         android:fontFamily="@font/nanumsquareroundr"/>
