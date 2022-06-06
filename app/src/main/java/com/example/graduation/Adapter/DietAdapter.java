@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,6 +71,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
         TextView category_tv_pd_name;
         TextView tv_cg_pd_rt;
 
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -84,6 +86,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.CustomViewHold
                     }
                 }
             });
+
             this.category_iv_pd_profile = itemView.findViewById(R.id.category_iv_pd_profile);
             this.category_tv_pd_brandname = itemView.findViewById(R.id.category_tv_pd_brandname);
             this.category_tv_pd_name = itemView.findViewById(R.id.category_tv_pd_name);

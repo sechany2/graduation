@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +37,10 @@ public class FragmentProduct extends Fragment {
     private ImageView iv_profile;
     private String pd_code,pd_name;
     private FirebaseDatabase database;
-    private DatabaseReference databaseReference,dbrfpd;
+    private DatabaseReference databaseReference,dbrfpd,love;
     double avg = 0;
+    private FirebaseAuth mAuth;
+    private String userToken;
     public RatingBar ratingbar;
 
     @Nullable
@@ -48,6 +52,8 @@ public class FragmentProduct extends Fragment {
         iv_profile = view.findViewById(R.id.product_iv_pd_profile);
         ImageView iv_gmp = view.findViewById(R.id.iv_gmp);
         ImageView iv_hacccp = view.findViewById(R.id.iv_hacccp);
+        mAuth = FirebaseAuth.getInstance();
+        userToken = mAuth.getUid();
 
         //제품정보
         productinfo = new ArrayList<>();
@@ -138,6 +144,37 @@ public class FragmentProduct extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("TAG: ", "Failed to read value", databaseError.toException());
+            }
+        });
+
+        ImageButton favoritebtn= view.findViewById(R.id.favoritebtn2);   //좋아요버튼
+        love = database.getReference();
+        love.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               if( snapshot.child("graduation").child("UserAccount").child(userToken).child("love").child(pd_code).getValue() != null ){
+                   favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
+               }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        favoritebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(favoritebtn.isSelected()) {
+                    favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                    love.child("graduation").child("UserAccount").child(userToken).child("love").child(pd_code).setValue(null);
+
+                } else {
+                    favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
+                    love.child("graduation").child("UserAccount").child(userToken).child("love").child(pd_code).setValue("love");
+                }
+                favoritebtn.setSelected(!favoritebtn.isSelected());
             }
         });
 

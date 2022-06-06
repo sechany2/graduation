@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.example.graduation.Adapter.DietAdapter;
 import com.example.graduation.Object.Product;
 import com.example.graduation.Object.category;
 import com.example.graduation.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,7 @@ public class Fragmentcategory extends Fragment {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference,dbrfrv;
     private String result;
+
     private TextView tv_category, tv_semicategory, tv_cg_pd_rt;
 
 
@@ -45,7 +48,6 @@ public class Fragmentcategory extends Fragment {
 
         if (getArguments() != null) {
             result = getArguments().getString("category");
-
             switch (result) {
                 case "다이어트":
                     tv_category = view.findViewById(R.id.tv_category);

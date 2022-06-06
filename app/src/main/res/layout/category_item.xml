@@ -22,15 +22,23 @@
             android:layout_margin="15dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/category_tv_pd_brandname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="브랜드"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanumsquareroundb"
-                android:layout_margin="5dp"
-                android:textSize="12dp"/>
+
+                <TextView
+                    android:id="@+id/category_tv_pd_brandname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:maxLines="1"
+                    android:text="브랜드"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"></TextView>
+
+
+
+
+
 
             <TextView
                 android:id="@+id/category_tv_pd_name"
@@ -40,6 +48,7 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundb"
                 android:layout_margin="5dp"/>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"

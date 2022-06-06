@@ -67,7 +67,7 @@ public class Fragmentsurvey3 extends Fragment {
     private HashMap<String, Double> userReview, resultknn;
     private int omega3 = 0, probiotics = 0, roughage = 0, calcium = 0, protein = 0, vitaminb = 0, coq10 = 0, l_carnitine = 0, arginine = 0, l_glutamine = 0, creatine = 0, bcaa = 0, beta_alanine = 0, hmb = 0, vitamina = 0, vitaminc = 0, vitamind = 0, vitamine = 0, vitamink = 0, mvitamin = 0,
             propolis = 0, red_ginseng = 0, lutein = 0;
-
+    private String userToken;
     public static Fragmentsurvey3 newInstance() {
         return new Fragmentsurvey3();
     }
@@ -91,14 +91,14 @@ public class Fragmentsurvey3 extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             name = null;
             List pdscore = new ArrayList<>();
-
+            userToken = mAuth.getUid();
             ValueEventListener uavalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //파이어베이스에서 본인 정보 저장
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
                         UserAccount userAccount = snapshot2.getValue(UserAccount.class);
-                        if (snapshot2.getKey().equals(mAuth.getUid())) {
+                        if (snapshot2.getKey().equals(userToken)) {
                             name = userAccount.getName();       //이름 저장
                         }
                     }
@@ -109,6 +109,7 @@ public class Fragmentsurvey3 extends Fragment {
                     Log.e("error", error.toString());
                 }
             };
+
 
             ValueEventListener rvvalueEventListener = new ValueEventListener() {
                 @Override
@@ -240,14 +241,17 @@ public class Fragmentsurvey3 extends Fragment {
             adapter.setOnItemClickListener(new Fg3Adapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View v, int pos) {
-                    ImageButton favoritebtn= view.findViewById(R.id.favoritebtn);
+                    ImageButton favoritebtn= v.findViewById(R.id.favoritebtn);
                     favoritebtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if(favoritebtn.isSelected()) {
                                 favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue(null);
+
                             } else {
                                 favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue("love");
                             }
                             favoritebtn.setSelected(!favoritebtn.isSelected());
                         }
