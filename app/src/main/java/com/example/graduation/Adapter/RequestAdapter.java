@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,7 +26,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         this.arrayList = arrayList;
         this.context = context;
     }
+    public interface  OnItemClickListener{
+        void  onItemClick(View v,int pos);
+    }
+    private RequestAdapter.OnItemClickListener mListener = null; //리스너 초기화
 
+    public  void setOnItemClickListener(RequestAdapter.OnItemClickListener listener){  //리스너 setter
+        this.mListener = listener;
+    }
     @NonNull
     @Override
     public RequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,6 +48,11 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         holder.rq_name.setText(String.valueOf(arrayList.get(position).getName()));
         holder.rq_category.setText(arrayList.get(position).getCategory());
         holder.rq_content.setText(arrayList.get(position).getContents());
+        if( arrayList.get(position).getAnswer() != null ) {
+            holder.rq_layout.setVisibility(View.VISIBLE);
+            holder.rq_answer.setText(arrayList.get(position).getAnswer());
+            holder.answer_btn.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -51,14 +65,31 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         TextView rq_name;
         TextView rq_category;
         TextView rq_content;
-
-
+        TextView rq_answer;
+        LinearLayout rq_layout;
+        Button answer_btn;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
+                    int pos = getAdapterPosition();   //아이템 위치 변수
+                    if (pos != RecyclerView.NO_POSITION) {
+                        if (mListener != null) {
+                            mListener.onItemClick(v, pos);
+                        }
+                    }
+                }
+            });
+
+
             this.rq_title = itemView.findViewById(R.id.tv_rq_title);
             this.rq_name = itemView.findViewById(R.id.tv_rq_name);
             this.rq_category = itemView.findViewById(R.id.tv_rq_category);
             this.rq_content = itemView.findViewById(R.id.tv_rq_contents);
+            this.rq_answer = itemView.findViewById(R.id.tv_rq_answer);
+            this.rq_layout = itemView.findViewById(R.id.answer);
+            this.answer_btn = itemView.findViewById(R.id.answer_btn);
         }
     }
 }

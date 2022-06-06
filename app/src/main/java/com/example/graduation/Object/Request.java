@@ -7,6 +7,15 @@ public class Request {
      public String contents;
      public String name;
     public  String category;
+    public  String answer;
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
     public String getCategory() {
         return category;
