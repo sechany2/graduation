@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -25,6 +26,16 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
     public Fg3Adapter(ArrayList<Product> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
+    }
+
+    public interface  OnItemClickListener{
+        void  onItemClick(View v,int pos);
+    }
+
+    private Fg3Adapter.OnItemClickListener mListener = null; //리스너 초기화
+
+    public  void setOnItemClickListener(Fg3Adapter.OnItemClickListener listener){  //리스너 setter
+        this.mListener = listener;
     }
 
     @NonNull
@@ -58,6 +69,7 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         String pdrbtv = String.format("%.1f",b);
         holder.fg3_pdrb_tv.setText(pdrbtv+"점");
         //holder.fg3_pdrb_tv.setText(arrayList.get(position).getPd_avg().toString());
+
     }
 
     @Override
@@ -71,11 +83,28 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         TextView fg3list_tv_brandName;
         RatingBar fg3_pdrb, fg3_usrb;
         TextView fg3_usrb_tv, fg3_pdrb_tv;
+        ImageButton favoritebtn;
+
+
         public Fg3ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.fg3_iv = itemView.findViewById(R.id.fg3_iv);
             this.fg3list_tv_productName = itemView.findViewById(R.id.fg3list_tv_pd_name);
             this.fg3list_tv_brandName = itemView.findViewById(R.id.fg3list_tv_pd_brandname);
+            this.favoritebtn = itemView.findViewById(R.id.favoritebtn);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
+                    int pos = getAdapterPosition();   //아이템 위치 변수
+                    if (pos != RecyclerView.NO_POSITION) {
+                        if (mListener != null) {
+                            mListener.onItemClick(v, pos);
+                        }
+                    }
+                }
+            });
+
             //this.fg3_pdrb = itemView.findViewById(R.id.fg3_pdrb);
             //this.fg3_usrb = itemView.findViewById(R.id.fg3_usrb);
             this.fg3_usrb_tv = itemView.findViewById(R.id.fg3_usrb_tv);

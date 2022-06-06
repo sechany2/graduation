@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -53,7 +54,7 @@ public class Fragmentsurvey3 extends Fragment {
     private String flagBundle = "0";
     private RecyclerView recyclerView;
     private ArrayList<String> productList;
-    private RecyclerView.Adapter adapter;
+    private Fg3Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList, arrayListSort;
     private FirebaseDatabase database;
@@ -236,10 +237,31 @@ public class Fragmentsurvey3 extends Fragment {
             databaseReference.removeEventListener(pdvalueEventListener);
             adapter = new Fg3Adapter(arrayListSort, getContext());
 
+            adapter.setOnItemClickListener(new Fg3Adapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View v, int pos) {
+                    ImageButton favoritebtn= view.findViewById(R.id.favoritebtn);
+                    favoritebtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(favoritebtn.isSelected()) {
+                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                            } else {
+                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
+                            }
+                            favoritebtn.setSelected(!favoritebtn.isSelected());
+                        }
+                    });
+
+                }
+            });
+
             recyclerView.setAdapter(adapter);  //리사이클러뷰 출력
         } else {
             Log.e("error", "error");
         }
+
+
 
         return view;
     }
