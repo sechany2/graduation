@@ -11,7 +11,8 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,15 +21,18 @@
             android:textColor="@color/black"
             android:gravity="right"
             android:id="@+id/tv_date">
-
         </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#C8C8C8"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
@@ -39,7 +43,7 @@
         <TextView
             android:id="@+id/reviewUserid"
             android:textSize="16dp"
-            android:layout_width="116dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
@@ -47,19 +51,14 @@
             android:textColor="@color/black"
             />
 
-        <TextView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundb"
-            android:textSize="16dp"
-            android:text="별점"></TextView>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ratestar"/>
 
         <TextView
             android:id="@+id/reviewRate"
-            android:layout_width="38dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="@font/nanumsquareroundb"
@@ -69,7 +68,7 @@
             android:text="x"
             ></TextView>
         <TextView
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:padding="5dp"
@@ -78,9 +77,13 @@
             android:textSize="16dp"
             android:text="/5"></TextView>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#C8C8C8"/>
     <TextView
         android:id="@+id/reviewProduct"
-        android:text="reviewProduct"
+        android:text=""
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

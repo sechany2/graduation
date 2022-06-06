@@ -79,7 +79,7 @@
         android:weightSum="10"
         android:layout_marginTop="20dp">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/okButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,8 +91,8 @@
             android:fontFamily="@font/nanumsquareroundb"
             android:layout_marginRight="30dp"
             android:layout_marginLeft="5dp">
-        </Button>
-        <Button
+        </androidx.appcompat.widget.AppCompatButton>
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
             android:textColor="#ffffff"
             android:fontFamily="@font/nanumsquareroundb"
             android:text="취소">
-        </Button>
+        </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>

@@ -57,11 +57,12 @@
         android:inputType="textMultiLine"
         android:fontFamily="@font/nanumsquareroundb"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_inquiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="문의 요청 보내기"
+        android:textColor="#ffffff"
         android:background="@drawable/bin_red2"
         android:fontFamily="@font/nanumsquareroundeb"/>
     </LinearLayout>

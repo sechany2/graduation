@@ -34,8 +34,11 @@
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/review_write.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/sv_list.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/user_item.xml" value="0.2078125" />
+        <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/bin_red2.xml" value="0.1465" />
         <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_assignment_24_off.xml" value="0.1465" />
+        <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_campaign_24.xml" value="0.1465" />
         <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_face_24_off.xml" value="0.1465" />
+        <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_help_24.xml" value="0.1465" />
         <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_home_24_off.xml" value="0.1465" />
         <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.1465" />
         <entry key="..\:/Users/jsc12/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_menu_24_off.xml" value="0.1465" />
@@ -138,7 +141,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

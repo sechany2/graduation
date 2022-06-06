@@ -154,6 +154,8 @@ public class FragmentProduct extends Fragment {
                 ((MainActivity)getActivity()).replaceframeProduct(fragmentInfo);  //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
         });
+        //정보분석 자동클릭
+        btn_info.performClick();
 
         //리뷰 버튼
         Button btn_review = (Button)view.findViewById(R.id.btn_review);

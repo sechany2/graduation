@@ -240,6 +240,7 @@ public class Fragmentsurvey3 extends Fragment {
         } else {
             Log.e("error", "error");
         }
+
         return view;
     }
 
