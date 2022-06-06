@@ -6,9 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
      android:id="@+id/fragmentmylayout">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/linearLayout12"
             android:layout_width="match_parent"
@@ -17,6 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
             <TextView
                 android:id="@+id/tv_backbtn"
                 android:layout_width="50dp"
@@ -24,47 +27,51 @@
                 android:gravity="center"
                 android:text=""
                 android:textSize="30dp"></TextView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="45dp"
+                android:fontFamily="@font/nanumsquareroundeb"
                 android:gravity="center"
                 android:text="마이 페이지"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanumsquareroundeb">
-            </TextView>
+                android:textColor="@color/black"></TextView>
         </LinearLayout>
+
         <View
-            android:layout_width="match_parent"
+            android:id="@+id/line"
+            android:layout_width="0dp"
             android:layout_height="3dp"
             android:background="@color/black"
-            android:id="@+id/line"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
-        </View>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout12"></View>
+
         <ImageView
             android:id="@+id/iv_userprofile"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="40dp"
+            android:src="@drawable/ic_baseline_person_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line"
-            android:src="@drawable/ic_baseline_person_24"
-            app:tint="@color/black"/>
+            app:tint="@color/black" />
 
         <TextView
             android:id="@+id/my_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="이름"
-            android:textSize="20dp"
-            android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
+            android:text="이름"
+            android:textColor="@color/black"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_userprofile" />
+
         <View
             android:id="@+id/view"
             android:layout_width="380dp"
@@ -82,39 +89,94 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquareroundeb"
             android:text="정보"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:fontFamily="@font/nanumsquareroundeb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <TextView
-            android:id="@+id/my_write_review"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="내가 쓴 리뷰"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundb"
-            android:layout_marginTop="20dp"
+        <LinearLayout
+            android:id="@+id/linearLayout13"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_rvcount" />
-        <TextView
-            android:id="@+id/my_rvcount"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:text="0"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundb"
-            android:textSize="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="133dp"
+                android:layout_height="120dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/my_rvcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/my_write_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="내가 쓴 리뷰"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.509"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_rvcount" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="158dp"
+                android:layout_height="120dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_rq_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_rq_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/nanumsquareroundb"
+                    android:text="내가 쓴 문의, 요청"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.465"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_rq_count" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
