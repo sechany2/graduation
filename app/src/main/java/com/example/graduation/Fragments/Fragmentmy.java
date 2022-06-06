@@ -134,12 +134,13 @@ public class Fragmentmy extends Fragment {
                 ((MainActivity)getActivity()).replaceFragment(fragmentfr); //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
         });
+
         TextView my_love_btn = view.findViewById(R.id.tv_love_btn);
         my_love_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment_full_request fragmentfr = new Fragment_full_request();
-                ((MainActivity)getActivity()).replaceFragment(fragmentfr); //메인 엑티비티에 프래그먼트 이동 메소드 호출
+                Fragmentmylove fragmentmylove = new Fragmentmylove();
+                ((MainActivity)getActivity()).replaceFragment(fragmentmylove); //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
         });
 

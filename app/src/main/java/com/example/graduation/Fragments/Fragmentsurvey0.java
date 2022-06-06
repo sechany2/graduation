@@ -100,14 +100,14 @@ public class Fragmentsurvey0 extends Fragment {
             bundle.putString("allergy",getArguments().getString("allergy"));
             bundle.putString("disease",getArguments().getString("disease"));
             if (getArguments().getString("pregnant").contains("임산부")) {
-                btn_pregnant.setBackgroundColor(0xFFBB86FC); //puple 200
+                btn_pregnant.setBackgroundColor(0xDDF32424); //puple 200
                 bundle.putString("pregnant","임산부");
                 check_pregnant=1;
             }
 
 
             if (getArguments().getString("baby").contains("유아")) {
-                btn_baby.setBackgroundColor(0xFFBB86FC); //puple 200
+                btn_baby.setBackgroundColor(0xDDF32424); //puple 200
                 bundle.putString("baby","유아");
                 check_baby=1;
             }
