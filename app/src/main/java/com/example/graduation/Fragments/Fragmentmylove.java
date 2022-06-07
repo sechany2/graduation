@@ -44,6 +44,7 @@ public class Fragmentmylove extends Fragment {
     private FirebaseAuth mAuth;     //변수 선언(파이어베이스 인증처리)
     private DatabaseReference databaseReference,dbrfrv,dbrfml;
     private String pdcode;
+    private ArrayList<String> pdcodelist;
 
     private TextView tv_category, tv_semicategory, tv_cg_pd_rt;
 
@@ -65,11 +66,13 @@ public class Fragmentmylove extends Fragment {
             databaseReference = database.getReference("Product");
             dbrfml = database.getReference("graduation").child("UserAccount").child(mAuth.getUid()).child("love");
 
+            pdcodelist = new ArrayList<>();
             dbrfml.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
                         pdcode = snapshot2.getKey();
+                        pdcodelist.add(pdcode);
                     }
                 }
                 @Override
@@ -84,10 +87,12 @@ public class Fragmentmylove extends Fragment {
                     // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
                     arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
                     for (DataSnapshot snapshot : datasnapshot.getChildren()){
-                        Product product = snapshot.getValue(Product.class);
-                        if(product.getPd_code()!=null){
-                            if(product.getPd_code().equals(pdcode)){
-                            arrayList.add(product);
+                        for(int i=0 ; i<pdcodelist.size(); i++){
+                            Product product = snapshot.getValue(Product.class);
+                            if(product.getPd_code()!=null){
+                                if(product.getPd_code().equals(pdcodelist.get(i))){
+                                    arrayList.add(product);
+                                }
                             }
                         }
                     }
