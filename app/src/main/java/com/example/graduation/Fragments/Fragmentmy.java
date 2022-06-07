@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduation.Activity.MainActivity;
+import com.example.graduation.Object.Mylove;
 import com.example.graduation.Object.Request;
 import com.example.graduation.Object.UserAccount;
 import com.example.graduation.R;
@@ -30,10 +31,12 @@ public class Fragmentmy extends Fragment {
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     private ArrayList<Object> arrayList2;
+    private ArrayList<Object> arrayList3;
     public Fragmentmy(){ }
     public String name;
     public String rvcount="0";
     public String rqcount="0";
+    public String mlcount="0";
     public int count  = 0;
     public static Fragmentmy newInstance() {
         return new Fragmentmy();
@@ -106,10 +109,34 @@ public class Fragmentmy extends Fragment {
 
                     }
                 };
+
                 count =0;
                 databaseReference.child("Request").addValueEventListener(rqEventListener);
                 databaseReference.removeEventListener(rqEventListener);
                 databaseReference.child("Inquiry").addValueEventListener(rqEventListener);
+
+                arrayList3 = new ArrayList<>();
+                ValueEventListener mlEventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snapshot2 : snapshot.getChildren()) {
+                            if (snapshot2.getValue() != null) {
+                                arrayList3.add(snapshot2.getValue());
+                                mlcount = String.valueOf(arrayList3.size());
+                            }
+                        }
+                        TextView tv_love_count = view.findViewById(R.id.tv_love_count);
+                        tv_love_count.setText(mlcount);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                };
+
+                databaseReference.child("graduation").child("UserAccount").child(mAuth.getUid()).child("love").addValueEventListener(mlEventListener);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
