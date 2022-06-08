@@ -4,13 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:weightSum="10"
     android:layout_width="match_parent"
-    android:background="#FFFFFF"
+
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/square_background_border_gray"
+    android:padding="10dp"
+    android:layout_margin="10dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,18 +48,11 @@
             android:layout_margin="5dp"
             android:textSize="16dp"
             android:padding="5dp"
+            android:text="0"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
             ></TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundb"
-            android:text="/5"></TextView>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,7 +61,8 @@
     <TextView
         android:id="@+id/myreviewProduct"
         android:text="제품이름"
-        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:textColor="#4A4A4A"
         android:fontFamily="@font/nanumsquareroundb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,8 +72,10 @@
         android:id="@+id/myreviewReview"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+
         android:padding="5dp"
+        android:text="제품내용"
+        android:textSize="16dp"
         android:textColor="@color/black"
         android:fontFamily="@font/nanumsquareroundeb"
         ></TextView>

@@ -53,6 +53,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             holder.rq_answer.setText(arrayList.get(position).getAnswer());
             holder.answer_btn.setVisibility(View.GONE);
         }
+        holder.rq_date.setText(arrayList.get(position).getDate());
     }
 
     @Override
@@ -66,6 +67,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         TextView rq_category;
         TextView rq_content;
         TextView rq_answer;
+        TextView rq_date;
         LinearLayout rq_layout;
         Button answer_btn;
         public RequestViewHolder(@NonNull View itemView) {
@@ -90,6 +92,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
             this.rq_answer = itemView.findViewById(R.id.tv_rq_answer);
             this.rq_layout = itemView.findViewById(R.id.answer);
             this.answer_btn = itemView.findViewById(R.id.answer_btn);
+            this.rq_date = itemView.findViewById(R.id.tv_rq_date);
         }
     }
 }

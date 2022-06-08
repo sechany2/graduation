@@ -71,7 +71,7 @@ public class Fragmentadmin extends Fragment {
                     }
                     arrayList.add(user);// 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
-                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -82,6 +82,7 @@ public class Fragmentadmin extends Fragment {
 
 
         databaseReference.child("graduation").child("UserAccount").addValueEventListener(userEventListener);
+
         adapter = new UserAdapter(arrayList, getContext());
         adapter.setOnItemClickListener(new UserAdapter.OnItemClickListener() {
             @Override

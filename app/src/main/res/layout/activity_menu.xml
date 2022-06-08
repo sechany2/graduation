@@ -20,8 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="메뉴"
+             android:layout_margin="10dp"
             android:textColor="@color/white"
-            android:textSize="40sp"
+            android:textSize="20sp"
             android:fontFamily="@font/nanumsquareroundeb">
         </TextView>
 
@@ -31,31 +32,31 @@
         android:drawableLeft="@drawable/ic_baseline_help_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:text="도움말"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
         android:id="@+id/menutv_announcement"
         android:drawableLeft="@drawable/ic_baseline_campaign_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:gravity="center"
         android:text="공지사항"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
         android:id="@+id/menutv_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_baseline_content_paste_search_24"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="20dp"
         android:textColor="@color/black"
         android:text="분석요청"
         android:fontFamily="@font/nanumsquareroundr"/>
@@ -64,10 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_baseline_insert_comment_24"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:text="문의하기"
         android:fontFamily="@font/nanumsquareroundr"/>
 
@@ -78,8 +79,8 @@
         android:drawableLeft="@drawable/ic_baseline_settings_24"
         android:gravity="center"
         android:textColor="@color/black"
-        android:layout_margin="10dp"
-        android:textSize="40sp"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
         android:text="설정"
         android:fontFamily="@font/nanumsquareroundr"/>
 

@@ -94,20 +94,28 @@ public class Fragmentsurvey0 extends Fragment {
         bundle.putString("pregnant","0");
         bundle.putString("allergy","0");
         bundle.putString("disease","0");
+        Button btn_allergy = (Button)view.findViewById(R.id.btn_allergy);
+        Button btn_disease = (Button)view.findViewById(R.id.btn_disease);
 
         if (getArguments() != null){
 
             bundle.putString("allergy",getArguments().getString("allergy"));
             bundle.putString("disease",getArguments().getString("disease"));
             if (getArguments().getString("pregnant").contains("임산부")) {
-                btn_pregnant.setBackgroundColor(0xDDF32424); //puple 200
+                btn_pregnant.setBackgroundColor(0xBFF14F4F);
                 bundle.putString("pregnant","임산부");
                 check_pregnant=1;
             }
+            if (!getArguments().getString("allergy").equals("0")) {
+                btn_allergy.setBackgroundColor(0xBFF14F4F);
+            }
 
+            if (!getArguments().getString("disease").equals("0")) {
+                btn_disease.setBackgroundColor(0xBFF14F4F);
+            }
 
             if (getArguments().getString("baby").contains("유아")) {
-                btn_baby.setBackgroundColor(0xDDF32424); //puple 200
+                btn_baby.setBackgroundColor(0xBFF14F4F);
                 bundle.putString("baby","유아");
                 check_baby=1;
             }
@@ -121,7 +129,7 @@ public class Fragmentsurvey0 extends Fragment {
                     bundle.putString("baby","유아");
                     check_baby=1;
                 }
-                else{btn_baby.setBackgroundColor(0xDDF32424); //puple 500
+                else{btn_baby.setBackgroundColor(0xDD989898); //puple 500
                     bundle.putString("baby","0");
                     check_baby= 0;
 
@@ -143,7 +151,7 @@ public class Fragmentsurvey0 extends Fragment {
                     bundle.putString("pregnant","임산부");
                     check_pregnant = 1;
                 }
-                else{btn_pregnant.setBackgroundColor(0xDDF32424); //puple 500
+                else{btn_pregnant.setBackgroundColor(0xDD989898); //puple 500
                     bundle.putString("pregnant","0");
                     check_pregnant = 0 ;
                 }
@@ -153,7 +161,7 @@ public class Fragmentsurvey0 extends Fragment {
 
 
         //알레르기 버튼
-        Button btn_allergy = (Button)view.findViewById(R.id.btn_allergy);
+
         btn_allergy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,7 +173,7 @@ public class Fragmentsurvey0 extends Fragment {
             }
         });
         //특정질환 버튼
-        Button btn_disease = (Button)view.findViewById(R.id.btn_disease);
+
         btn_disease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

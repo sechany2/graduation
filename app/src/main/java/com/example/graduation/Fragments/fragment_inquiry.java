@@ -3,6 +3,7 @@ package com.example.graduation.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,8 +14,10 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.Object.Request;
 import com.example.graduation.Object.UserAccount;
 import com.example.graduation.R;
@@ -43,13 +46,13 @@ public class fragment_inquiry extends Fragment {
     private DatabaseReference databaseReference;
 
 
-    public fragment_inquiry(){}
-
-    public static fragment_inquiry newInstance() {
-       fragment_inquiry fragment = new fragment_inquiry();
-       return fragment;
+    public fragment_inquiry() {
     }
 
+    public static fragment_inquiry newInstance() {
+        fragment_inquiry fragment = new fragment_inquiry();
+        return fragment;
+    }
 
 
     @Nullable
@@ -75,7 +78,7 @@ public class fragment_inquiry extends Fragment {
                     UserAccount userAccount = snapshot2.getValue(UserAccount.class);
                     if (snapshot2.getKey().equals(mAuth.getUid())) {
                         name = userAccount.getName();       //이름 저장
-                        Log.e("name",name);
+                        Log.e("name", name);
                     }
                 }
             }
@@ -98,7 +101,8 @@ public class fragment_inquiry extends Fragment {
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 });
                 dlg.show();
@@ -112,14 +116,15 @@ public class fragment_inquiry extends Fragment {
                 TimeZone tz;                                        // 객체 생성
                 tz = TimeZone.getTimeZone("Asia/Seoul");  // TimeZone에 표준시 설정
                 Date date = new Date();
-                SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
+                SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd kk:mm", Locale.KOREAN);
                 now.setTimeZone(tz);
                 String getTime = now.format(date);
-                
+                request.setDate(getTime);
                 mRef.child(getTime).setValue(request);
+
             }
         });
-       return  view;
+        return view;
     }
 
 

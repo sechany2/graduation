@@ -11,7 +11,7 @@
             android:background="@drawable/square_background_border_gray"
 
             android:id="@+id/layout_img_border2"
-            android:padding="5dp"
+            android:padding="1dp"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"

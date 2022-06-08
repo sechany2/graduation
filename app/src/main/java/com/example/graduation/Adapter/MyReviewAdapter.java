@@ -35,7 +35,8 @@ public class MyReviewAdapter extends RecyclerView.Adapter<MyReviewAdapter.Review
     @Override
     public void onBindViewHolder(@NonNull ReviewViewHolder holder, int position) {
         holder.myreviewUserid.setText(arrayList.get(position).getUserid());
-        holder.myreviewRate.setText(String.valueOf(arrayList.get(position).getScore()));
+        String a = "/5";
+        holder.myreviewRate.setText(String.valueOf(arrayList.get(position).getScore())+a);
         holder.myreviewReview.setText(arrayList.get(position).getReview());
         holder.myreviewProduct.setText(arrayList.get(position).getPd_name());
     }

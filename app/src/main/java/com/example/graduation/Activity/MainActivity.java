@@ -21,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -75,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.next_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
+        ImageView a,b ;
+        a =findViewById(R.id.ghealth);
+        b =findViewById(R.id.han);
+        a.setClipToOutline(true);
+        b.setClipToOutline(true);
 
 
         //분류 버튼 다이어트
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         //하단바 홈버튼
         btn_home = (Button) findViewById(R.id.btn_home);
         LinearLayout homelayout = (LinearLayout) findViewById(R.id.homelayout);
+
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -251,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         drawerLayout.setDrawerListener(listener);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         drawerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -285,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView tv_request = (TextView) findViewById(R.id.menutv_request);
+        tv_request.setText("요청 확인");
         tv_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -292,6 +301,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
                 if (adminCheck) {
+                    tv_manutitle.setText("요청 확인");
                     replaceMenuFragment(Fragment_full_request.newInstance());
                 } else {
                     replaceMenuFragment(Fragment_request.newInstance());
@@ -312,17 +322,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView tv_iquiry = (TextView) findViewById(R.id.menutv_inquiry);
+        if (adminCheck) {tv_iquiry.setVisibility(View.GONE);}
+
         tv_iquiry.setOnClickListener(new View.OnClickListener() {//문의하기 버튼
             @Override
             public void onClick(View view) {
                 tv_manutitle.setText("문의 하기");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
-                if (adminCheck) {
-                    replaceMenuFragment(Fragment_full_request.newInstance());
-                } else {
-                    replaceMenuFragment(fragment_inquiry.newInstance());
-                }
+                replaceMenuFragment(fragment_inquiry.newInstance());
+
             }
         });
         //헬프 뒤로가기 버튼
@@ -335,6 +344,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
@@ -400,7 +410,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
-
 
 
     }

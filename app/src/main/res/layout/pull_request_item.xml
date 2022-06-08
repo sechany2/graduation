@@ -9,7 +9,14 @@
     android:paddingTop="5dp"
     android:paddingBottom="5dp"
     android:layout_margin="5dp"
-    android:background="#ffffff">
+
+    android:background="@drawable/square_background_border_gray"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
 
     <TextView
@@ -18,24 +25,42 @@
         android:id="@+id/tv_rq_category"
         android:text="유형"
         android:fontFamily="@font/nanumsquareroundb"
-        android:textSize="20dp"
-        android:textColor="#00a7f5" />
-    <TextView
-        android:layout_width="wrap_content"
+        android:textSize="14dp"
+        android:textColor="#808080" />
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_rq_title"
-        android:fontFamily="@font/nanumsquareroundb"
-        android:text="문의 제목"
-        android:textSize="15dp"
-        android:textColor="#f92a3f" />
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_rq_date"
+            android:text="XXXX-XX-XX"
+            android:layout_gravity="right"
+            android:fontFamily="@font/nanumsquareroundb"
+            android:textSize="14dp"
+            android:textColor="#878787" />
+    </LinearLayout>
+
+</LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_rq_name"
         android:text="이름"
         android:fontFamily="@font/nanumsquareroundb"
-        android:textSize="26dp"
-        android:textColor="#000" />
+        android:textSize="14dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#818181" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_rq_title"
+        android:fontFamily="@font/nanumsquareroundb"
+        android:text="문의 제목"
+        android:textSize="18dp"
+        android:textColor="#000000" />
+
 
 
     <EditText
@@ -48,8 +73,8 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="문의 내용"
-        android:textColor="#00a7f5"
-        android:textSize="18dp" />
+        android:textColor="#000000"
+        android:textSize="14dp" />
     <LinearLayout
         android:id="@+id/answer"
         android:layout_width="wrap_content"
@@ -65,6 +90,7 @@
         android:layout_height="70dp"
         android:enabled="false"
         android:ems="10"
+        android:textColor="#F44336"
         android:gravity="start|top"
         android:inputType="textMultiLine" />
     <Button

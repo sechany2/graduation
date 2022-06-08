@@ -44,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.userID.setText(arrayList.get(position).getUserID());
         holder.userPassword.setText(String.valueOf(arrayList.get(position).getPassword()));
         holder.userName.setText(arrayList.get(position).getName());
-        holder.reviewVolume.setText(arrayList.get(position).getReviewVolume());
+     
     }
 
     @Override
@@ -56,7 +56,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         TextView userID;
         TextView userPassword;
         TextView userName;
-        TextView reviewVolume;
+
 
 
 
@@ -77,7 +77,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             this.userID = itemView.findViewById(R.id.userID);
             this.userPassword = itemView.findViewById(R.id.userPassword);
             this.userName = itemView.findViewById(R.id.userName);
-            this.reviewVolume = itemView.findViewById(R.id.reviewVolume);
+
         }
     }
 }

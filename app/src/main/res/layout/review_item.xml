@@ -20,17 +20,21 @@
             android:fontFamily="@font/nanumsquareroundb"
             android:textColor="@color/black"
             android:gravity="right"
+            android:layout_marginRight="15dp"
             android:id="@+id/tv_date">
         </TextView>
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_height="2dp"
             android:background="#C8C8C8"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,24 +71,20 @@
             android:textColor="@color/black"
             android:text="x"
             ></TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundb"
-            android:textSize="16dp"
-            android:text="/5"></TextView>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#C8C8C8"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#C8C8C8"
+        />
     <TextView
         android:id="@+id/reviewProduct"
-        android:text=""
+        android:text="Product_00"
         android:textColor="@color/black"
+        android:textSize="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </TextView>
@@ -92,15 +92,12 @@
         android:id="@+id/reviewReview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:text="empty"
+        android:textSize="18dp"
         android:textColor="@color/black"
         android:fontFamily="@font/nanumsquareroundeb"
         android:padding="5dp"
         ></TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#D8D8D8">
-    </LinearLayout>
+
 </LinearLayout>

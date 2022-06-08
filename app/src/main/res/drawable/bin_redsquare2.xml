@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="true">
         <shape>
-            <solid android:color="#DDF32424"/>
+            <solid android:color="#DD989898"/>
             <stroke
                 android:width="0dp"
                 android:color="#111" /> //선색

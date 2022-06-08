@@ -3,6 +3,7 @@ package com.example.graduation.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -97,7 +98,8 @@ public class Fragment_request extends Fragment {
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        startActivity(intent);
                     }
                 });
 
@@ -114,7 +116,7 @@ public class Fragment_request extends Fragment {
                 SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss", Locale.KOREAN);
                 now.setTimeZone(tz);
                 String getTime = now.format(date);
-
+                request.setDate(getTime);
                 mRef.child(getTime).setValue(request);
             }
         });
