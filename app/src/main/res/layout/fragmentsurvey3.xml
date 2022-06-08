@@ -9,14 +9,34 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="제품 추천"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanumsquareroundeb"
-            android:textSize="20dp">
-        </TextView>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="제품 추천"
+                android:layout_marginLeft="150dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanumsquareroundeb"
+                android:textSize="20dp">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/check"
+                    android:background="@drawable/bin_whitesquare"
+                    android:layout_gravity="right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="확인"/>
+            </LinearLayout>
+
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"

@@ -1,11 +1,13 @@
 package com.example.graduation.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.Adapter.Fg3Adapter;
 import com.example.graduation.Logic.PearsonCorrelation;
 import com.example.graduation.Object.Product;
@@ -266,6 +269,14 @@ public class Fragmentsurvey3 extends Fragment {
         }
 
 
+        Button btn_check = (Button)view.findViewById(R.id.check);
+        btn_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
