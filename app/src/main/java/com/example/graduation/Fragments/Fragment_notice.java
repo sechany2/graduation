@@ -44,6 +44,8 @@ public class Fragment_notice extends Fragment {
                 n_as1.setVisibility(View.GONE);
                 n_as2.setVisibility(View.VISIBLE);
 
+
+
             }
         });
 
