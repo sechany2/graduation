@@ -162,6 +162,8 @@ public class FragmentProduct extends Fragment {
 
             }
         });
+        Button btn_info = (Button)view.findViewById(R.id.btn_infome);
+        btn_info.callOnClick();
 
         favoritebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +181,7 @@ public class FragmentProduct extends Fragment {
         });
 
         //정보분석 버튼
-        Button btn_info = (Button)view.findViewById(R.id.btn_infome);
+
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

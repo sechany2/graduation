@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduation.R;
 
-public class Fragment_help extends Fragment {
+public class  Fragment_help extends Fragment {
     public Fragment_help(){}
 
     public static Fragment_help newInstance() {

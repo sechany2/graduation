@@ -1,14 +1,11 @@
 package com.example.graduation.Fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -19,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.Adapter.Fg3Adapter;
 import com.example.graduation.Logic.PearsonCorrelation;
 import com.example.graduation.Object.Product;
@@ -57,7 +53,7 @@ public class Fragmentsurvey3 extends Fragment {
     private String flagBundle = "0";
     private RecyclerView recyclerView;
     private ArrayList<String> productList;
-    private Fg3Adapter adapter;
+    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList, arrayListSort;
     private FirebaseDatabase database;
@@ -70,7 +66,7 @@ public class Fragmentsurvey3 extends Fragment {
     private HashMap<String, Double> userReview, resultknn;
     private int omega3 = 0, probiotics = 0, roughage = 0, calcium = 0, protein = 0, vitaminb = 0, coq10 = 0, l_carnitine = 0, arginine = 0, l_glutamine = 0, creatine = 0, bcaa = 0, beta_alanine = 0, hmb = 0, vitamina = 0, vitaminc = 0, vitamind = 0, vitamine = 0, vitamink = 0, mvitamin = 0,
             propolis = 0, red_ginseng = 0, lutein = 0;
-    private String userToken;
+
     public static Fragmentsurvey3 newInstance() {
         return new Fragmentsurvey3();
     }
@@ -94,14 +90,14 @@ public class Fragmentsurvey3 extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             name = null;
             List pdscore = new ArrayList<>();
-            userToken = mAuth.getUid();
+
             ValueEventListener uavalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //파이어베이스에서 본인 정보 저장
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
                         UserAccount userAccount = snapshot2.getValue(UserAccount.class);
-                        if (snapshot2.getKey().equals(userToken)) {
+                        if (snapshot2.getKey().equals(mAuth.getUid())) {
                             name = userAccount.getName();       //이름 저장
                         }
                     }
@@ -112,7 +108,6 @@ public class Fragmentsurvey3 extends Fragment {
                     Log.e("error", error.toString());
                 }
             };
-
 
             ValueEventListener rvvalueEventListener = new ValueEventListener() {
                 @Override
@@ -241,43 +236,10 @@ public class Fragmentsurvey3 extends Fragment {
             databaseReference.removeEventListener(pdvalueEventListener);
             adapter = new Fg3Adapter(arrayListSort, getContext());
 
-            adapter.setOnItemClickListener(new Fg3Adapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View v, int pos) {
-                    ImageButton favoritebtn= v.findViewById(R.id.favoritebtn);
-                    favoritebtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if(favoritebtn.isSelected()) {
-                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
-                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue(null);
-
-                            } else {
-                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
-                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue("love");
-                            }
-                            favoritebtn.setSelected(!favoritebtn.isSelected());
-                        }
-                    });
-
-                }
-            });
-
             recyclerView.setAdapter(adapter);  //리사이클러뷰 출력
         } else {
             Log.e("error", "error");
         }
-
-
-        Button btn_check = (Button)view.findViewById(R.id.check);
-        btn_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
         return view;
     }
 

@@ -56,7 +56,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/line"
-            app:tint="@color/black" />
+            app:tint="@color/black">
+        </ImageView>
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/imageFilterButton2"
+            android:layout_width="57dp"
+            android:layout_height="57dp"
+            android:background="@drawable/bin_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.604"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.33"
+            tools:ignore="MissingConstraints"></androidx.constraintlayout.utils.widget.ImageFilterButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_camera"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bin_invisible"
+            android:drawableTop="@drawable/ic_baseline_photo_camera_24"
+            app:layout_constraintBottom_toBottomOf="@+id/imageFilterButton2"
+            app:layout_constraintEnd_toEndOf="@+id/imageFilterButton2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/imageFilterButton2"
+            app:layout_constraintTop_toTopOf="@+id/imageFilterButton2"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/my_name"

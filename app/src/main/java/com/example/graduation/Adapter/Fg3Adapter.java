@@ -34,7 +34,12 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
 
     private Fg3Adapter.OnItemClickListener mListener = null; //리스너 초기화
 
-    public  void setOnItemClickListener(Fg3Adapter.OnItemClickListener listener){  //리스너 setter
+
+
+    //엑티비티나 프래그먼트에서 클릭 이벤트를 위한 리스너
+
+
+    public void setOnItemClickListener(Fg3Adapter.OnItemClickListener listener){  //리스너 setter
         this.mListener = listener;
     }
 
@@ -88,6 +93,17 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
 
         public Fg3ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
+                    int pos = getAdapterPosition() ;   //아이템 위치 변수
+                    if (pos != RecyclerView.NO_POSITION) {
+                        if(mListener != null){
+                            mListener.onItemClick(v,pos);
+                        }
+                    }
+                }
+            });
             this.fg3_iv = itemView.findViewById(R.id.fg3_iv);
             this.fg3list_tv_productName = itemView.findViewById(R.id.fg3list_tv_pd_name);
             this.fg3list_tv_brandName = itemView.findViewById(R.id.fg3list_tv_pd_brandname);
