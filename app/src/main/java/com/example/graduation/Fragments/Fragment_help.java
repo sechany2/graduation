@@ -18,18 +18,23 @@ public class Fragment_help extends Fragment {
         Fragment_help fragment = new Fragment_help();
         return fragment;
     }
-    private TextView help1,help2,help3;
+    private TextView help1,help2,help3,h_as1,h_as2,h_as3;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fargment_help, container, false);
+        h_as1 =view.findViewById(R.id.tv_help1_as);
+        h_as2 =view.findViewById(R.id.tv_help2_as);
+        h_as3=view.findViewById(R.id.tv_help3_as);
 
         help1 = view.findViewById(R.id.tv_help1);
         help1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                h_as1.setVisibility(View.VISIBLE);
+                h_as2.setVisibility(View.GONE);
+                h_as3.setVisibility(View.GONE);
             }
         });
 
@@ -37,7 +42,9 @@ public class Fragment_help extends Fragment {
         help2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                h_as1.setVisibility(View.GONE);
+                h_as2.setVisibility(View.VISIBLE);
+                h_as3.setVisibility(View.GONE);
             }
         });
 
@@ -45,7 +52,9 @@ public class Fragment_help extends Fragment {
         help3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                h_as1.setVisibility(View.GONE);
+                h_as2.setVisibility(View.GONE);
+                h_as3.setVisibility(View.VISIBLE);
             }
         });
         return  view;

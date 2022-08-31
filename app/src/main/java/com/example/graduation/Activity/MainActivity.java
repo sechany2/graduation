@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.example.graduation.Adapter.CustomAdapter;
 import com.example.graduation.Fragments.FragmentProduct;
-import com.example.graduation.Fragments.Fragment_announcement;
+import com.example.graduation.Fragments.Fragment_notice;
 import com.example.graduation.Fragments.Fragment_full_request;
 import com.example.graduation.Fragments.Fragment_help;
 import com.example.graduation.Fragments.Fragment_request;
@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
                 tv_manutitle.setText("공지사항");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
-                replaceMenuFragment(Fragment_announcement.newInstance());
+                replaceMenuFragment(Fragment_notice.newInstance());
             }
         });
 

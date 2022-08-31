@@ -8,17 +8,8 @@
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/drawable/square_background_border_black2.xml" value="0.1955" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/activity_menu.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/activity_survey.xml" value="0.25" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fargment_help.xml" value="0.375" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_full_request.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_inquiry.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_request.xml" value="0.1875" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_review.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragment_set.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragmentadmin.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragmentmylove.xml" value="0.1875" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/fragmentmyreview.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/frgment_announcement.xml" value="0.22" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.67" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/review_item.xml" value="0.25" />
         <entry key="..\:/Users/USER/StudioProjects/graduation/app/src/main/res/layout/review_write.xml" value="0.33" />
@@ -44,14 +35,17 @@
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/category_item.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/content.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/drawer_help.xml" value="0.33425925925925926" />
-        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fargment_help.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fargment_help.xml" value="0.1" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fg3list_item.xml" value="0.25" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragment_full_request.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragment_inquiry.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragment_request.xml" value="0.25" />
+        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragment_review.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragment_set.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentadmin.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentcategory.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentmy.xml" value="0.30788804071246817" />
+        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentmylove.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentmyreview.xml" value="0.2078125" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentproduct.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentsurvey0.xml" value="0.36614583333333334" />
@@ -59,6 +53,7 @@
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentsurvey2.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentsurvey3.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/frgment_announcement.xml" value="0.24322916666666666" />
+        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/frgment_notice.xml" value="0.25" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/myreview_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/pull_request_item.xml" value="0.25" />
