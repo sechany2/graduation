@@ -11,30 +11,51 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduation.R;
 
-public class  Fragment_help extends Fragment {
-    public Fragment_help(){}
+import java.util.ArrayList;
+
+public class Fragment_help extends Fragment {
+    public Fragment_help() {
+    }
 
     public static Fragment_help newInstance() {
         Fragment_help fragment = new Fragment_help();
         return fragment;
     }
-    private TextView help1,help2,help3,h_as1,h_as2,h_as3;
+
+    private TextView help1, help2, help3, h_as1, h_as2, h_as3;
+    private boolean flag1, flag2, flag3;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fargment_help, container, false);
-        h_as1 =view.findViewById(R.id.tv_help1_as);
-        h_as2 =view.findViewById(R.id.tv_help2_as);
-        h_as3=view.findViewById(R.id.tv_help3_as);
-
+        h_as1 = view.findViewById(R.id.tv_help1_as);
+        h_as2 = view.findViewById(R.id.tv_help2_as);
+        h_as3 = view.findViewById(R.id.tv_help3_as);
         help1 = view.findViewById(R.id.tv_help1);
+
+        flag1 = true;
+        flag2 = true;
+        flag3 = true;
+
         help1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                h_as1.setVisibility(View.VISIBLE);
-                h_as2.setVisibility(View.GONE);
-                h_as3.setVisibility(View.GONE);
+                if (flag1) {
+                    h_as1.setVisibility(View.VISIBLE);
+                    h_as2.setVisibility(View.GONE);
+                    h_as3.setVisibility(View.GONE);
+                    flag1 = false;
+                    flag2 = true;
+                    flag3 = true;
+                } else {
+                    h_as1.setVisibility(View.GONE);
+                    h_as2.setVisibility(View.GONE);
+                    h_as3.setVisibility(View.GONE);
+                    flag1 = true;
+                }
+
+
             }
         });
 
@@ -42,9 +63,20 @@ public class  Fragment_help extends Fragment {
         help2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                h_as1.setVisibility(View.GONE);
-                h_as2.setVisibility(View.VISIBLE);
-                h_as3.setVisibility(View.GONE);
+                if (flag2) {
+                    h_as1.setVisibility(View.GONE);
+                    h_as2.setVisibility(View.VISIBLE);
+                    h_as3.setVisibility(View.GONE);
+                    flag1 = true;
+                    flag2 = false;
+                    flag3 = true;
+                } else {
+                    h_as1.setVisibility(View.GONE);
+                    h_as2.setVisibility(View.GONE);
+                    h_as3.setVisibility(View.GONE);
+                    flag2 = true;
+                }
+
             }
         });
 
@@ -52,12 +84,26 @@ public class  Fragment_help extends Fragment {
         help3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                h_as1.setVisibility(View.GONE);
-                h_as2.setVisibility(View.GONE);
-                h_as3.setVisibility(View.VISIBLE);
+                if (flag3) {
+
+                    h_as1.setVisibility(View.GONE);
+                    h_as2.setVisibility(View.GONE);
+                    h_as3.setVisibility(View.VISIBLE);
+                    flag1 = true;
+                    flag2 = true;
+                    flag3 = false;
+                } else {
+
+                    h_as1.setVisibility(View.GONE);
+                    h_as2.setVisibility(View.GONE);
+                    h_as3.setVisibility(View.GONE);
+                    flag3 = true;
+                }
+
             }
+
         });
-        return  view;
+        return view;
     }
 
 

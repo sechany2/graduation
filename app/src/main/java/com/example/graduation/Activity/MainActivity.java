@@ -2,6 +2,7 @@ package com.example.graduation.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private Button btn_my, btn_survey, btn_home, btn_menu;
+    private SearchView search;
 
 
     @Override
@@ -82,6 +84,24 @@ public class MainActivity extends AppCompatActivity {
         a.setClipToOutline(true);
         b.setClipToOutline(true);
 
+        //검색버튼
+       /* search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Bundle bundle = new Bundle();
+                bundle.putString("category", "검색 결과");
+                Fragmentcategory fragmentcategory = new Fragmentcategory();
+                //번들 데이터 전달
+                fragmentcategory.setArguments(bundle);
+                replaceFragment(fragmentcategory);
+                frame.removeAllViews();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }*/
 
         //분류 버튼 다이어트
         Button btn_diet = (Button) findViewById(R.id.btn_diet);
