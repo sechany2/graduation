@@ -1,6 +1,9 @@
 package com.example.graduation.Fragments;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +31,10 @@ public class Fragmentsurvey2 extends Fragment {
     private String result;
     private TextView tv_category;
     private ListView listview ;
+    private  Button btn_pro1,btn_pro2;
+    private  ProgressDialog dialog;
     private ListViewAdapter adapter;
+    private Context ct;
     ArrayList<String> list_select = new ArrayList<String>();
 
     public static Fragmentsurvey2 newInstance() {
@@ -125,6 +132,12 @@ public class Fragmentsurvey2 extends Fragment {
                     break;
             }
         }
+       /* ProgressBar progressBar =  view.findViewById(R.id.progressBar); //  프로그레스 바 객체 참조
+        progressBar.setIndeterminate(false);
+        progressBar.setProgress(80);        //findViewByid 메서드로 찾은 후 그 값을 80으로 설정합니다*/
+
+
+
 
         FrameLayout frame =(FrameLayout)view.findViewById(R.id.sv_frame);
         //체크완료 추천화면으로 이동
@@ -132,6 +145,11 @@ public class Fragmentsurvey2 extends Fragment {
         sv_btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ct = container.getContext();
+                dialog = new ProgressDialog(ct);          //프로그레스 대화 상자 객체 만들고 설정을 해줍니다
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.setMessage("데이터를 확인하는 중입니다."); //ialog에 띄울 메시지
+                dialog.show();                                             //만들었으니 shwo()를 통해 보여주기
 
                 //체크박스로 체크한 셀의 정보를 담고 있는 희소 논리 배열 얻어오기
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
@@ -139,21 +157,32 @@ public class Fragmentsurvey2 extends Fragment {
 
 
                 int count = adapter.getCount(); //전체 몇개인지 세기
+                Handler mHandler = new Handler();
+                mHandler.postDelayed(new Runnable()  {
+                    public void run() {
+                                            // 시간 지난 후 실행할 코딩
+                        if(checkedItems.size()!=0){
 
-                if(checkedItems.size()!=0){
-                    list_select.add(checkedItems.toString());
-                    bundle.putString("checked",list_select.toString());
-                    bundle.putString("category",result);
+                            dialog.dismiss();
+                            list_select.add(checkedItems.toString());
+                            bundle.putString("checked",list_select.toString());
+                            bundle.putString("category",result);
 
-                    Fragmentsurvey3 fragmentsurvey3 = new Fragmentsurvey3();
-                    fragmentsurvey3.setArguments(bundle);
-                    replaceFragment(fragmentsurvey3);
+                            Fragmentsurvey3 fragmentsurvey3 = new Fragmentsurvey3();
+                            fragmentsurvey3.setArguments(bundle);
+                            replaceFragment(fragmentsurvey3);
 
-                } else {
-                    Toast.makeText(container.getContext(), "다시 선택해주세요.", Toast.LENGTH_SHORT).show();
-                }
-                listview.clearChoices() ;
-                adapter.notifyDataSetChanged();
+                        } else {
+                            dialog.dismiss();
+                            Toast.makeText(container.getContext(), "다시 선택해주세요.", Toast.LENGTH_SHORT).show();
+                        }
+                        listview.clearChoices() ;
+                        adapter.notifyDataSetChanged();
+
+                    }
+                }, 3000); //3초후
+
+
 
             }
         });

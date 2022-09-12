@@ -45,6 +45,7 @@
             android:layout_marginHorizontal="30dp"
             android:textSize="15dp"
             android:text="도움말과 공지사항을 추가 하였습니다. 기본이미지를 변경 할 수 있게 업데이트 준비 중 입니다."
-            android:visibility="gone"/>
+            android:visibility="gone"
+            />
     </LinearLayout>
 </FrameLayout>

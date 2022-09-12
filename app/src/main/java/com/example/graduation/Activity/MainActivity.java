@@ -313,7 +313,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView tv_request = (TextView) findViewById(R.id.menutv_request);
-        tv_request.setText("요청 확인");
+        tv_request.setText("분석 요청");
+        if (adminCheck) {
+            tv_request.setText("요청 확인");
+        }
+
         tv_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

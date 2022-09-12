@@ -55,7 +55,7 @@ public class Fragmentadmin extends Fragment {
         ValueEventListener userEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                arrayList.clear();
+              arrayList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
                     User user = new User();
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
@@ -71,7 +71,7 @@ public class Fragmentadmin extends Fragment {
                     }
                     arrayList.add(user);// 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
                 }
-
+                adapter.notifyDataSetChanged();
             }
 
             @Override
