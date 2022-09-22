@@ -13,6 +13,9 @@ public class Product {
     private String cd_code;   // 종류 코드
     private Float pd_avg;  //제품평균
     private Float us_avg;  //유저예상평균점수
+    private String recommendation_count; //추천 횟수
+
+
 
     //식약처 데이터
     private String ntk_mthd;
@@ -54,6 +57,15 @@ public class Product {
     public void setPd_carbohydrate(String pd_carbohydrate) {
         this.pd_carbohydrate = pd_carbohydrate;
     }
+
+    public String getRecommendation_count() {
+        return recommendation_count;
+    }
+
+    public void setRecommendation_count(String recommendation_count) {
+        this.recommendation_count = recommendation_count;
+    }
+
 
     public String getPd_salt() {
         return pd_salt;

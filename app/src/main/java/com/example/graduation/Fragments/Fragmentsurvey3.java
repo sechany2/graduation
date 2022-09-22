@@ -1,11 +1,14 @@
 package com.example.graduation.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.Adapter.Fg3Adapter;
 import com.example.graduation.Logic.PearsonCorrelation;
 import com.example.graduation.Object.Product;
@@ -53,7 +57,8 @@ public class Fragmentsurvey3 extends Fragment {
     private String flagBundle = "0";
     private RecyclerView recyclerView;
     private ArrayList<String> productList;
-    private RecyclerView.Adapter adapter;
+
+    private Fg3Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Product> arrayList, arrayListSort;
     private FirebaseDatabase database;
@@ -66,6 +71,8 @@ public class Fragmentsurvey3 extends Fragment {
     private HashMap<String, Double> userReview, resultknn;
     private int omega3 = 0, probiotics = 0, roughage = 0, calcium = 0, protein = 0, vitaminb = 0, coq10 = 0, l_carnitine = 0, arginine = 0, l_glutamine = 0, creatine = 0, bcaa = 0, beta_alanine = 0, hmb = 0, vitamina = 0, vitaminc = 0, vitamind = 0, vitamine = 0, vitamink = 0, mvitamin = 0,
             propolis = 0, red_ginseng = 0, lutein = 0;
+    private String userToken;
+    private boolean ctFlag;
 
     public static Fragmentsurvey3 newInstance() {
         return new Fragmentsurvey3();
@@ -77,6 +84,7 @@ public class Fragmentsurvey3 extends Fragment {
         View view = inflater.inflate(R.layout.fragmentsurvey3, container, false);
 
         if (getArguments() != null) {
+            ctFlag =true;
             arrayListSort = new ArrayList<>();
             result = getArguments().getString("category");
             recyclerView = view.findViewById(R.id.fg3_rv);
@@ -90,14 +98,14 @@ public class Fragmentsurvey3 extends Fragment {
             mAuth = FirebaseAuth.getInstance();
             name = null;
             List pdscore = new ArrayList<>();
-
+            userToken = mAuth.getUid();
             ValueEventListener uavalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     //파이어베이스에서 본인 정보 저장
                     for (DataSnapshot snapshot2 : snapshot.getChildren()) {
                         UserAccount userAccount = snapshot2.getValue(UserAccount.class);
-                        if (snapshot2.getKey().equals(mAuth.getUid())) {
+                        if (snapshot2.getKey().equals(userToken)) {
                             name = userAccount.getName();       //이름 저장
                         }
                     }
@@ -109,13 +117,14 @@ public class Fragmentsurvey3 extends Fragment {
                 }
             };
 
+
             ValueEventListener rvvalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dsnapshot) { //파이어베이스에서 리뷰정보 저장
                     user = new HashMap<String, HashMap>();
                     for (DataSnapshot snapshot3 : dsnapshot.getChildren()) {
-                        userReview = new HashMap<String,Double>();
-                        for(DataSnapshot snapshot4 : snapshot3.getChildren()) {
+                        userReview = new HashMap<String, Double>();
+                        for (DataSnapshot snapshot4 : snapshot3.getChildren()) {
                             String pdcode = snapshot4.getKey();
                             double rate = snapshot4.child("rate").getValue(Double.class);
                             userReview.put(pdcode, rate);
@@ -126,7 +135,7 @@ public class Fragmentsurvey3 extends Fragment {
                             user.put(snapshot3.getKey(), userReview);
                         }
                     }
-                    Log.e("user",user.toString());
+
                     // databaseReference.removeEventListener(this);
                 }
 
@@ -136,8 +145,6 @@ public class Fragmentsurvey3 extends Fragment {
                     Log.e("error", error.toString());
                 }
             };
-
-
 
 
             ValueEventListener pdvalueEventListener = new ValueEventListener() {
@@ -152,7 +159,6 @@ public class Fragmentsurvey3 extends Fragment {
 
 
                     resultknn = new HashMap<String, Double>();
-
 
 
                     resultknn = new PearsonCorrelation().knn(name, user, productList, 5);  //상관계수 구하기
@@ -205,7 +211,24 @@ public class Fragmentsurvey3 extends Fragment {
 
                                 arrayList.get(i).setPd_avg((float) avg);
                             }
+
+
                             adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
+
+                            for (int i = 0; i < arrayListSort.size(); i++) {
+                                if (arrayListSort.get(i).getRecommendation_count() != null) {
+
+                                    if (ctFlag) {
+
+                                        int ct1 = Integer.parseInt(arrayListSort.get(i).getRecommendation_count()) + 1;
+                                        databaseReference.child("Product").child(arrayListSort.get(i).getPd_code()).child("recommendation_count").setValue(String.valueOf(ct1));
+                                    }
+                                } else {
+                                    databaseReference.child("Product").child(arrayListSort.get(i).getPd_code()).child("recommendation_count").setValue("1");
+                                }
+                            }
+                            ctFlag = false;
+
                         }
 
                         @Override
@@ -229,17 +252,49 @@ public class Fragmentsurvey3 extends Fragment {
             databaseReference.child("Product").addValueEventListener(pdvalueEventListener);
 
 
-
             databaseReference.removeEventListener(uavalueEventListener);
-
-
             databaseReference.removeEventListener(pdvalueEventListener);
+
+
             adapter = new Fg3Adapter(arrayListSort, getContext());
+
+            adapter.setOnItemClickListener(new Fg3Adapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View v, int pos) {
+                    ImageButton favoritebtn = v.findViewById(R.id.favoritebtn);
+                    favoritebtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (favoritebtn.isSelected()) {
+                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue(null);
+
+                            } else {
+                                favoritebtn.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                databaseReference.child("graduation").child("UserAccount").child(userToken).child("love").child(arrayListSort.get(pos).getPd_code()).setValue("love");
+                            }
+                            favoritebtn.setSelected(!favoritebtn.isSelected());
+                        }
+                    });
+
+                }
+            });
 
             recyclerView.setAdapter(adapter);  //리사이클러뷰 출력
         } else {
             Log.e("error", "error");
         }
+
+
+        Button btn_check = (Button) view.findViewById(R.id.check);
+        btn_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -861,11 +916,10 @@ public class Fragmentsurvey3 extends Fragment {
                     arrayListSort.add(arrayList.get(j));
 
 
-
                 }
             }
         }
-        for (int k =0; arrayListSort.size() > k ; k++){
+        for (int k = 0; arrayListSort.size() > k; k++) {
             double a = list_resultknn.get(k).getValue();
             arrayListSort.get(k).setUs_avg((float) a);
         }

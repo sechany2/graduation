@@ -60,6 +60,9 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
         //settext로 텍스트 받아온것 출력
         holder.fg3list_tv_productName.setText(arrayList.get(position).getPd_brandname());
         holder.fg3list_tv_brandName.setText(arrayList.get(position).getPd_name());
+        if(arrayList.get(position).getRecommendation_count()!=null){
+        holder.fg3_ct.setText(arrayList.get(position).getRecommendation_count().toString());
+        }
         if(arrayList.get(position).getPd_avg()!=null){
             //holder.fg3_pdrb.setRating(arrayList.get(position).getPd_avg());
         }
@@ -83,6 +86,7 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
     }
 
     public class Fg3ViewHolder extends RecyclerView.ViewHolder {
+        TextView fg3_ct;
         ImageView fg3_iv;
         TextView fg3list_tv_productName;
         TextView fg3list_tv_brandName;
@@ -108,7 +112,7 @@ public class Fg3Adapter extends RecyclerView.Adapter<Fg3Adapter.Fg3ViewHolder> {
             this.fg3list_tv_productName = itemView.findViewById(R.id.fg3list_tv_pd_name);
             this.fg3list_tv_brandName = itemView.findViewById(R.id.fg3list_tv_pd_brandname);
             this.favoritebtn = itemView.findViewById(R.id.favoritebtn);
-
+            this.fg3_ct = itemView.findViewById(R.id.ct);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {   //리사이클러뷰 아이템 클릭시 이벤트
