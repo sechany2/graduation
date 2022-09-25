@@ -38,14 +38,18 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 
 public class Fragmentsurvey3 extends Fragment {
@@ -99,6 +103,16 @@ public class Fragmentsurvey3 extends Fragment {
             name = null;
             List pdscore = new ArrayList<>();
             userToken = mAuth.getUid();
+
+            TimeZone tz;                                        // 객체 생성
+            tz = TimeZone.getTimeZone("Asia/Seoul");  // TimeZone에 표준시 설정
+            Date date = new Date();
+            SimpleDateFormat now = new SimpleDateFormat("yyyy-MM-dd kk:mm", Locale.KOREAN);
+            now.setTimeZone(tz);
+            String getTime = now.format(date);
+
+
+
             ValueEventListener uavalueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -215,6 +229,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                             adapter.notifyDataSetChanged();//리사이클러뷰 업데이트
 
+
                             for (int i = 0; i < arrayListSort.size(); i++) {
                                 if (arrayListSort.get(i).getRecommendation_count() != null) {
 
@@ -222,6 +237,7 @@ public class Fragmentsurvey3 extends Fragment {
 
                                         int ct1 = Integer.parseInt(arrayListSort.get(i).getRecommendation_count()) + 1;
                                         databaseReference.child("Product").child(arrayListSort.get(i).getPd_code()).child("recommendation_count").setValue(String.valueOf(ct1));
+                                        databaseReference.child("graduation").child("UserAccount").child(mAuth.getUid()).child("history").child(arrayListSort.get(i).getPd_code()).setValue(getTime);
                                     }
                                 } else {
                                     databaseReference.child("Product").child(arrayListSort.get(i).getPd_code()).child("recommendation_count").setValue("1");

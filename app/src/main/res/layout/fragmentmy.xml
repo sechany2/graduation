@@ -153,7 +153,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv_rq_count2"
+                        android:id="@+id/tv_history_count"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginStart="88dp"
@@ -163,15 +163,15 @@
                         android:textColor="@color/black"
                         android:textSize="30dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_rq_btn2" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_history_btn" />
 
                     <TextView
-                        android:id="@+id/tv_rq_btn2"
+                        android:id="@+id/tv_history_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/nanumsquareroundb"
-                        android:text="설문 기록"
+                        android:text="내가 추천받은제품"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         app:layout_constraintEnd_toEndOf="parent"

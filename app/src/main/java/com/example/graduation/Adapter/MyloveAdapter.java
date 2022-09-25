@@ -56,6 +56,7 @@ public class MyloveAdapter extends RecyclerView.Adapter<MyloveAdapter.CustomView
         holder.mylove_tv_pd_name.setText(arrayList.get(position).getPd_name());
         Float b = arrayList.get(position).getPd_avg();
         holder.mylove_tv_pd_rt.setText(String.format("%.1f 점",b));
+        holder.myHistory_tv_date.setText(arrayList.get(position).getHistory_date());
     }
 
     @Override
@@ -69,6 +70,7 @@ public class MyloveAdapter extends RecyclerView.Adapter<MyloveAdapter.CustomView
         TextView mylove_tv_pd_brandname;
         TextView mylove_tv_pd_name;
         TextView mylove_tv_pd_rt;
+        TextView myHistory_tv_date;
 
 
         public CustomViewHolder(@NonNull View itemView) {
@@ -90,6 +92,7 @@ public class MyloveAdapter extends RecyclerView.Adapter<MyloveAdapter.CustomView
             this.mylove_tv_pd_brandname = itemView.findViewById(R.id.mylove_tv_pd_brandname);
             this.mylove_tv_pd_name = itemView.findViewById(R.id.mylove_tv_pd_name);
             this.mylove_tv_pd_rt = itemView.findViewById(R.id.mylove_tv_pd_rt);
+            this.myHistory_tv_date = itemView.findViewById(R.id.myHistory_tv_date);
         }
     }
 }

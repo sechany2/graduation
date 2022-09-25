@@ -32,11 +32,13 @@ public class Fragmentmy extends Fragment {
     private FirebaseAuth mAuth;
     private ArrayList<Object> arrayList2;
     private ArrayList<Object> arrayList3;
+    private ArrayList<Object> arrayList4;
     public Fragmentmy(){ }
     public String name;
     public String rvcount="0";
     public String rqcount="0";
     public String mlcount="0";
+    public String historycount="0";
     public int count  = 0;
     public static Fragmentmy newInstance() {
         return new Fragmentmy();
@@ -136,7 +138,29 @@ public class Fragmentmy extends Fragment {
                 };
 
                 databaseReference.child("graduation").child("UserAccount").child(mAuth.getUid()).child("love").addValueEventListener(mlEventListener);
+                databaseReference.removeEventListener(mlEventListener);
+                arrayList4 = new ArrayList<>();
+                ValueEventListener historyEventListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot snapshot2 : snapshot.getChildren()) {
+                            if (snapshot2.getValue() != null) {
+                                arrayList4.add(snapshot2.getValue());
+                                historycount = String.valueOf(arrayList4.size());
+                            }
+                        }
+                        TextView tv_love_count = view.findViewById(R.id.tv_history_count);
+                        tv_love_count.setText(historycount);
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                };
+
+                databaseReference.child("graduation").child("UserAccount").child(mAuth.getUid()).child("history").addValueEventListener(historyEventListener);
+                databaseReference.removeEventListener(historyEventListener);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -168,6 +192,14 @@ public class Fragmentmy extends Fragment {
             public void onClick(View view) {
                 Fragmentmylove fragmentmylove = new Fragmentmylove();
                 ((MainActivity)getActivity()).replaceFragment(fragmentmylove); //메인 엑티비티에 프래그먼트 이동 메소드 호출
+            }
+        });
+        TextView my_history_btn = view.findViewById(R.id.tv_history_btn);
+        my_history_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment_my_history fragment_my_history = new Fragment_my_history();
+                ((MainActivity)getActivity()).replaceFragment(fragment_my_history); //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
         });
 

@@ -14,6 +14,7 @@ public class Product {
     private Float pd_avg;  //제품평균
     private Float us_avg;  //유저예상평균점수
     private String recommendation_count; //추천 횟수
+    private String history_date; //추천받은날짜
 
 
 
@@ -33,6 +34,14 @@ public class Product {
     private String pd_carbohydrate;//탄수화물
     private String pd_province; //지방
     private String pd_salt; //나트륨
+
+    public String getHistory_date() {
+        return history_date;
+    }
+
+    public void setHistory_date(String history_date) {
+        this.history_date = history_date;
+    }
 
     public String getPd_protein() {
         return pd_protein;
