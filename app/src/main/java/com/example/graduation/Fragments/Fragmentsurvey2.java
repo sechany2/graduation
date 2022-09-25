@@ -1,7 +1,8 @@
 package com.example.graduation.Fragments;
 
-import android.app.ProgressDialog;
+import com.example.graduation.Fragments.ProgressDialog;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.SparseBooleanArray;
@@ -31,8 +32,9 @@ public class Fragmentsurvey2 extends Fragment {
     private String result;
     private TextView tv_category;
     private ListView listview ;
-    private  Button btn_pro1,btn_pro2;
-    private  ProgressDialog dialog;
+    private Button btn_pro1,btn_pro2;
+    private ProgressDialog dialog;
+    private ProgressDialog customProgressDialog;
     private ListViewAdapter adapter;
     private Context ct;
     ArrayList<String> list_select = new ArrayList<String>();
@@ -145,11 +147,23 @@ public class Fragmentsurvey2 extends Fragment {
         sv_btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 ct = container.getContext();
+                 /*
                 dialog = new ProgressDialog(ct);          //프로그레스 대화 상자 객체 만들고 설정을 해줍니다
                 dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 dialog.setMessage("데이터를 확인하는 중입니다."); //ialog에 띄울 메시지
                 dialog.show();                                             //만들었으니 shwo()를 통해 보여주기
+                */
+
+                //로딩창 객체 생성
+                customProgressDialog = new ProgressDialog(ct);
+                //로딩창을 투명하게
+                customProgressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                // 로딩창 보여주기
+                customProgressDialog.show();
 
                 //체크박스로 체크한 셀의 정보를 담고 있는 희소 논리 배열 얻어오기
                 SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
@@ -163,7 +177,7 @@ public class Fragmentsurvey2 extends Fragment {
                                             // 시간 지난 후 실행할 코딩
                         if(checkedItems.size()!=0){
 
-                            dialog.dismiss();
+                            customProgressDialog.dismiss();
                             list_select.add(checkedItems.toString());
                             bundle.putString("checked",list_select.toString());
                             bundle.putString("category",result);
@@ -173,7 +187,7 @@ public class Fragmentsurvey2 extends Fragment {
                             replaceFragment(fragmentsurvey3);
 
                         } else {
-                            dialog.dismiss();
+                            customProgressDialog.dismiss();
                             Toast.makeText(container.getContext(), "다시 선택해주세요.", Toast.LENGTH_SHORT).show();
                         }
                         listview.clearChoices() ;

@@ -26,8 +26,6 @@
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/drawable/bin_red2.xml" value="0.14" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/drawable/bin_red3.xml" value="0.14" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/drawable/bin_redsquare2.xml" value="0.14" />
-        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/drawable/square_background_border_black.xml" value="0.249" />
-        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/drawable/square_background_border_gray.xml" value="0.249" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/activity_login.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/activity_main.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/activity_menu.xml" value="0.33425925925925926" />
@@ -52,7 +50,6 @@
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentsurvey2.xml" value="0.33425925925925926" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/fragmentsurvey3.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/frgment_announcement.xml" value="0.24322916666666666" />
-        <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/frgment_notice.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/myreview_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/alswn/StudioProjects/graduation/app/src/main/res/layout/pull_request_item.xml" value="0.25" />
@@ -120,6 +117,8 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2015" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.2105" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.2005" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/progress_bg.xml" value="0.191" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/progress_image.xml" value="0.191" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/searchview_background.xml" value="0.2025" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/drawable/square_background_border_black.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/font/nanumsquareroundeb.xml" value="0.3574074074074074" />
@@ -137,6 +136,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/category_item.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/categorydiet.xml" value="0.16" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/content.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/dialog_progress.xml" value="0.3515625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/drawer_help.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fargment_help.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/fg3list_item.xml" value="0.33240740740740743" />
@@ -161,6 +161,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/frgment_announcement.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/myreview_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/progress_bg.xml" value="0.35052083333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/recommend.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/review_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/user/AndroidStudioProjects/graduation/app/src/main/res/layout/review_write.xml" value="0.36614583333333334" />
@@ -169,7 +170,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio java home" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
