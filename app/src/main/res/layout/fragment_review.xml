@@ -24,11 +24,12 @@
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="제품리뷰"
-                android:textColor="@color/black"
+                android:layout_height="48dp"
                 android:fontFamily="@font/nanumsquareroundb"
+                android:gravity="center"
+                android:text="리뷰"
+                android:textSize="20dp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="구매 만족도"
                 android:textColor="@color/black"
                 android:fontFamily="@font/nanumsquareroundb">

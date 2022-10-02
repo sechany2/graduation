@@ -112,7 +112,7 @@
                 android:fontFamily="@font/nanumsquareroundeb"
                 android:text="인기가 많은 제품 >"
                 android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/realtimeview"
@@ -142,7 +142,7 @@
                         android:fontFamily="@font/nanumsquareroundeb"
                         android:text="건강관련 칼럼"
                         android:textColor="@color/black"
-                        android:textSize="15dp" />
+                        android:textSize="18dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -151,8 +151,8 @@
 
                     <LinearLayout
                         android:id="@+id/layout_img_border"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="400dp"
+                        android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/round_backgroud_border_black"
@@ -161,9 +161,8 @@
 
                         <ImageView
                             android:id="@+id/ghealth"
-                            android:layout_width="wrap_content"
-
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/round_backgroud_border_black"
                             android:clipToOutline="true"
                             android:onClick="onghealthClicked"
@@ -188,7 +187,7 @@
                         android:fontFamily="@font/nanumsquareroundeb"
                         android:text="건강관련 기사"
                         android:textColor="@color/black"
-                        android:textSize="15dp" />
+                        android:textSize="18dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -197,8 +196,8 @@
 
                     <LinearLayout
                         android:id="@+id/layout_img_border2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="400dp"
+                        android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:layout_margin="10dp"
                         android:background="@drawable/round_backgroud_border_black"
@@ -209,8 +208,8 @@
                             android:id="@+id/han"
 
                             android:scaleType="centerCrop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/round_backgroud_border_black"
                             android:clipToOutline="true"
                             android:onClick="onhanClicked"
