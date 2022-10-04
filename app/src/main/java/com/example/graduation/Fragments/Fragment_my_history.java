@@ -54,6 +54,8 @@ public class Fragment_my_history extends Fragment {
         View view = inflater.inflate(R.layout.fragmentmylove, container, false);
 
 
+        TextView tv_mylovetitle = view.findViewById(R.id.tv_mylovetitle);
+        tv_mylovetitle.setText("추천받은 제품 목록");
         //좋아요 리사이클러뷰
         recyclerView = view.findViewById(R.id.rv_mylove);
         recyclerView.setHasFixedSize(true);

@@ -106,7 +106,7 @@
         android:id="@+id/reviewProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reviewProduct"
+        android:text=""
         android:textColor="#515151"
         android:fontFamily="@font/nanumsquareroundr"
         android:textSize="12dp"></TextView>

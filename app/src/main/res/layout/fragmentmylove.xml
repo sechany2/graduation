@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="좋아요를 누른 제품들"
+            android:text="찜한 제품들"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundeb"/>
 

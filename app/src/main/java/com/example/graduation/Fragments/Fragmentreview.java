@@ -1,5 +1,7 @@
 package com.example.graduation.Fragments;
 
+import static com.example.graduation.R.id.reviewRate;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
