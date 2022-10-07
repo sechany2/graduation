@@ -35,26 +35,41 @@
                 app:titleTextColor="@color/white">
 
                 <LinearLayout
-                    android:layout_width="355dp"
+                    android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="horizontal">
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_menu"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bin_whitesquare"
+                        android:drawableLeft="@drawable/ic_baseline_menu_24_off"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
                         android:src="@drawable/icon64px"
                         app:layout_constraintStart_toStartOf="parent" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="50dp"
+                        android:text="헬푸유"
+                        android:fontFamily="@font/nanumsquareroundeb"
+                        android:textSize="30sp"/>
+
                     <androidx.appcompat.widget.SearchView
-                        android:layout_width="match_parent"
+                        android:layout_width="18dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight="1"
+                        android:layout_marginLeft="120dp"
                         android:background="#ffffff"
                         app:queryBackground="@drawable/searchview_background"
                         app:searchIcon="@drawable/ic_baseline_search_24" />
@@ -246,14 +261,14 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_menu"
+            android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_menu_24_off"
+            android:drawableTop="@drawable/ic_baseline_home_24_off"
             android:fontFamily="@font/nanumsquareroundeb"
-            android:text="메뉴"
+            android:text="홈"
             android:textColor="@color/black"
             android:textSize="12dp" />
 
@@ -269,15 +284,17 @@
             android:textColor="@color/black"
             android:textSize="12dp" />
 
+
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_home"
+            android:id="@+id/btn_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_home_24_off"
+            android:drawableTop="@drawable/ic_baseline_bar_chart_24"
             android:fontFamily="@font/nanumsquareroundeb"
-            android:text="홈"
+            android:text="통계"
             android:textColor="@color/black"
             android:textSize="12dp" />
 
