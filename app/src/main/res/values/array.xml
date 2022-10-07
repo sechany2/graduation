@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statistics">
+        <item>추천 많이 받은 제품</item>
+        <item>리뷰가 많은 제품</item>
+    </string-array>
+    
+</resources>

@@ -34,6 +34,7 @@ import com.example.graduation.Fragments.Fragment_full_request;
 import com.example.graduation.Fragments.Fragment_help;
 import com.example.graduation.Fragments.Fragment_request;
 import com.example.graduation.Fragments.Fragment_set;
+import com.example.graduation.Fragments.Fragment_statistics;
 import com.example.graduation.Fragments.Fragmentadmin;
 import com.example.graduation.Fragments.Fragmentcategory;
 import com.example.graduation.Fragments.Fragmentmy;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Product> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private Button btn_my, btn_survey, btn_home, btn_menu;
+    private Button btn_my, btn_survey, btn_home, btn_menu, btn_statistics;
     private SearchView search;
 
 
@@ -241,6 +242,16 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 frame.removeAllViews();
                 frame.addView(homelayout);
+            }
+        });
+
+        //통계버튼
+        btn_statistics = (Button) findViewById(R.id.btn_statistics);
+        btn_statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                frame.removeAllViews();
+                replaceFragment(Fragment_statistics.newInstance());
             }
         });
 
