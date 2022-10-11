@@ -35,6 +35,7 @@ import com.example.graduation.Fragments.Fragment_help;
 import com.example.graduation.Fragments.Fragment_request;
 import com.example.graduation.Fragments.Fragment_set;
 import com.example.graduation.Fragments.Fragment_statistics;
+import com.example.graduation.Fragments.Fragment_webview;
 import com.example.graduation.Fragments.Fragmentadmin;
 import com.example.graduation.Fragments.Fragmentcategory;
 import com.example.graduation.Fragments.Fragmentmy;
@@ -247,13 +248,26 @@ public class MainActivity extends AppCompatActivity {
 
         //통계버튼
         btn_statistics = (Button) findViewById(R.id.btn_statistics);
-        btn_statistics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                frame.removeAllViews();
-                replaceFragment(Fragment_statistics.newInstance());
-            }
-        });
+        if (adminCheck){
+            btn_statistics.setText("통계");
+            btn_statistics.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    frame.removeAllViews();
+                    replaceFragment(Fragment_webview.newInstance());
+                }
+            });
+
+        }else{
+            btn_statistics.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    frame.removeAllViews();
+                    replaceFragment(Fragment_statistics.newInstance());
+                }
+            });
+        }
+
 
         //메뉴버튼
         btn_menu = (Button) findViewById(R.id.btn_menu);

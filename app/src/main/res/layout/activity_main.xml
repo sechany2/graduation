@@ -293,7 +293,7 @@
             android:background="@drawable/bin_whitesquare"
             android:drawableTop="@drawable/ic_baseline_bar_chart_24"
             android:fontFamily="@font/nanumsquareroundeb"
-            android:text="통계"
+            android:text="랭킹"
             android:textColor="@color/black"
             android:textSize="12dp" />
 
