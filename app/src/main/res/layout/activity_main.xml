@@ -48,6 +48,17 @@
                         android:textColor="@color/black"
                         android:textSize="12dp" />
 
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginRight="100dp"
+                        android:layout_marginLeft="100dp"
+                        android:text="헬푸유"
+                        android:fontFamily="@font/nanumsquareroundeb"
+                        android:textSize="30sp"/>
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="wrap_content"
@@ -56,23 +67,7 @@
                         android:src="@drawable/icon64px"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="50dp"
-                        android:text="헬푸유"
-                        android:fontFamily="@font/nanumsquareroundeb"
-                        android:textSize="30sp"/>
 
-                    <androidx.appcompat.widget.SearchView
-                        android:layout_width="18dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="120dp"
-                        android:background="#ffffff"
-                        app:queryBackground="@drawable/searchview_background"
-                        app:searchIcon="@drawable/ic_baseline_search_24" />
                 </LinearLayout>
 
             </androidx.appcompat.widget.Toolbar>
@@ -291,7 +286,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/bin_whitesquare"
-            android:drawableTop="@drawable/ic_baseline_bar_chart_24"
+            android:drawableTop="@drawable/ic_baseline_bar_chart_24_off"
             android:fontFamily="@font/nanumsquareroundeb"
             android:text="랭킹"
             android:textColor="@color/black"
