@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                     Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
                     btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                     btn_statistics.setTextColor(Color.parseColor("#DDF32424"));
-                    btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
+                    btn_survey.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                     btn_my.setTextColor(Color.parseColor("#FF828282"));
                     btn_home.setTextColor(Color.parseColor("#FF828282"));
                     frame.removeAllViews();
