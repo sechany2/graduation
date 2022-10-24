@@ -17,7 +17,6 @@ public class Product {
     private String history_date; //추천받은날짜
 
 
-
     //식약처 데이터
     private String ntk_mthd;
     private String primary_fnclty; //주된기능성

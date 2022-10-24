@@ -139,6 +139,7 @@ public class FragmentProduct extends Fragment {
                 tv_rt = view.findViewById(R.id.tv_rt);
                 tv_rt.setText(String.format("%.1f 점",avg));
                 ratingbar.setRating((float) avg);
+                dbrfpd.child(pd_code).child("pd_avg").setValue(avg);
             }
 
             @Override
