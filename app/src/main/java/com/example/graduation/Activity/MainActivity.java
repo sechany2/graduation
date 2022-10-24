@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Drawable top_home = getResources().getDrawable(R.drawable.ic_baseline_home_24_off);
                     btn_home.setCompoundDrawablesWithIntrinsicBounds(null, top_home, null, null);
-                    Drawable top_menu = getResources().getDrawable(R.drawable.ic_baseline_menu_24_off);
-                    btn_menu.setCompoundDrawablesWithIntrinsicBounds(null, top_menu, null, null);
+                    Drawable top_statistics = getResources().getDrawable(R.drawable.ic_baseline_bar_chart_24_off);
+                    btn_statistics.setCompoundDrawablesWithIntrinsicBounds(null,top_statistics,null,null);
                     Drawable top_survey = getResources().getDrawable(R.drawable.ic_baseline_assignment_24_off);
                     btn_survey.setCompoundDrawablesWithIntrinsicBounds(null, top_survey, null, null);
                     Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24);
@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                     Drawable top_my = getResources().getDrawable(R.drawable.ic_baseline_face_24_off);
                     btn_my.setCompoundDrawablesWithIntrinsicBounds(null, top_my, null, null);
                     btn_statistics.setTextColor(Color.parseColor("#DDF32424"));
-                    btn_menu.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
+                    btn_survey.setTextColor(Color.parseColor("#FF828282"));//#DDF32424
                     btn_my.setTextColor(Color.parseColor("#FF828282"));
                     btn_home.setTextColor(Color.parseColor("#FF828282"));
                     frame.removeAllViews();

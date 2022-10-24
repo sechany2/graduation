@@ -96,13 +96,21 @@ public class PearsonCorrelation {
                     qsum += (r[i] - mean[i]) * p[i];
                 }
                 double result = 0;
-                result = ( qsum/ psum )+ mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
-                recommend.put(key, result ); //값저장
+                if(qsum != 0.0) {
+                 if(psum != 0.0)
+                    result = (qsum / psum) + mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
+                }
 
+                    if(result != 0.0) {
+                    recommend.put(key, result); //값저장
+                }
 
 
                 keys[k] = key;
-                k++;
+                if(k<map.size()-1){
+                    k++;
+                }
+
 
             }
 
