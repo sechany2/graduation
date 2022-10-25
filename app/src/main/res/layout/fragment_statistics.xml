@@ -35,21 +35,24 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_best"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/statistics"
+        android:paddingRight="30dp"
+        android:spinnerMode="dropdown"
+        android:text="추천 많이 받은 제품"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="18dp"/>
 
     <LinearLayout
-        android:layout_width="205dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_best"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/statistics"
-            android:paddingRight="30dp"
-            android:spinnerMode="dropdown"
-            android:text="추천 많이 받은 제품" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rankview"
@@ -57,19 +60,22 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="205dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/statistics"
+        android:paddingRight="30dp"
+        android:spinnerMode="dropdown"
+        android:text="평점이 높은 제품"
+        android:fontFamily="@font/nanumsquareroundeb"
+        android:textSize="18dp"/>
 
-        <TextView
-            android:id="@+id/tv_avg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/statistics"
-            android:paddingRight="30dp"
-            android:spinnerMode="dropdown"
-            android:text="평점이 높은 제품" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rankview2"
@@ -77,6 +83,5 @@
             android:layout_height="match_parent" />
     </LinearLayout>
     </LinearLayout>
-
     </LinearLayout>
 </FrameLayout>

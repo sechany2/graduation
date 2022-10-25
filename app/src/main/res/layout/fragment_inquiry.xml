@@ -8,20 +8,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
     <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="문의 유형"
-        android:textColor="@color/black"
-        android:fontFamily="@font/nanumsquareroundeb"/>
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:spinnerMode="dropdown">
-
-    </androidx.appcompat.widget.AppCompatSpinner>
-    <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

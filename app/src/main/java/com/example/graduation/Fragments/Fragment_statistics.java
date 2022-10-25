@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduation.Adapter.CustomAdapter;
+import com.example.graduation.Adapter.RankingAdapter;
 import com.example.graduation.Logic.SortArraylist;
 import com.example.graduation.Object.Product;
 import com.example.graduation.R;
@@ -40,7 +41,7 @@ public class Fragment_statistics extends Fragment {
         return new Fragment_statistics();
     }
     private RecyclerView recyclerView,recyclerView2;
-    private CustomAdapter adapter,adapter2;
+    private RankingAdapter adapter,adapter2;
     private RecyclerView.LayoutManager layoutManager,layoutManager2;
     private ArrayList<Product> arrayList,arrayList2;
     private FirebaseDatabase database;
@@ -56,8 +57,8 @@ public class Fragment_statistics extends Fragment {
         recyclerView2 = view.findViewById(R.id.rankview2);
         recyclerView.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
         recyclerView2.setHasFixedSize(true); //리사이클러뷰 기존성능 강화
-        layoutManager = new LinearLayoutManager(ct, RecyclerView.VERTICAL, false);
-        layoutManager2 = new LinearLayoutManager(ct, RecyclerView.VERTICAL, false);
+        layoutManager = new LinearLayoutManager(ct, RecyclerView.HORIZONTAL, false);
+        layoutManager2 = new LinearLayoutManager(ct, RecyclerView.HORIZONTAL, false);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView2.setLayoutManager(layoutManager2);
@@ -92,10 +93,10 @@ public class Fragment_statistics extends Fragment {
                 Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-        adapter2 = new CustomAdapter(arrayList2, ct);
-        adapter = new CustomAdapter(arrayList, ct);
+        adapter2 = new RankingAdapter(arrayList2, ct);
+        adapter = new RankingAdapter(arrayList, ct);
         adapter.setOnItemClickListener(
-                new CustomAdapter.OnItemClickListener() {
+                new RankingAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
                         ArrayList<String> pdinfo = new ArrayList<>();
@@ -126,7 +127,7 @@ public class Fragment_statistics extends Fragment {
         );
         recyclerView.setAdapter(adapter); //리사이클러뷰에 어댑터 연결
         adapter2.setOnItemClickListener(
-                new CustomAdapter.OnItemClickListener() {
+                new RankingAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
                         ArrayList<String> pdinfo = new ArrayList<>();
