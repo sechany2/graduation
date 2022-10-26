@@ -17,6 +17,7 @@ import com.example.graduation.Activity.MainActivity;
 import com.example.graduation.Adapter.DietAdapter;
 import com.example.graduation.Adapter.MyloveAdapter;
 import com.example.graduation.Object.Product;
+import com.example.graduation.Object.Review;
 import com.example.graduation.Object.UserAccount;
 import com.example.graduation.Object.category;
 import com.example.graduation.R;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Fragment_my_history extends Fragment {
@@ -135,6 +137,7 @@ public class Fragment_my_history extends Fragment {
                             arrayList.get(i).setPd_avg((float) avg);
 
                         }
+                        Collections.sort(arrayList, new Product());
                         adapter.notifyDataSetChanged();
                     }
 
@@ -143,6 +146,8 @@ public class Fragment_my_history extends Fragment {
 
                     }
                 });
+                Collections.sort(arrayList, new Product());
+
                 adapter.notifyDataSetChanged();
             }
             @Override

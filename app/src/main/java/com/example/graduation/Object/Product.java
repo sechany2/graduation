@@ -1,6 +1,8 @@
 package com.example.graduation.Object;
 
-public class Product {
+import java.util.Comparator;
+
+public class Product implements Comparator<Product> {
     private String pd_profile; //제품 이미지
     private String pd_code; // 제품 코드
     private String pd_name; //제품 이름
@@ -243,6 +245,13 @@ public class Product {
 
     public void setCd_code(String cd_code) {
         this.cd_code = cd_code;
+    }
+
+
+
+    @Override
+    public int compare(Product product, Product t1) {
+        return t1.history_date.compareTo( product.history_date);
     }
 
 }

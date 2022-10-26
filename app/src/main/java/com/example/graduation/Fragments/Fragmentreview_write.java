@@ -39,7 +39,7 @@ public class Fragmentreview_write extends Fragment {
     private DatabaseReference databaseReference;
     double rate;
 
-    public String pd_code,name, getTime;
+    public String pd_code,name,pd_name, getTime;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -49,7 +49,7 @@ public class Fragmentreview_write extends Fragment {
 
         String rvinfo = getArguments().getString("pd_code");
         pd_code = rvinfo; //pd_code 받기.
-
+        pd_name = getArguments().getString("pd_name");
         EditText reviewEdit=(EditText)view.findViewById(R.id.reviewEdit);
         Button cancelButton=(Button)view.findViewById(R.id.cancelButton);
         Button okButton=(Button)view.findViewById(R.id.okButton);
@@ -103,7 +103,8 @@ public class Fragmentreview_write extends Fragment {
                 addReview_write(reviewEdit.getText().toString());
                 Bundle rvinfo = new Bundle();
                 rvinfo.putString("pd_code",pd_code);
-                Fragmentreview fragmentreview = new Fragmentreview();
+                rvinfo.putString("pd_name",pd_name);
+                Fragmentreview  fragmentreview = new Fragmentreview();
                 fragmentreview.setArguments(rvinfo);
                 ((MainActivity)getActivity()).replaceframeProduct(fragmentreview); //메인 엑티비티에 프래그먼트 이동 메소드 호출
             }
@@ -113,11 +114,11 @@ public class Fragmentreview_write extends Fragment {
     }
 
     public void addReview_write(String review){
-        Review_write review_write = new Review_write(review);
 
-        //Log.e("리뷰라이트",review);
+
+        databaseReference.child("Review").child(name).child(pd_code).child("date").setValue(getTime);
         databaseReference.child("Reviewwrite").child(name).child(pd_code).setValue(review);
         databaseReference.child("Review").child(name).child(pd_code).child("rate").setValue(rate);
-        databaseReference.child("Review").child(name).child(pd_code).child("date").setValue(getTime);
+
     }
 }

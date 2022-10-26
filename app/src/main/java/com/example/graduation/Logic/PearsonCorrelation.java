@@ -17,7 +17,8 @@ public class PearsonCorrelation {
 
     public HashMap<String, Double> knn(String name, HashMap<String, HashMap> user, ArrayList<String> productList, int number) { //비슷한 유저데이터 참조
 
-        HashMap<String, Double> recommend = new HashMap<String, Double>() {};
+        HashMap<String, Double> recommend = new HashMap<String, Double>() {
+        };
         HashMap<String, Double> pearsonResult = new HashMap<String, Double>();
         for (Entry<String, HashMap> entry : user.entrySet()) {//pearson 상관계수 구하기
             pearsonResult.put(entry.getKey(), pearson(user.get(name), entry.getValue()));
@@ -44,7 +45,7 @@ public class PearsonCorrelation {
             boolean resultBoolean = true;
             String key;
             key = object.toString();
-            for ( Entry<String, Double> entry: map.entrySet()) {
+            for (Entry<String, Double> entry : map.entrySet()) {
                 if (entry.getKey().equals(object.toString())) {
                     resultBoolean = false;
 
@@ -67,13 +68,11 @@ public class PearsonCorrelation {
                 // Log.e(list_entries.toString(), name);
 
 
-
-
                 for (j = j; j < list_entries.size(); j++) {
                     if (!(list_entries.get(j).getKey().equals(name))) {
                         map2 = user.get(list_entries.get(j).getKey());
                         if (map2.get(key) != null) {
-                            if(i<number){
+                            if (i < number) {
                                 r[i] = map2.get(key);  //대조자 에 제품 점수
                                 p[i] = list_entries.get(j).getValue();   //대조자에 상관계수
                                 mean[i] = mean(map2);                    //대조자에 평균 점수
@@ -86,7 +85,6 @@ public class PearsonCorrelation {
                 }
 
 
-
                 mymean = mean(map);                     //사용자 평균점수
 
                 double psum = 0;
@@ -96,24 +94,23 @@ public class PearsonCorrelation {
                     qsum += (r[i] - mean[i]) * p[i];
                 }
                 double result = 0;
-                if(qsum != 0.0) {
-                 if(psum != 0.0)
-                    result = (qsum / psum) + mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
+                if (qsum != 0.0) {
+                    if (psum != 0.0)
+                        result = (qsum / psum) + mymean; //식 사용자평균점수+(상관계수1*대조자1점수+상관계수2*대조자2점수)/(상관계수1+상관계수2)
                 }
 
-                    if(result != 0.0) {
+                if (result != 0.0) {
                     recommend.put(key, result); //값저장
                 }
 
 
                 keys[k] = key;
-                if(k<map.size()-1){
+                if (k < map.size() - 1) {
                     k++;
                 }
 
 
             }
-
 
 
         }
@@ -164,11 +161,16 @@ public class PearsonCorrelation {
     private double mean(HashMap<String, Double> s) {
         double sum = 0;
         int ct = 0;
-        for (Entry<String, Double> entry : s.entrySet()) {
-            if (entry.getValue() != null) {
-                sum = sum + entry.getValue();
-                ct = ct + 1;
+        if (s.size() != 0) {
+            for (Entry<String, Double> entry : s.entrySet()) {
+                if (entry.getValue() != null) {
+                    sum = sum + entry.getValue();
+                    ct = ct + 1;
+                }
             }
+        } else {
+            Log.e( "PearsonCorrelation", "mean null");
+            return 0;
         }
 
         double result = sum / ct;
