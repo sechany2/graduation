@@ -58,7 +58,7 @@ public class LogInActivity extends AppCompatActivity {
         //툴바
         Toolbar toolbar =findViewById(R.id.login_toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("graduation");
+        getSupportActionBar().setTitle("");
 
 
         mAuth = FirebaseAuth.getInstance();                     // ( 변수 초기화 및 초기설정

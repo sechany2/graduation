@@ -53,23 +53,23 @@
         android:id="@+id/menutv_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_content_paste_search_24"
+        android:drawableLeft="@drawable/ic_baseline_insert_comment_24"
         android:layout_margin="5dp"
         android:gravity="center"
         android:textSize="20dp"
         android:textColor="@color/black"
-        android:text="분석요청"
+        android:text="문의 하기"
         android:fontFamily="@font/nanumsquareroundr"/>
     <TextView
         android:id="@+id/menutv_inquiry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_insert_comment_24"
+        android:drawableLeft="@drawable/ic_baseline_content_paste_search_24"
         android:layout_margin="5dp"
         android:textColor="@color/black"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="문의하기"
+        android:text="수정 요청"
         android:fontFamily="@font/nanumsquareroundr"/>
 
     <TextView

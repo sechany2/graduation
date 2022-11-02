@@ -96,8 +96,8 @@ public class fragment_inquiry extends Fragment {
             public void onClick(View view) {
 
                 AlertDialog.Builder dlg = new AlertDialog.Builder(ct);
-                dlg.setTitle("문의 완료");
-                dlg.setMessage("문의 해주셔서 감사합니다.");
+                dlg.setTitle("요청 완료");
+                dlg.setMessage("요청 해주셔서 감사합니다.");
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

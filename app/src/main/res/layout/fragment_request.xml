@@ -64,7 +64,7 @@
             android:background="@drawable/bin_red2"
             android:textColor="@color/white"
             android:fontFamily="@font/nanumsquareroundeb"
-            android:text="분석 요청하기" />
+            android:text="수정 요청하기" />
     </LinearLayout>
     </LinearLayout>
 </FrameLayout>

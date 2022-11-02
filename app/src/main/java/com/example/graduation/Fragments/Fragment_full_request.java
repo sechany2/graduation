@@ -105,9 +105,8 @@ public class Fragment_full_request extends Fragment {
                     Request request = snapshot.getValue(Request.class);
                     request.setCategory("분석 요청");
                     arrayList.add(request);
-
                 }
-
+                databaseReference.removeEventListener(this);
                 // adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
             }
 
@@ -131,20 +130,15 @@ public class Fragment_full_request extends Fragment {
                     Request request = snapshot.getValue(Request.class);
                     request.setCategory("질의 문의");
                     arrayList.add(request);
-
                 }
 
-
                 ArrayList<Request> arrayList2 = new ArrayList<>();
-
 
                 if (name.equals("admin")) {
                     adapter = new RequestAdapter(arrayList, getContext());
                     adapter.setOnItemClickListener(new RequestAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(View v, int pos) {
-
-
                                 LinearLayout rqlayout = v.findViewById(R.id.answer);
                                 rqlayout.setVisibility((View.VISIBLE));
                             if (clickFlag) {
@@ -211,6 +205,7 @@ public class Fragment_full_request extends Fragment {
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
 
+                databaseReference.removeEventListener(this);
             }
 
             @Override

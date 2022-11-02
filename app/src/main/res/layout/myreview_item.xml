@@ -58,7 +58,7 @@
             android:textSize="16dp"
             android:textColor="@color/black"
             android:fontFamily="@font/nanumsquareroundb"
-            android:text="/5"></TextView>
+            android:text=""></TextView>
     </LinearLayout>
     <TextView
         android:id="@+id/myreviewProduct"

@@ -140,9 +140,13 @@ public class Fragmentsurvey3 extends Fragment {
                         userReview = new HashMap<String, Double>();
                         for (DataSnapshot snapshot4 : snapshot3.getChildren()) {
                             String pdcode = snapshot4.getKey();
-                            double rate = snapshot4.child("rate").getValue(Double.class);
+                            double rate = 0;
+                            if (snapshot4.child("rate").getValue(Double.class) == null){
+                                rate = 5;
+                            }else {
+                                rate = snapshot4.child("rate").getValue(Double.class);
+                            }
                             userReview.put(pdcode, rate);
-
                         }
 
                         if (userReview != null) {

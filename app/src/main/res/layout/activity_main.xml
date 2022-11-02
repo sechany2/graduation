@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumsquareroundeb"
-                android:text="인기가 많은 제품 >"
+                android:text="새로 추가된 제품 >"
                 android:textColor="@color/black"
                 android:textSize="18dp" />
 
@@ -189,7 +189,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="#D8D8D8"></LinearLayout>
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
@@ -227,26 +230,9 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_gravity="bottom"
-                    android:background="#D8D8D8"></LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
-
     </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
@@ -304,7 +290,6 @@
             android:textColor="@color/black"
             android:textSize="12dp" />
     </LinearLayout>
-
 
     <include layout="@layout/activity_menu" />
 

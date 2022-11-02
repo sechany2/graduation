@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         TextView tv_request = (TextView) findViewById(R.id.menutv_request);
-        tv_request.setText("분석 요청");
+        tv_request.setText("문의 하기");
         if (adminCheck) {
             tv_request.setText("요청 확인");
         }
@@ -375,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
         tv_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv_manutitle.setText("분석 요청");
+                tv_manutitle.setText("문의 하기");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
                 if (adminCheck) {
@@ -405,7 +405,7 @@ public class MainActivity extends AppCompatActivity {
         tv_iquiry.setOnClickListener(new View.OnClickListener() {//문의하기 버튼
             @Override
             public void onClick(View view) {
-                tv_manutitle.setText("문의 하기");
+                tv_manutitle.setText("수정 요청");
                 drawerLayout.closeDrawers();
                 drawerLayout.openDrawer(dr_help);
                 replaceMenuFragment(fragment_inquiry.newInstance());
